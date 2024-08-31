@@ -6,7 +6,7 @@
 #    By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/08/31 16:58:18 by mel-hamd         ###   ########.fr        #
+#    Updated: 2024/08/31 22:21:35 by mel-hamd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,11 @@ SRCS = 	main.c \
 		utils/utils-1.c \
 		utils/utils-2.c \
 		parser/parser.c \
-		mlx/lunch_mlx.c
+		mlx/lunch_mlx.c \
+		tools/ft_get_color.c \
+		mlx/put_square.c \
+
+# SRC = test.c
 
 #BSRCS = 
 
@@ -31,18 +35,23 @@ OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CC = cc -Wall -Wextra -Werror
+CC = cc -Wall -Wextra -Werror  #-fsanitize=address
 
-# HDR = mlx42/libmlx.a
-INCLUDES = -Imlx42  -Iincludes 
-MLX_FLAGS = -Lmlx42 -lmlx -framework Cocoa -framework OpenGL -framework IOKit
+LIB = -L"/Users/${USER}/.brew/Cellar/glfw/3.4/lib/"
 
-all : $(NAME)
+HDR = MLX42/build/libmlx42.a
+INCLUDES = -IMLX42/include/MLX42  -Iincludes 
+MLX_FLAGS = -LMLX42 -framework Cocoa -framework OpenGL -framework IOKit -lglfw
+
+all : mlx $(NAME)
 
 bonus : $(BONUS)
 
-$(NAME): $(OBJS)
-	$(CC) $(OBJS) $(MLX_FLAGS) $(HDR) -o $(NAME)
+mlx :
+	cd MLX42 && cmake -B build && cmake --build build -j4
+
+$(NAME):  $(OBJS)
+	$(CC) $(OBJS) $(MLX_FLAGS) $(HDR) ${LIB} -o $(NAME)
 
 $(BONUS): $(BOBJS)
 	$(CC) $(BOBJS) $(MLX_FLAGS) -o $(BONUS)
@@ -55,7 +64,8 @@ clean :
 
 fclean : clean
 	rm -f $(NAME) $(BONUS)
+	cd MLX42 && rm -rf build
 
 re : fclean all
 
-.PHONY : clean fclean
+.PHONY : clean fclean mlx

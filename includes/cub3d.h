@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/08/31 16:58:49 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/08/31 22:55:13 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef struct	s_corr
 	int	y;
 }	t_corr;
 
+typedef struct	s_d
+{
+	int	w;
+	int	h;
+}	t_d;
+
 typedef struct s_map
 {
 	char	**map;
@@ -57,6 +63,7 @@ typedef struct s_cub3d
 	t_map				map;
 	t_block_memory		*collector;
 	mlx_t				*m;
+	mlx_image_t			*img;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR
@@ -90,5 +97,9 @@ int		parse_map(char **map);
 
 // run mlx
 int lunch_mlx(t_cub3d *cub);
+int	put_square(t_corr *corr, t_d *d, t_cub3d *cub, int color);
+int ft_create_color(int r, int g, int b, int a);
+void rneder_map_2d(t_cub3d *cub);
+mlx_image_t *create_image(int w, int h, t_cub3d *cub);
 
 #endif
