@@ -6,17 +6,47 @@
 /*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:59:06 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/08/31 14:32:55 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/08/31 15:21:55 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int	get_map_height(char **splitted, int i)
+{
+	int	height;
+
+	height = 0;
+	while (splitted[i])
+	{
+		height++;
+		i++;
+	}
+	return (height);
+}
+
+int	get_big_line(char **splitted, int i)
+{
+	int	big_line;
+
+	big_line = 0;
+	while (splitted[i])
+	{
+		if (ft_strlen(splitted[i]) > (size_t)big_line)
+			big_line = ft_strlen(splitted[i]);
+		i++;
+	}
+	return (big_line);
+}
+
 void	get_identifiers(t_cub3d *cub)
 {
 	char	**splitted;
 	int		i;
-	
+	int		big_line;
+	int		height;
+	int		j;
+
 	i = 0;
 	splitted = ft_split(cub->input, '\n', cub);
 	while (splitted[i] && (!cub->map.ceiling || !cub->map.floor || !cub->map.east || !cub->map.north || !cub->map.west || !cub->map.south))
@@ -71,12 +101,16 @@ void	get_identifiers(t_cub3d *cub)
 		}
 		i++;
 	}
+	big_line = get_big_line(splitted, i);
+	height = get_map_height(splitted, i);
+	cub->map.map = ft_malloc(cub, &cub->collector, height + 1);
+	j = 0;
 	while (splitted[i])
 	{
-		printf("%s\n", splitted[i]);
+		cub->map.map[j++] = ft_strdup(splitted[i], cub);
 		i++;
 	}
-	exit(0);
+	cub->map.map[j] = NULL;
 }
 
 void	init_map(t_cub3d *cub, char **av)
@@ -126,6 +160,19 @@ int	main(int ac, char **av)
 		&& !ft_strncmp(av[1] + (ft_strlen(av[1]) - 4), ".cub", 5))
 	{
 		init_data(&cub, av);
+		int	i;
+		i = 0;
+		printf("%s\n", cub.map.north);
+		printf("%s\n", cub.map.south);
+		printf("%s\n", cub.map.east);
+		printf("%s\n", cub.map.west);
+		printf("%s\n", cub.map.ceiling);
+		printf("%s\n\n", cub.map.floor);
+		while (cub.map.map[i])
+		{
+			printf("%s\n", cub.map.map[i]);
+			i++;
+		}
 	}
 	else
 		return (ft_putstr_fd("Error\ninvalid arguments!\n", 2), 1);

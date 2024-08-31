@@ -6,7 +6,7 @@
 #    By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/08/31 14:32:22 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/08/31 15:10:11 by hmrabet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ BOBJS = $(BSRCS:.c=.o)
 CC = cc -Wall -Wextra -Werror
 
 INCLUDES = -Imlx42 -Ilibft
-MLX_FLAGS = -lmlx -Lmlx42 -lglfw -L"/opt/homebrew/Cellar/glfw/3.4/lib/"
+MLX_FLAGS = -lmlx -Lmlx42 -framework Cocoa -framework OpenGL -framework IOKit
 
 all : $(NAME)
 
