@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:59:06 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/08/31 15:21:55 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/08/31 15:43:41 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	get_identifiers(t_cub3d *cub)
 	}
 	big_line = get_big_line(splitted, i);
 	height = get_map_height(splitted, i);
-	cub->map.map = ft_malloc(cub, &cub->collector, height + 1);
+	cub->map.map = ft_malloc(cub, &cub->collector, sizeof(char *) * height + 1);
 	j = 0;
 	while (splitted[i])
 	{
