@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:59:06 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/08/31 15:43:41 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/08/31 16:06:35 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,4 +176,5 @@ int	main(int ac, char **av)
 	}
 	else
 		return (ft_putstr_fd("Error\ninvalid arguments!\n", 2), 1);
+	lunch_mlx(&cub);
 }

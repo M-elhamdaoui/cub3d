@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/08/31 14:33:30 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/08/31 16:58:49 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <stdlib.h>
 # include <time.h>
 # include <fcntl.h>
-# include "mlx.h"
+# include "MLX42.h"
+
 
 typedef enum e_bool
 {
@@ -31,6 +32,12 @@ typedef struct s_block_memory
 	void					*leak;
 	struct s_block_memory	*next;
 }	t_block_memory;
+
+typedef struct	s_corr
+{
+	int	x;
+	int	y;
+}	t_corr;
 
 typedef struct s_map
 {
@@ -49,6 +56,7 @@ typedef struct s_cub3d
 	unsigned int		max_fd;
 	t_map				map;
 	t_block_memory		*collector;
+	mlx_t				*m;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR
@@ -79,5 +87,8 @@ void	init_data(t_cub3d *cub, char **av);
 
 // PARSERS
 int		parse_map(char **map);
+
+// run mlx
+int lunch_mlx(t_cub3d *cub);
 
 #endif
