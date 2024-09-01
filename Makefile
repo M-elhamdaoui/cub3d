@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+         #
+#    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/08/31 22:21:35 by mel-hamd         ###   ########.fr        #
+#    Updated: 2024/09/01 16:20:58 by hmrabet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRCS = 	main.c \
 		utils/utils-0.c \
 		utils/utils-1.c \
 		utils/utils-2.c \
-		parser/parser.c \
+		utils/utiils-3.c \
+		parser/parser-0.c \
+		parser/parser-1.c \
 		mlx/lunch_mlx.c \
 		tools/ft_get_color.c \
 		mlx/put_square.c \

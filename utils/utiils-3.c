@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   utiils-3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houbet <houbet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 13:37:27 by houbet            #+#    #+#             */
-/*   Updated: 2024/08/26 14:51:10 by houbet           ###   ########.fr       */
+/*   Created: 2024/08/31 17:45:23 by hmrabet           #+#    #+#             */
+/*   Updated: 2024/08/31 17:46:15 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	parse_map(char **map)
+t_bool	ft_isal(char c)
 {
-	if (!map || !*map)
-		return (ft_putstr_fd("Error\nempty map!\n", 2), 1);
-	return (ft_putstr_fd("Error\ninvalid map!\n", 2), 1);
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
+}
+
+t_bool	ft_isnum(char c)
+{
+	return ((c >= '0' && c <= '9'));
+}
+
+t_bool	ft_isalnum(char c)
+{
+	return (ft_isnum(c) || ft_isal(c));
 }

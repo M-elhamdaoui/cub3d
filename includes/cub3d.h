@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/08/31 22:55:13 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/01 16:20:38 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,14 @@ typedef struct	s_d
 typedef struct s_map
 {
 	char	**map;
+	char	**pre_map;
 	char	*north;
 	char	*south;
 	char	*west;
 	char	*east;
 	char	*floor;
 	char	*ceiling;
+	t_corr	corr;
 }	t_map;
 
 typedef struct s_cub3d
@@ -88,12 +90,19 @@ char	*ft_substr(t_cub3d *cub, char *s, unsigned int start, size_t len);
 char	*ft_strtrim(t_cub3d *cub, char *s1, char *set);
 char	*ft_itoa(t_cub3d *cub, int n);
 char	**ft_split(char *s, char c, t_cub3d *cub);
+t_bool	ft_isal(char c);
+t_bool	ft_isnum(char c);
+t_bool	ft_isalnum(char c);
 
 // INITIALIZERS
 void	init_data(t_cub3d *cub, char **av);
 
 // PARSERS
-int		parse_map(char **map);
+int		get_map_height(char **splitted, int i);
+int		get_big_line(char **splitted, int i);
+void	parse_map(t_cub3d *cub);
+void	parse_identifiers(t_cub3d *cub);
+void	init_map(t_cub3d *cub, char **av);
 
 // run mlx
 int lunch_mlx(t_cub3d *cub);
