@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_circle.c                                       :+:      :+:    :+:   */
+/*   put_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/01 17:28:04 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/01 20:51:41 by mel-hamd         ###   ########.fr       */
+/*   Created: 2024/09/01 20:18:54 by mel-hamd          #+#    #+#             */
+/*   Updated: 2024/09/01 21:01:11 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	render_circle(int x, int y, int color, t_cub3d *cub)
+void	put_line(t_corr a, t_corr b, t_cub3d *cub)
 {
-	int	i;
-	int	j;
-	int	r;
+	int		m;
+	double	dx;
+	double	dy;
+	double	steps;
+	double	inc[2];
 
-	r = 4;
-	i = r * (-1);
-	while (i < r)
+	dx = b.x - a.x;
+	dy = b.y - a.y;
+	if (dx > dy)
+		steps = dx;
+	else
+		steps = dy;
+	if (dx < dy)
+		m = 10;
+	else
+		m = dy / dx;
+	incx[0] = dx / steps;
+	incy[1] = dy / steps;
+	while (--steps)
 	{
-		j = r * (-1);
-		while (j < r)
-		{
-			if ((j * j) + (i * i) <= r * r)
-				mlx_put_pixel(cub->img, x + j + r, y + i + r, color);
-			j++;
-		}
-		i++;
+		a.x += incx[0];
+		a.y += incy[1];
+		mlx_put_pixel(cub->img, round(a.x), round(a.y),
+			ft_create_color(255, 125, 0, 255));
 	}
 }

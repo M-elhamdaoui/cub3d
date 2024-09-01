@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
+#    By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/09/01 20:16:15 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/09/01 20:34:10 by mel-hamd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = 	main.c \
 		tools/ft_get_color.c \
 		mlx/put_square.c \
 		mlx/put_circle.c \
+		mlx/put_line.c \
 
 OBJS = $(SRCS:.c=.o)
 

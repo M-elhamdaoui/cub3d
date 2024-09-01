@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_ray.c                                     :+:      :+:    :+:   */
+/*   calc_distance.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/31 15:29:51 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/08/31 15:33:05 by mel-hamd         ###   ########.fr       */
+/*   Created: 2024/09/01 00:29:41 by mel-hamd          #+#    #+#             */
+/*   Updated: 2024/09/01 21:02:58 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_print_ray(t_corr *a, t_corr *b)
+double	calc_distance(int x1, int y1, int x2, int y2)
 {
-	
+	return (sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2)));
 }

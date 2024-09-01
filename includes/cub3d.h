@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/01 20:14:39 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/09/01 20:37:38 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <time.h>
 # include <fcntl.h>
 # include "MLX42.h"
+# include <math.h>
 
 # define US 32
 # define W_SIZE 1200
@@ -38,8 +39,8 @@ typedef struct s_block_memory
 
 typedef struct s_corr
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_corr;
 
 typedef struct s_player
@@ -128,5 +129,5 @@ int			ft_create_color(int r, int g, int b, int a);
 void		rneder_map_2d(t_cub3d *cub);
 mlx_image_t	*create_image(int w, int h, t_cub3d *cub);
 void		render_circle(int x, int y, int color, t_cub3d *cub);
-
+void		put_line(t_corr a, t_corr b, t_cub3d *cub);
 #endif
