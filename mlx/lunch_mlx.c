@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:36:42 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/01 19:32:21 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/09/01 19:43:22 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int lunch_mlx(t_cub3d *cub)
 		return (0);
 	cub->img = create_image(W_SIZE, H_SIZE, cub);
 	if (!cub->img)
-		ft_exit("Error\nFail to create image\n", 1, cub);
+		ft_exit("Fail to create image\n", 1, cub);
 	mlx_image_to_window(cub->m, cub->img , 0, 0);
 	rneder_map_2d(cub);
 	mlx_loop(cub->m);

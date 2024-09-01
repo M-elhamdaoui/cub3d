@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houbet <houbet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:55:49 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/08/26 14:51:10 by houbet           ###   ########.fr       */
+/*   Updated: 2024/09/01 19:42:51 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	close_fds(t_cub3d *cub)
 void	ft_exit(char *msg, int status, t_cub3d *cub)
 {
 	if (msg)
+	{
+		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd(msg, 2);
+	}
 	close_fds(cub);
 	ft_free(&cub->collector);
 	exit(status);
