@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_circle.c                                       :+:      :+:    :+:   */
+/*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/01 17:28:04 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/01 23:25:14 by mel-hamd         ###   ########.fr       */
+/*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
+/*   Updated: 2024/09/01 23:57:36 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	render_circle(int x, int y, int color, t_cub3d *cub)
+void	key_fun(void *params)
 {
-	int	i;
-	int	j;
-	int	r;
+	t_cub3d	*c;
 
-	r = cub->p.rad;
-	i = r * (-1);
-	while (i < r)
-	{
-		j = r * (-1);
-		while (j < r)
-		{
-			if ((j * j) + (i * i) <= r * r)
-				mlx_put_pixel(cub->img, x + j, y + i, color);
-			j++;
-		}
-		i++;
-	}
+	c = (t_cub3d *)params;
+	if (mlx_is_key_down(c->m, MLX_KEY_DOWN))
+		printf("to\n");
+	else if (mlx_is_key_down(c->m, MLX_KEY_UP))
+		printf("to\n");
+	else if (mlx_is_key_down(c->m, MLX_KEY_LEFT))
+		c->p.td = -1;
+	else if (mlx_is_key_down(c->m, MLX_KEY_RIGHT))
+		c->p.td = 1;
+	cam_move(c);
+	printf("sp %f , td %d\n", c->p.rot_speed,c->p.td);
+	rneder_map_2d(c);
+	c->p.td = 0;
 }
