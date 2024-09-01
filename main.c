@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:59:06 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/01 16:21:40 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/09/01 19:13:51 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,6 @@ int	main(int ac, char **av)
 		&& !ft_strncmp(av[1] + (ft_strlen(av[1]) - 4), ".cub", 5))
 	{
 		init_data(&cub, av);
-		int	i;
-		i = 0;
-		printf("%s\n", cub.map.north);
-		printf("%s\n", cub.map.south);
-		printf("%s\n", cub.map.east);
-		printf("%s\n", cub.map.west);
-		printf("%s\n", cub.map.ceiling);
-		printf("%s\n\n", cub.map.floor);
-		while (cub.map.map[i])
-		{
-			printf("%s\n", cub.map.map[i]);
-			i++;
-		}
 		lunch_mlx(&cub);
 	}
 	else

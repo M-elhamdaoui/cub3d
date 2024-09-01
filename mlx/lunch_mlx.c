@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lunch_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:36:42 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/01 18:12:29 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/01 19:32:21 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void rneder_map_2d(t_cub3d *cub)
 		}
 		i++;
 	}
-	printf("%d %d\n", cub->map.corr.x, cub->map.corr.y);
 	render_circle(cub->map.corr.x,cub->map.corr.y, ft_create_color(255, 126, 0, 255), cub);
 }
 

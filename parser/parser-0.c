@@ -3,16 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   parser-0.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:37:27 by houbet            #+#    #+#             */
-/*   Updated: 2024/09/01 18:09:57 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/01 19:32:48 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 // check empty line inside map
+
+void	empty_lines_map_check(t_cub3d *cub)
+{
+	char	*map;
+	int		i;
+
+	i = 0;
+	map = ft_strdup("", cub);
+	while (cub->map.pre_map[i])
+	{
+		if (i != 0)
+			map = ft_strjoin(map, "\n", cub);
+		map = ft_strjoin(map, cub->map.pre_map[i], cub);
+		i++;
+	}
+	if (!ft_strnstr(cub->input, map, ft_strlen(cub->input) + 100))
+		ft_exit("Error\nMap shouldn't have empty lines!\n", 1, cub);
+}
 
 void	count_players(t_cub3d *cub)
 {
@@ -68,6 +86,7 @@ void	parse_map(t_cub3d *cub)
 		i++;
 	}
 	count_players(cub);
+	empty_lines_map_check(cub);
 }
 
 void	fill_map(t_cub3d *cub)
