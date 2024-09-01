@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser-0.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:37:27 by houbet            #+#    #+#             */
-/*   Updated: 2024/09/01 16:13:00 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/09/01 18:09:57 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	count_players(t_cub3d *cub)
 		{
 			if (cub->map.map[i][j] == 'N' || cub->map.map[i][j] == 'S' || cub->map.map[i][j] == 'E' || cub->map.map[i][j] == 'W')
 			{
-				cub->map.corr.x = i;
-				cub->map.corr.y = j;
+				cub->map.corr.x = j;
+				cub->map.corr.y = i;
 				if (player == 1)
 					ft_exit("Error\nThe map must have only one player!\n", 1, cub);
 				player++;
@@ -104,9 +104,7 @@ void	init_map(t_cub3d *cub, char **av)
 	char	*buffer;
 	int		len;
 	int		fd;
-	int		i;
 
-	i = 0;
 	len = 1;
 	fd = open(ft_strtrim(cub, av[1], " "), O_RDONLY, 0777);
 	cub->max_fd = fd;

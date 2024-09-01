@@ -119,7 +119,6 @@ void	parse_identifiers(t_cub3d *cub)
 {
 	char	**splitted;
 	int		i;
-	int		big_line;
 	int		height;
 	int		j;
 
@@ -178,7 +177,6 @@ void	parse_identifiers(t_cub3d *cub)
 		i++;
 	}
 	check_colors(cub);
-	big_line = get_big_line(splitted, i);
 	height = get_map_height(splitted, i);
 	if (cub->input[ft_strlen(cub->input) - 1] == '\n')
 		ft_exit("Error\nMap shouldn't have empty lines!\n", 1, cub);

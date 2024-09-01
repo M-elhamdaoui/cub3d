@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
+#    By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/09/01 16:20:58 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/09/01 17:42:49 by mel-hamd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS = 	main.c \
 		mlx/lunch_mlx.c \
 		tools/ft_get_color.c \
 		mlx/put_square.c \
+		mlx/put_circle.c \
 
 # SRC = test.c
 

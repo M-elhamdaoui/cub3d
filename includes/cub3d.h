@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/01 16:20:38 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/09/01 17:51:21 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <fcntl.h>
 # include "MLX42.h"
 
+
+# define US 32
+# define W_SIZE 1200
+# define H_SIZE 900
 
 typedef enum e_bool
 {
@@ -39,6 +43,17 @@ typedef struct	s_corr
 	int	y;
 }	t_corr;
 
+typedef struct s_player
+{
+	t_corr	c;
+	int		rad; // the size of player
+	int		td; // turn direction : 1 to right -1 to left 0 initial and nothing will happen
+	int		wd;	// walk direction : 1 to front -1 to back 0 initial and nothing will happen
+	double	rot_ang; // the angle of rotation should be initialized depanding on N or S or E or W
+	double	ms; // move speed initalized by a macro of 3.0
+	double	rot_speed; // rotation speed initialized with a macro of 3 * (math.pi/180)	
+}	t_player;
+
 typedef struct	s_d
 {
 	int	w;
@@ -47,15 +62,16 @@ typedef struct	s_d
 
 typedef struct s_map
 {
-	char	**map;
-	char	**pre_map;
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	char	*floor;
-	char	*ceiling;
-	t_corr	corr;
+	char		**map;
+	char		**pre_map;
+	char		*north;
+	char		*south;
+	char		*west;
+	char		*east;
+	char		*floor;
+	char		*ceiling;
+	t_corr		corr;
+
 }	t_map;
 
 typedef struct s_cub3d
@@ -65,6 +81,7 @@ typedef struct s_cub3d
 	t_map				map;
 	t_block_memory		*collector;
 	mlx_t				*m;
+	t_player			*p;
 	mlx_image_t			*img;
 }	t_cub3d;
 
@@ -110,5 +127,6 @@ int	put_square(t_corr *corr, t_d *d, t_cub3d *cub, int color);
 int ft_create_color(int r, int g, int b, int a);
 void rneder_map_2d(t_cub3d *cub);
 mlx_image_t *create_image(int w, int h, t_cub3d *cub);
+void	render_circle(int x, int y, int color, t_cub3d *cub);
 
 #endif
