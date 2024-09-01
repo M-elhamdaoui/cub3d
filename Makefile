@@ -6,7 +6,7 @@
 #    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/09/01 20:08:09 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/09/01 20:16:15 by hmrabet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS = 	main.c \
  		init-data.c \
 		utils/heap.c utils/itoa.c utils/split.c utils/utils-0.c utils/utils-1.c utils/utils-2.c utils/utils-3.c \
 		parser/parser.c parser/parse-map.c parser/parse-identifiers.c parser/parser-utils.c \
-		mlx/lunch_mlx.c \
+		mlx/launch_mlx.c \
 		tools/ft_get_color.c \
 		mlx/put_square.c \
 		mlx/put_circle.c \

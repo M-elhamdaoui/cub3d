@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:44:58 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/01 20:12:38 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/09/01 20:15:24 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	count_players(t_cub3d *cub)
 				|| cub->map.map[i][j] == 'E'
 				|| cub->map.map[i][j] == 'W')
 			{
-				1 && (cub->map.corr.x = j, cub->map.corr.y = i);
+				1 && (cub->p.c.x = j * US, cub->p.c.y = i * US);
 				if (player == 1)
 					ft_exit("The map must have one player!\n", 1, cub);
 				player++;

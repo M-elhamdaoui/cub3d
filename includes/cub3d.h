@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/01 20:11:52 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/09/01 20:14:39 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ typedef struct s_map
 	char		*east;
 	char		*floor;
 	char		*ceiling;
-	t_corr		corr;
-
 }	t_map;
 
 typedef struct s_cub3d
@@ -80,7 +78,7 @@ typedef struct s_cub3d
 	t_map				map;
 	t_block_memory		*collector;
 	mlx_t				*m;
-	t_player			*p;
+	t_player			p;
 	mlx_image_t			*img;
 }	t_cub3d;
 

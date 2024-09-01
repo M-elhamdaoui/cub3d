@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_circle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:28:04 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/01 18:12:02 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/01 20:16:47 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	render_circle(int x, int y, int color, t_cub3d *cub)
 		while (j < r)
 		{
 			if ((j * j) + (i * i) <= r * r)
-				mlx_put_pixel(cub->img, x * US + j + r, y * US + i + r, color);
+				mlx_put_pixel(cub->img, x + j + r, y + i + r, color);
 			j++;
 		}
 		i++;
