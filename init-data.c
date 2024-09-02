@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/09/02 18:06:06 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/02 19:11:13 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_data(t_cub3d *cub, char **av)
 	cub->p.rad = 4;
 	cub->p.td = 0;
 	cub->p.wd_h = 0;
-	cub->p.ms = 5;
+	cub->p.ms = 4;
 	cub->p.rot_speed = 3 * (M_PI / 180);
 	init_map(cub, av);
 }
