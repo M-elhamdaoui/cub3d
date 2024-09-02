@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 20:18:54 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/02 00:12:47 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:18:20 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,18 @@ void	put_line(t_corr a, t_corr b, t_cub3d *cub)
 	double	inc[2];
 
 	dx = b.x - a.x;
-	dy = fabs(b.y - a.y);
+	dy = b.y - a.y;
 	if (fabs(dx) < fabs(dy))
 		m = 10;
 	else
 		m = fabs(dy) / fabs(dx);
-	if (m > dy)
-		steps = round(fabs(dx));
-	else
+	if (m > 1)
 		steps = round(fabs(dy));
+	else
+		steps = round(fabs(dx));
 	inc[0] = dx / steps;
 	inc[1] = dy / steps;
-	printf("%d\n", steps);
-	while (--steps)
+	while (steps--)
 	{
 		a.x += inc[0];
 		a.y += inc[1];

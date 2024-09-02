@@ -6,7 +6,7 @@
 #    By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/09/01 23:44:47 by mel-hamd         ###   ########.fr        #
+#    Updated: 2024/09/02 10:39:07 by mel-hamd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS = 	main.c \
 		mlx/put_line.c \
 		mlx/actions.c \
 		camera_moves/camera_moves.c \
+		mlx/put_line_v2.c
 
 OBJS = $(SRCS:.c=.o)
 
