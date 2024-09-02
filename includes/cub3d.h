@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/02 14:07:13 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:01:20 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_player
 	int		rad; // the size of player
 	int		td; // turn direction : 1 to right -1 to left 0 initial and nothing will happen
 	int		wd;	// walk direction : 1 to front -1 to back 0 initial and nothing will happen
+	int		wd_h;	// walk direction : 1 to right -1 to left 0 initial and nothing will happen
 	double	rot_ang; // the angle of rotation should be initialized depanding on N or S or E or W
 	double	ms; // move speed initalized by a macro of 3.0
 	double	rot_speed; // rotation speed initialized with a macro of 3 * (math.pi/180)	
@@ -136,5 +137,8 @@ void		key_fun(void *params);
 void		cam_move(t_cub3d *cub);
 void		put_line_v2(t_corr c, int d, double ang, t_cub3d *cub);
 void		print_rays(int n, t_cub3d *cub);
+void		move_f_b(t_cub3d *c);
+void		move_l_r(t_cub3d *c);
+void		move(t_cub3d *c);
 
 #endif

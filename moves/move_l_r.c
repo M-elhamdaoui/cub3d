@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_to_front.c                                       :+:      :+:    :+:   */
+/*   move_l_r.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 16:41:12 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/02 17:26:53 by mel-hamd         ###   ########.fr       */
+/*   Created: 2024/09/02 17:51:22 by mel-hamd          #+#    #+#             */
+/*   Updated: 2024/09/02 18:39:45 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	to_front(t_cub3d *c)
+void	move_l_r(t_cub3d *c)
 {
-	
+	double	ang;
+	double	tmp;
+	double	tmp2;
+
+	if (c->p.wd_h == 0)
+		return ;
+	ang = c->p.rot_ang + (M_PI / 2) * c->p.wd_h;
+	tmp = c->p.c.x + c->p.ms * cos(ang);
+	tmp2 =c->p.c.y + c->p.ms * sin(ang);
+	if (c->map.map[(int)(tmp2 / US)][(int)(tmp / US)] == '1')
+		return ;
+	c->p.c.y = tmp2;
+	c->p.c.x = tmp;
 }
