@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/02 10:38:25 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:07:13 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define US 32
 # define W_SIZE 1200
 # define H_SIZE 900
+# define N_RAYS	1200
+# define FOV (M_PI / 3)
 
 typedef enum e_bool
 {
@@ -132,6 +134,7 @@ void		render_circle(int x, int y, int color, t_cub3d *cub);
 void		put_line(t_corr a, t_corr b, t_cub3d *cub);
 void		key_fun(void *params);
 void		cam_move(t_cub3d *cub);
-void		put_line_v2(t_corr c, int d, t_cub3d *cub);
+void		put_line_v2(t_corr c, int d, double ang, t_cub3d *cub);
+void		print_rays(int n, t_cub3d *cub);
 
 #endif

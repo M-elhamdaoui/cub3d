@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_line_v2.c                                      :+:      :+:    :+:   */
+/*   print_rays.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 10:33:13 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/02 13:57:40 by mel-hamd         ###   ########.fr       */
+/*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
+/*   Updated: 2024/09/02 14:16:54 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+# include "cub3d.h"
 
-void	put_line_v2(t_corr c, int d, double ang, t_cub3d *cub)
+void	print_rays(int n, t_cub3d *cub)
 {
-	double	i;
-	t_corr p;
+	double	stp_ray;
+	double	str_ang;
+	t_corr	c;
 
-	i = 0;
-	while(i < d)
+	stp_ray = FOV / n;
+	str_ang = cub->p.rot_ang - (FOV / 2);
+	1 && (c.x = cub->p.c.x, c.y = cub->p.c.y );
+	while (str_ang <=  cub->p.rot_ang + (FOV / 2))
 	{
-		p.x = c.x + i * cos(ang);
-		p.y = c.y + i * sin(ang);
-		mlx_put_pixel(cub->img, p.x, p.y, ft_create_color(255, 120, 0, 255));
-		i++;
+		put_line_v2(cub->p.c, 90, str_ang, cub);
+		str_ang += stp_ray;
 	}
 }
