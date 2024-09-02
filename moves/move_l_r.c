@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:51:22 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/02 18:58:08 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/02 19:06:05 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	move_l_r(t_cub3d *c)
 	double	tmp2;
 	double	r;
 
-	r = c->p.rad;
+	r = c->p.rad / 2;
 	if (c->p.wd_h == 0)
 		return ;
 	ang = c->p.rot_ang + (M_PI / 2) * c->p.wd_h;
