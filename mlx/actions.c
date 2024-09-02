@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/02 19:12:42 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/02 19:15:53 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ void	key_fun(void *params)
 	if (mlx_is_key_down(c->m, MLX_KEY_RIGHT))
 		c->p.td = 1;
 	move(c);
-	printf("sp %f , td %d\n", c->p.rot_speed,c->p.td);
 	rneder_map_2d(c);
 }
