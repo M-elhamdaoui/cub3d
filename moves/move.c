@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:57:44 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/02 18:08:03 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/02 20:43:22 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	move(t_cub3d *c)
 {
+	cam_move(c);
 	move_f_b(c);
 	move_l_r(c);
-	cam_move(c);
 	c->p.wd = 0;
 	c->p.wd_h = 0;
 	c->p.td = 0;
