@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/05 16:49:58 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/05 21:02:17 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	print_rays(int n, t_cub3d *cub)
 	stp_ray = FOV / n;
 	str_ang = cub->p.rot_ang - (FOV / 2);
 	1 && (c.x = cub->p.c.x, c.y = cub->p.c.y );
-	cast_ray(cub, get_angle(cub->p.rot_ang));
 	while (str_ang <=  cub->p.rot_ang + (FOV / 2))
 	{
+		cast_ray(cub, get_angle(str_ang));
 		// put_line_v2(cub->p.c, 90, str_ang, cub);
 		str_ang += stp_ray;
 	}

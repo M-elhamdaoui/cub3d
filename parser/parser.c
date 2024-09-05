@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:37:27 by houbet            #+#    #+#             */
-/*   Updated: 2024/09/01 20:10:48 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/09/05 20:48:15 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	fill_map(t_cub3d *cub)
 
 	big_line = get_big_line(cub->map.pre_map, 0);
 	(1) && (height = get_map_height(cub->map.pre_map, 0), i = 0);
+	cub->map.height = height;
 	cub->map.map = ft_malloc(cub, &cub->collector, sizeof(char *) * height + 1);
 	while (i < height)
 	{
@@ -39,6 +40,7 @@ static void	fill_map(t_cub3d *cub)
 		}
 		i++;
 	}
+	cub->map.width = ft_strlen(cub->map.map[0]);
 }
 
 void	init_map(t_cub3d *cub, char **av)
