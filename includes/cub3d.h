@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/02 18:01:20 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:47:05 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,7 @@ void		print_rays(int n, t_cub3d *cub);
 void		move_f_b(t_cub3d *c);
 void		move_l_r(t_cub3d *c);
 void		move(t_cub3d *c);
+void		cast_ray(t_cub3d *c, double ang);
+double		get_angle(double ang);
 
 #endif

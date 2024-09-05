@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"*.embeddedhtml": "html",
+		"*.blade.php": "html",
+		"*.tpl": "html",
+		"cub3d.h": "c"
+	}
+}
