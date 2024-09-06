@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/06 15:19:22 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/06 17:09:17 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,9 @@ void		print_rays(int n, t_cub3d *cub);
 void		move_f_b(t_cub3d *c);
 void		move_l_r(t_cub3d *c);
 void		move(t_cub3d *c);
-void		cast_ray(t_cub3d *c, double ang);
+t_ray		cast_ray_h(t_cub3d *c, double ang,int is_r_down,int is_r_left);
 double		get_angle(double ang);
-
+void		get_angl_direction(int *is_r_down, int *is_r_left, double ang);
+void 		setup_steps_h(double step[2], int is_r_down, int is_r_left, double ang);
+int			calc_distance(t_corr a, t_corr b);
 #endif

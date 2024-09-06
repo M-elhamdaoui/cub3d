@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/06 12:16:37 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/06 17:20:43 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ void	print_rays(int n, t_cub3d *cub)
 {
 	double	stp_ray;
 	double	str_ang;
-	t_corr	c;
+	int		ang_dir[2];
+	t_ray	r;
 
 	stp_ray = FOV / n;
 	str_ang = cub->p.rot_ang - (FOV / 2);
-	1 && (c.x = cub->p.c.x, c.y = cub->p.c.y );
 	while (str_ang <=  cub->p.rot_ang + (FOV / 2))
 	{
-		cast_ray(cub, get_angle(str_ang));
-		// put_line_v2(cub->p.c, 90, str_ang, cub);
+		get_angl_direction(&ang_dir[0],&ang_dir[1], get_angle(str_ang));
+		r = cast_ray_h(cub, get_angle(str_ang), ang_dir[0], ang_dir[1]);
+		r.ang = str_ang;
+		if (r.is_w_hited)
+			put_line_v2(cub->p.c, r.distance, r.ang, cub);
 		str_ang += stp_ray;
 	}
 }
