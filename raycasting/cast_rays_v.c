@@ -6,13 +6,13 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:41:49 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/06 18:50:03 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/06 19:01:05 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_ray	cast_rays_v(double ang, int is_down, int is_left, t_cub3d *c)
+t_ray	cast_ray_v(double ang, int is_down, int is_left, t_cub3d *c)
 {
 	double	step[2];
 	t_ray	ray;

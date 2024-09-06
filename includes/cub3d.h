@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/06 18:34:43 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/06 19:00:55 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,6 @@ void 		setup_steps_h(double step[2], int is_r_down, int is_r_left, double ang);
 int			calc_distance(t_corr a, t_corr b);
 void		setup_steps_v(double step[2], int is_r_down, int is_r_left, double ang);
 int			cast_condition(t_corr inter, t_cub3d *c);
-t_ray		cast_rays_v(double ang, int is_down, int is_left, t_cub3d *c);
+t_ray		cast_ray_v(double ang, int is_down, int is_left, t_cub3d *c);
+t_ray		which_ray(double ang, t_cub3d *c);
 #endif
