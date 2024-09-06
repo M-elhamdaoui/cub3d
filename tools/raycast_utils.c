@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:25:51 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/06 17:17:04 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/06 18:49:22 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,14 @@ int calc_distance(t_corr a, t_corr b)
 	distance = sqrt((a.x - b.x) * (a.x - b.x)
 		+ (a.y - b.y) * (a.y - b.y));
 	return (distance);
+}
+
+void setup_steps_v(double step[2], int is_r_down, int is_r_left, double ang)
+{
+	step[0] = US;
+	if (is_r_left)
+		step[0] *= -1;
+	step[1] = step[0] * tan(ang);
+	if ((is_r_down && step[1] < 0) || (!is_r_down && step[1] > 0))
+		step[1] *= -1;
 }
