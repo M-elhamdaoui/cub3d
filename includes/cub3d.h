@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/05 20:35:29 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:19:22 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,15 @@ typedef struct s_map
 	int			height;
 	int			width;
 }	t_map;
+
+typedef struct s_ray
+{
+	t_corr	hit_wall;
+	double	ang;
+	t_bool	is_w_hited;
+	int		distance;
+}	t_ray;
+
 
 typedef struct s_cub3d
 {
