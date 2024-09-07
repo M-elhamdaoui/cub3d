@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:36:42 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/02 14:20:06 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/07 13:37:25 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	rneder_map_2d(t_cub3d *cub)
 		}
 		i++;
 	}
-	render_circle(cub->p.c.x, cub->p.c.y,  
-		ft_create_color(255, 126, 0, 255), cub);
 	print_rays(N_RAYS, cub);
+	render_circle(cub->p.c.x, cub->p.c.y,  
+		ft_create_color(0, 255, 0, 255), cub);
 }
 
 int	lunch_mlx(t_cub3d *cub)
