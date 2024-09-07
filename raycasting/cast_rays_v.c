@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:41:49 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/06 19:01:05 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/07 11:48:41 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_ray	cast_ray_v(double ang, int is_down, int is_left, t_cub3d *c)
 			tmp = intercept.x - 1;
 		else
 			tmp = intercept.x + 1;
-		if (c->map.map[(int)(intercept.y / US)][(int)(tmp / US)] == '1')
+		if (floor(tmp / US) < c->map.width && c->map.map[(int)(intercept.y / US)][(int)(tmp / US)] == '1')
 		{
 			ray.distance = calc_distance(intercept, c->p.c);
 			return (ray.is_w_hited = 1, ray.hit_wall = intercept, ray);
