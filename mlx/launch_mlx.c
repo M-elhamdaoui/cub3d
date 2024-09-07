@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:36:42 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/07 18:24:51 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/07 19:47:03 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,14 @@ void	rneder_map_2d(t_cub3d *cub)
 		ft_create_color(0, 255, 0, 255), cub);
 }
 
+void	close_window(void *params)
+{
+	t_cub3d *c;
+
+	c = (t_cub3d *) params;
+	ft_exit(NULL, 0, c);
+}
+
 int	lunch_mlx(t_cub3d *cub)
 {
 	t_corr	c;
@@ -69,6 +77,7 @@ int	lunch_mlx(t_cub3d *cub)
 	mlx_image_to_window(cub->m, cub->img, 0, 0);
 	print_rays(W_SIZE, cub);
 	// rneder_map_2d(cub);
+	mlx_close_hook(cub->m, close_window, cub);
 	mlx_loop_hook(cub->m, &key_fun, cub);
 	mlx_loop(cub->m);
 	return (1);
