@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:36:42 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/07 13:37:25 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/07 18:24:51 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	rneder_map_2d(t_cub3d *cub)
 		}
 		i++;
 	}
-	print_rays(N_RAYS, cub);
+	print_rays(W_SIZE, cub);
 	render_circle(cub->p.c.x, cub->p.c.y,  
 		ft_create_color(0, 255, 0, 255), cub);
 }
@@ -67,7 +67,8 @@ int	lunch_mlx(t_cub3d *cub)
 	if (!cub->img)
 		ft_exit("Fail to create image\n", 1, cub);
 	mlx_image_to_window(cub->m, cub->img, 0, 0);
-	rneder_map_2d(cub);
+	print_rays(W_SIZE, cub);
+	// rneder_map_2d(cub);
 	mlx_loop_hook(cub->m, &key_fun, cub);
 	mlx_loop(cub->m);
 	return (1);

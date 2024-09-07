@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:25:51 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/06 18:49:22 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/07 18:28:40 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	get_angl_direction(int *is_r_down, int *is_r_left, double ang)
 		*is_r_down = 1;
 	else
 		*is_r_down = 0;
-	if (ang <= (M_PI / 2) || ang >= (3 * M_PI / 2))
+	if (ang < (M_PI / 2) || ang > (3 * M_PI / 2))
 		*is_r_left = 0;
 	else
 		*is_r_left = 1;
@@ -42,9 +42,9 @@ void setup_steps_h(double step[2], int is_r_down, int is_r_left, double ang)
 		step[1] *= -1;
 }
 
-int calc_distance(t_corr a, t_corr b)
+double calc_distance(t_corr a, t_corr b)
 {
-	int distance;
+	double distance;
 
 	distance = sqrt((a.x - b.x) * (a.x - b.x)
 		+ (a.y - b.y) * (a.y - b.y));
