@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse-identifiers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 18:02:10 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/01 20:11:20 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/09/07 19:13:29 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void	parse_identifiers2(t_cub3d *cub, char **splitted, int i)
 	if (cub->input[ft_strlen(cub->input) - 1] == '\n')
 		ft_exit("Map shouldn't have empty lines!\n", 1, cub);
 	cub->map.pre_map = ft_malloc(cub, &cub->collector,
-			sizeof(char *) * height + 1);
+			sizeof(char *) * (height + 1));
 	j = 0;
 	while (splitted[i])
 	{
