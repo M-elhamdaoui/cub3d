@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/07 18:26:08 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:35:32 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	print_rays(int n, t_cub3d *cub)
 		else
 			c.color = ft_create_color(0, 255, 0, 255);
 		c.y = floor((H_SIZE / 2) - (line_h / 2));
-		if ((H_SIZE / 2) - (line_h / 2) >= 0 )
+		if ((H_SIZE / 2) - (line_h / 2) >= 0 ) 
 			put_line_v2(c, floor(line_h), M_PI / 2, cub);
 		c.x++;
 		str_ang += stp_ray;

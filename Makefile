@@ -6,7 +6,7 @@
 #    By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/09/07 19:24:44 by mel-hamd         ###   ########.fr        #
+#    Updated: 2024/09/12 10:36:54 by mel-hamd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRCS = 	main.c \
 		moves/move.c \
 		raycasting/cast_rays_h.c\
 		tools/raycast_utils.c \
-		raycasting/cast_rays_v.c
+		raycasting/cast_rays_v.c\
+		render_textures/render_textures.c
 
 OBJS = $(SRCS:.c=.o)
 

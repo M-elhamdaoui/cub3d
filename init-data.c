@@ -6,7 +6,7 @@
 /*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/09/07 13:37:54 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:46:10 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	init_data(t_cub3d *cub, char **av)
 	cub->p.wd = 0;
 	cub->p.ms = 2;
 	cub->p.rot_speed = 3 * (M_PI / 180);
+	cub->wall_1 =  mlx_load_png("textures/texture1.png");
 	init_map(cub, av);
 }
