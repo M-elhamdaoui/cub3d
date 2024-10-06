@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   launch_mlx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:36:42 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/07 19:47:03 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/29 16:22:23 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,6 @@ void	close_window(void *params)
 
 int	lunch_mlx(t_cub3d *cub)
 {
-	t_corr	c;
-	t_d		d;
-
-	c.x = 0;
-	c.y = 0;
-	d.h = US;
-	d.w = US;
 	cub->m = mlx_init(W_SIZE, H_SIZE, "CUB3D", 0);
 	if (!cub->m)
 		return (0);
@@ -75,8 +68,8 @@ int	lunch_mlx(t_cub3d *cub)
 	if (!cub->img)
 		ft_exit("Fail to create image\n", 1, cub);
 	mlx_image_to_window(cub->m, cub->img, 0, 0);
+	rneder_map_2d(cub);
 	print_rays(W_SIZE, cub);
-	// rneder_map_2d(cub);
 	mlx_close_hook(cub->m, close_window, cub);
 	mlx_loop_hook(cub->m, &key_fun, cub);
 	mlx_loop(cub->m);

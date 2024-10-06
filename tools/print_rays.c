@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_rays.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/12 13:35:32 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/09/29 16:42:51 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_rays(int n, t_cub3d *cub)
 {
 	double	stp_ray;
 	double	str_ang;
-	double		line_h;
+	double	line_h;
 	t_corr	c;
 	t_ray	r;
 
@@ -63,16 +63,16 @@ void	print_rays(int n, t_cub3d *cub)
 		if (line_h > H_SIZE)
 			line_h = H_SIZE;
 		c.y = 0;
-		c.color = ft_create_color(255, 0, 0, 255);
+		c.color = ft_create_color(cub->map.ceiling_rgb[0], cub->map.ceiling_rgb[1], cub->map.ceiling_rgb[2], 200);
 		put_line_v2(c, floor(H_SIZE / 2 - line_h / 2), M_PI / 2, cub );	
 		c.y = floor(H_SIZE / 2 + line_h / 2);
-		c.color = ft_create_color(0, 0, 255, 255);
+		c.color = ft_create_color(cub->map.floor_rgb[0], cub->map.floor_rgb[1], cub->map.floor_rgb[2], 160);
 		if (H_SIZE / 2 + line_h / 2  < H_SIZE)
 			put_line_v2(c,floor(H_SIZE / 2 + line_h / 2), M_PI / 2, cub);
 		if (r.type == 'v')
-			c.color = ft_create_color(0, 255, 0, 155);
+			c.color = ft_create_color(0, 0, 0, 120);
 		else
-			c.color = ft_create_color(0, 255, 0, 255);
+			c.color = ft_create_color(0, 0, 0, 60);
 		c.y = floor((H_SIZE / 2) - (line_h / 2));
 		if ((H_SIZE / 2) - (line_h / 2) >= 0 ) 
 			put_line_v2(c, floor(line_h), M_PI / 2, cub);
