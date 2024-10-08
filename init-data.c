@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/09/29 16:33:10 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/08 22:27:03 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_data(t_cub3d *cub, char **av)
 	cub->map.south = NULL;
 	cub->map.floor = NULL;
 	cub->map.ceiling = NULL;
-	cub->p.rot_ang = 3 * M_PI / 2;
+	cub->p.rot_ang = 0;
 	cub->p.rad = 4;
 	cub->p.td = 0;
 	cub->p.wd_h = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse-map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:44:58 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/01 23:25:38 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/10/08 22:28:48 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ void	count_players(t_cub3d *cub)
 				|| cub->map.map[i][j] == 'W')
 			{
 				1 && (cub->p.c.x = j * US + US / 2, cub->p.c.y = i * US + US / 2);
+				(cub->map.map[i][j] == 'N') && (cub->p.rot_ang = (3 * M_PI) / 2);
+				(cub->map.map[i][j] == 'S') && (cub->p.rot_ang = (M_PI) / 2);
+				(cub->map.map[i][j] == 'W') && (cub->p.rot_ang = M_PI);
 				if (player == 1)
 					ft_exit("The map must have one player!\n", 1, cub);
 				player++;
