@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/08 22:50:55 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/08 23:14:50 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,11 @@ typedef struct s_cub3d
 	mlx_t				*m;
 	t_player			p;
 	mlx_image_t			*img;
+	mlx_texture_t		*wall_N;
+	mlx_texture_t		*wall_S;
+	mlx_texture_t		*wall_W;
+	mlx_texture_t		*wall_E;
 	mlx_texture_t		*wall_1;
-	mlx_texture_t		*wall_2;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR
@@ -165,6 +168,6 @@ void		setup_steps_v(double step[2], int is_r_down, int is_r_left, double ang);
 int			cast_condition(t_corr inter, t_cub3d *c);
 t_ray		cast_ray_v(double ang, int is_down, int is_left, t_cub3d *c);
 t_ray		which_ray(double ang, t_cub3d *c);
-int			return_pixel(t_corr point, mlx_texture_t* t);
-void		render_y_of_image(t_corr c, int d, double ang, t_cub3d *cub);
+// int			return_pixel(t_corr point, mlx_texture_t* t);
+// void		render_y_of_image(t_corr c, int d, double ang, t_cub3d *cub);
 #endif

@@ -3,18 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:59:06 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/07 19:47:56 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/10/09 00:04:23 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void leaks()
+{
+	system("leaks cub3D");
+}
 
 int	main(int ac, char **av)
 {
+	atexit(leaks);
 	t_cub3d	cub;
 
 	if (ac == 2 && ft_strnstr(av[1], ".cub", ft_strlen(av[1]))

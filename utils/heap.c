@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:55:49 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/09/07 19:42:16 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/10/09 00:02:28 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ void	ft_exit(char *msg, int status, t_cub3d *cub)
 		ft_putstr_fd(msg, 2);
 	}
 	close_fds(cub);
-	if (cub->m && cub->img)
-		mlx_delete_image(cub->m, cub->img);
-	if (cub->m)
-		mlx_terminate(cub->m);
+	// exit(0);
+	// if (cub->m && cub->img)
+	// 	mlx_delete_image(cub->m, cub->img);
+	// if (cub->m)
+	// 	mlx_terminate(cub->m);
 	ft_free(&cub->collector);
 	exit(status);
 }
