@@ -72,6 +72,7 @@ int	lunch_mlx(t_cub3d *cub)
 	print_rays(W_SIZE, cub);
 	mlx_close_hook(cub->m, close_window, cub);
 	mlx_loop_hook(cub->m, &key_fun, cub);
+	mlx_set_cursor_mode(cub->m, MLX_MOUSE_HIDDEN);
 	mlx_loop(cub->m);
 	return (1);
 }
