@@ -1,7 +1,7 @@
-NO ./textures/texture1.png
-SO ./textures/texture1.png
+NO ./textures/texture2.png
+SO ./textures/texture2.png
 WE ./textures/texture1.png
-EA ./textures/texture1.png
+EA ./textures/texture2.png
 
 F 0,0,0
 C 0,0,0

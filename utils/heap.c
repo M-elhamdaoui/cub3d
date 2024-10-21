@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:55:49 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/09 00:02:28 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/21 05:37:51 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ void	ft_exit(char *msg, int status, t_cub3d *cub)
 		ft_putstr_fd(msg, 2);
 	}
 	close_fds(cub);
-	// exit(0);
-	// if (cub->m && cub->img)
-	// 	mlx_delete_image(cub->m, cub->img);
-	// if (cub->m)
-	// 	mlx_terminate(cub->m);
+	if (cub->m && cub->img)
+		mlx_delete_image(cub->m, cub->img);
+	if (cub->m)
+		mlx_terminate(cub->m);
 	ft_free(&cub->collector);
 	exit(status);
 }

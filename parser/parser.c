@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:37:27 by houbet            #+#    #+#             */
-/*   Updated: 2024/09/07 19:10:44 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/21 05:48:42 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,27 @@
 static void	fill_map(t_cub3d *cub)
 {
 	int	big_line;
-	int	height;
+	int	h;
 	int	i;
 	int	j;
 
 	big_line = get_big_line(cub->map.pre_map, 0);
-	(1) && (height = get_map_height(cub->map.pre_map, 0), i = 0);
-	cub->map.height = height;
-	cub->map.map = ft_malloc(cub, &cub->collector, sizeof(char *) * (height + 1));
-	while (i < height)
+	(1) && (h = get_map_height(cub->map.pre_map, 0), i = -1);
+	cub->map.height = h;
+	cub->map.map = ft_malloc(cub, &cub->collector, sizeof(char *) * (h + 1));
+	while (++i < h)
 	{
-		j = 0;
+		j = -1;
 		cub->map.map[i] = ft_malloc(cub,
 				&cub->collector, sizeof(char) * (big_line + 1));
-		while (cub->map.pre_map[i][j])
-		{
+		while (cub->map.pre_map[i][++j])
 			cub->map.map[i][j] = cub->map.pre_map[i][j];
-			j++;
-		}
 		while (j < big_line)
 		{
 			cub->map.map[i][j] = ' ';
 			j++;
 		}
 		cub->map.map[i][j] = '\0';
-		i++;
 	}
 	cub->map.map[i] = NULL;
 	cub->map.width = ft_strlen(cub->map.map[0]);

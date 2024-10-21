@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:44:58 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/08 22:28:48 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/21 05:51:58 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ void	empty_lines_map_check(t_cub3d *cub)
 		ft_exit("Map shouldn't have empty lines!\n", 1, cub);
 }
 
+static t_bool	is_player(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
+}
+
 void	count_players(t_cub3d *cub)
 {
 	int	player;
@@ -42,23 +47,20 @@ void	count_players(t_cub3d *cub)
 		j = 0;
 		while (cub->map.map[i][j])
 		{
-			if (cub->map.map[i][j] == 'N'
-				|| cub->map.map[i][j] == 'S'
-				|| cub->map.map[i][j] == 'E'
-				|| cub->map.map[i][j] == 'W')
+			if (is_player(cub->map.map[i][j]))
 			{
-				1 && (cub->p.c.x = j * US + US / 2, cub->p.c.y = i * US + US / 2);
-				(cub->map.map[i][j] == 'N') && (cub->p.rot_ang = (3 * M_PI) / 2);
+				cub->p.c.x = j * US + US / 2;
+				cub->p.c.y = i * US + US / 2;
+				(cub->map.map[i][j] == 'N')
+					&& (cub->p.rot_ang = (3 * M_PI) / 2);
 				(cub->map.map[i][j] == 'S') && (cub->p.rot_ang = (M_PI) / 2);
 				(cub->map.map[i][j] == 'W') && (cub->p.rot_ang = M_PI);
-				if (player == 1)
-					ft_exit("The map must have one player!\n", 1, cub);
 				player++;
 			}
 			j++;
 		}
 	}
-	if (!player)
+	if (player != 1)
 		ft_exit("The map must have one player!\n", 1, cub);
 }
 

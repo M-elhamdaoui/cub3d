@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/10/09 00:05:57 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/21 05:44:49 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	get_colors(t_cub3d *cub)
 {
-	char **rgb;
+	char	**rgb;
 
 	rgb = ft_split(cub->map.floor, ',', cub);
 	cub->map.floor_rgb[0] = ft_atoi(rgb[0]);
@@ -28,28 +28,27 @@ void	get_colors(t_cub3d *cub)
 
 void	check_files_access(t_cub3d *cub)
 {
-	int fd1;
-	int fd2;
-	int fd3;
-	int fd4;
+	int	fd1;
+	int	fd2;
+	int	fd3;
+	int	fd4;
 
-	// Try to open the file in read-only mode
 	fd1 = open(cub->map.east, O_RDONLY);
-	fd2 = open(cub->map.east, O_RDONLY);
-	fd3 = open(cub->map.east, O_RDONLY);
-	fd4 = open(cub->map.east, O_RDONLY);
-	if (fd1 == -1 || fd2 == -1 || fd3 == -1 || fd4 == -1)  // If open fails, print error and exit
+	fd2 = open(cub->map.north, O_RDONLY);
+	fd3 = open(cub->map.south, O_RDONLY);
+	fd4 = open(cub->map.west, O_RDONLY);
+	if (fd1 == -1 || fd2 == -1 || fd3 == -1 || fd4 == -1)
 		ft_exit("Invalid textures!\n", 1, cub);
-	close(fd1);  // Close the file descriptor if it was successfully opened
-	close(fd2);  // Close the file descriptor if it was successfully opened
-	close(fd3);  // Close the file descriptor if it was successfully opened
-	close(fd4);  // Close the file descriptor if it was successfully opened
+	close(fd1);
+	close(fd2);
+	close(fd3);
+	close(fd4);
 }
 
 void	init_data(t_cub3d *cub, char **av)
 {
-	cub->max_fd = 2;
-	cub->collector = NULL;
+	1 && (cub->m = NULL, cub->img = NULL);
+	1 && (cub->max_fd = 2, cub->collector = NULL);
 	cub->input = ft_strdup("", cub);
 	cub->map.map = NULL;
 	cub->map.north = NULL;
@@ -59,8 +58,7 @@ void	init_data(t_cub3d *cub, char **av)
 	cub->map.floor = NULL;
 	cub->map.ceiling = NULL;
 	cub->p.rot_ang = 0;
-	cub->p.rad = 4;
-	cub->p.td = 0;
+	1 && (cub->p.rad = 4, cub->p.td = 0);
 	cub->p.wd_h = 0;
 	cub->p.wd = 0;
 	cub->p.ms = 2;
