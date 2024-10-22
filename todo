@@ -1,0 +1,9 @@
+get_angl_direction(int *is_r_down, int *is_r_left, double ang)
+
+is_r_down | is_r_left
+_____________________
+0         | 0       | right top / south & east
+0         | 1       | left top / south & west
+1         | 0       | right down / north & east
+1         | 1       | left down / north & west
+_____________________
