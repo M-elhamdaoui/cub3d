@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/29 16:42:51 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/22 16:38:17 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,16 @@ t_ray which_ray(double ang, t_cub3d *c)
 	get_angl_direction(&ang_dir[0],&ang_dir[1], get_angle(ang));
 	r1 = cast_ray_h(c, get_angle(ang), ang_dir[0], ang_dir[1]);
 	r1.type = 'h';
-	r2.ang = get_angle(ang);
+	r1.ang = get_angle(ang);
 	r1.distance *= cos(get_angle(c->p.rot_ang) - ang);
 	r2 = cast_ray_v(get_angle(ang), ang_dir[0], ang_dir[1], c);
 	r2.type = 'v';
-	r1.ang = get_angle(ang);
+	r2.ang = get_angle(ang);
 	r2.distance *= cos(get_angle(c->p.rot_ang) - ang);
 	if (r1.is_w_hited && r2.is_w_hited)
 	{
 		if (r1.distance < r2.distance)
 			return (r1);
-		if (r1.distance == r2.distance)
-			printf("r1 %f r2 %f\n", r1.distance, r2.distance);
 		return (r2);
 	}
 	if (r1.is_w_hited)
