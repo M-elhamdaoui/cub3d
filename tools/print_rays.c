@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/22 16:38:17 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/27 15:20:00 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,25 @@ t_ray which_ray(double ang, t_cub3d *c)
 	return (r2);
 }
 
+void	draw_wall(t_cub3d *cub, t_ray r, t_corr *c, double	line_h)
+{
+	int		r_down;
+	int		r_left;
+	
+	get_angl_direction(&r_down, &r_left, r.ang);
+	if (r_left && r.type == 'v')
+		c->color = ft_create_color(0, 255, 0, 120); // east
+	else if (!r_left && r.type == 'v')
+		c->color = ft_create_color(0, 0, 255, 120); // west
+	else if (r_down && r.type == 'h')
+		c->color = ft_create_color(255, 0, 0, 120); // north
+	else if (!r_down && r.type == 'h')
+		c->color = ft_create_color(0, 0, 0, 120); // south
+	c->y = floor((H_SIZE / 2) - (line_h / 2));
+	if ((H_SIZE / 2) - (line_h / 2) >= 0 )
+		put_line_v2(*c, floor(line_h), M_PI / 2, cub);
+}
+
 void	print_rays(int n, t_cub3d *cub)
 {
 	double	stp_ray;
@@ -48,18 +67,12 @@ void	print_rays(int n, t_cub3d *cub)
 
 	stp_ray = FOV / n;
 	str_ang = cub->p.rot_ang - (FOV / 2);
-	c.y = 0;
-	c.x = 0;
+	1 && (c.y = 0, c.x = 0);
 	while (str_ang <=  cub->p.rot_ang + (FOV / 2))
 	{
-		
 		r = which_ray(str_ang, cub);
-		if (r.distance != 0)
-			line_h = (US * H_SIZE) / r.distance;
-		else
-			line_h = H_SIZE;
-		if (line_h > H_SIZE)
-			line_h = H_SIZE;
+		(r.distance != 0) && (line_h = (US * H_SIZE) / r.distance);
+		(!r.distance || line_h > H_SIZE) && (line_h = H_SIZE);
 		c.y = 0;
 		c.color = ft_create_color(cub->map.ceiling_rgb[0], cub->map.ceiling_rgb[1], cub->map.ceiling_rgb[2], 200);
 		put_line_v2(c, floor(H_SIZE / 2 - line_h / 2), M_PI / 2, cub );	
@@ -67,14 +80,7 @@ void	print_rays(int n, t_cub3d *cub)
 		c.color = ft_create_color(cub->map.floor_rgb[0], cub->map.floor_rgb[1], cub->map.floor_rgb[2], 160);
 		if (H_SIZE / 2 + line_h / 2  < H_SIZE)
 			put_line_v2(c,floor(H_SIZE / 2 + line_h / 2), M_PI / 2, cub);
-		if (r.type == 'v')
-			c.color = ft_create_color(0, 0, 0, 120);
-		else
-			c.color = ft_create_color(0, 0, 0, 60);
-		c.y = floor((H_SIZE / 2) - (line_h / 2));
-		if ((H_SIZE / 2) - (line_h / 2) >= 0 ) 
-			put_line_v2(c, floor(line_h), M_PI / 2, cub);
-		c.x++;
-		str_ang += stp_ray;
+		draw_wall(cub, r, &c, line_h);
+		1 && (c.x++, str_ang += stp_ray);
 	}
 }

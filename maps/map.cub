@@ -1,13 +1,13 @@
-NO ./textures/texture2.png
-SO ./textures/texture2.png
-WE ./textures/texture1.png
-EA ./textures/texture2.png
+NO ./textures/n.png
+SO ./textures/s.png
+WE ./textures/w.png
+EA ./textures/e.png
 
 F 0,0,0
 C 0,0,0
 
         1111111111111111111111111
-        100010000011000000S001001
+        100010000011000000N001001
         1011000001110000000000001
         1001000000000000001000001
 111111111011000001110000000000001
