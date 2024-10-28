@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/10/27 12:20:21 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/28 17:35:56 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	init_data(t_cub3d *cub, char **av)
 	1 && (cub->p.rad = 4, cub->p.td = 0);
 	cub->p.wd_h = 0;
 	cub->p.wd = 0;
-	cub->p.ms = 2;
+	cub->p.ms = 3;
 	cub->p.rot_speed = 3 * (M_PI / 180);
 	init_map(cub, av);
 	get_colors(cub);

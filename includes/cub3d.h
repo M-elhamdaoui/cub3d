@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/27 12:23:49 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/28 18:16:30 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_cub3d
 	mlx_texture_t		*wall_S;
 	mlx_texture_t		*wall_W;
 	mlx_texture_t		*wall_E;
+	mlx_texture_t		*texture;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR
@@ -154,7 +155,8 @@ void		put_line(t_corr a, t_corr b, t_cub3d *cub);
 void		key_fun(void *params);
 void		cam_move(t_cub3d *cub);
 void		put_line_v2(t_corr c, int d, double ang, t_cub3d *cub);
-void		print_rays(int n, t_cub3d *cub);
+void		draw_textures(t_cub3d *cub, double start, double end, double x, t_ray r, double line_h);
+void		print_rays(t_cub3d *cub);
 void		move_f_b(t_cub3d *c);
 void		move_l_r(t_cub3d *c);
 void		move(t_cub3d *c);

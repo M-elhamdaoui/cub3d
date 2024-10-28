@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+         #
+#    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/09/12 10:36:54 by mel-hamd         ###   ########.fr        #
+#    Updated: 2024/10/28 14:51:30 by hmrabet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CC = cc -Wall -Wextra -Werror  #-fsanitize=address
+CC = cc -Wall -Wextra -Werror -g -fsanitize=address
 
 LIB = -L"/Users/${USER}/.brew/Cellar/glfw/3.4/lib/"
 
