@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_rays.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/28 18:16:00 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/29 10:15:17 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void	print_rays(t_cub3d *cub)
 		r = which_ray(str_ang, cub);
 		(1) && (line_h = (US * H_SIZE) / r.distance);
 		rachid = line_h;
-		(void)rachid;
 		(!r.distance || line_h > H_SIZE) && (line_h = H_SIZE);
 		c.y = 0;
 		c.color = ft_create_color(cub->map.ceiling_rgb[0], cub->map.ceiling_rgb[1], cub->map.ceiling_rgb[2], 200);

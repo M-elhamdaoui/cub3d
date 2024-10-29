@@ -1,7 +1,7 @@
-NO ./textures/github.png
-SO ./textures/github.png
-WE ./textures/github.png
-EA ./textures/github.png
+NO ./textures/n.png
+SO ./textures/s.png
+WE ./textures/w.png
+EA ./textures/e.png
 
 F 0,0,0
 C 0,0,0

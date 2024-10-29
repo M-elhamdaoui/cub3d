@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_line_v2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:33:13 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/28 18:17:05 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/29 10:14:01 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	draw_textures(t_cub3d *cub, double start, double end, double x, t_ray r, do
 	offset_x = (uint32_t)(r.hit_wall.x * cub->texture->width / US) % cub->texture->width;
 	if (r.type == 'v')
 		offset_x = (uint32_t)(r.hit_wall.y * cub->texture->width / US) % cub->texture->width;
-	while(start <= end)
+	while(start < end)
 	{
 		double hossam = 0;
 		if (rachid>= H_SIZE)
