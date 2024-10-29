@@ -1,10 +1,10 @@
-NO ./textures/github.png
-SO ./textures/github.png
-WE ./textures/github.png
-EA ./textures/github.png
+NO mandatory/textures/w.png
+SO mandatory/textures/s.png
+WE mandatory/textures/s.png
+EA mandatory/textures/w.png
 
-F 0,0,0
-C 0,0,0
+F 60,60,60
+C 3,138,255
 
         1111111111111111111111111
         1000100000110000000001001
