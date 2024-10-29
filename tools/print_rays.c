@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/29 10:15:17 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/29 11:11:51 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,31 +54,28 @@ int	ft_texture_color(unsigned int c)
 	r = c;
 	return (ft_create_color(a, b, g, r));
 }
-double rachid;
 
-void	draw_wall(t_cub3d *cub, t_ray r, t_corr *c, double	line_h)
+void	draw_wall(t_cub3d *cub, t_ray r, t_corr *c)
 {
 	int		r_down;
 	int		r_left;
-	double	start_w;
-	double	end_w;
 
-	start_w = (H_SIZE / 2 - rachid / 2);
-	if (start_w < 0)
-		start_w = 0;
-	end_w = (H_SIZE / 2 + rachid / 2);
-	if (end_w >= H_SIZE)
-		end_w = H_SIZE;
+	cub->wall.start = (H_SIZE / 2 - cub->wall.o_wall_h / 2);
+	if (cub->wall.start < 0)
+		cub->wall.start = 0;
+	cub->wall.end = (H_SIZE / 2 + cub->wall.o_wall_h / 2);
+	if (cub->wall.end >= H_SIZE)
+		cub->wall.end = H_SIZE;
 	get_angl_direction(&r_down, &r_left, r.ang);
 	if (r_left && r.type == 'v')
-		cub->texture = cub->wall_E;
+		cub->wall.texture = cub->wall_E;
 	else if (!r_left && r.type == 'v')
-		cub->texture = cub->wall_W;
+		cub->wall.texture = cub->wall_W;
 	else if (r_down && r.type == 'h')
-		cub->texture = cub->wall_N;
+		cub->wall.texture = cub->wall_N;
 	else if (!r_down && r.type == 'h')
-		cub->texture = cub->wall_S;
-	draw_textures(cub, start_w, end_w, c->x, r, line_h);
+		cub->wall.texture = cub->wall_S;
+	draw_textures(cub, c->x, r);
 }
 
 
@@ -97,17 +94,17 @@ void	print_rays(t_cub3d *cub)
 	while (++i < W_SIZE)
 	{
 		r = which_ray(str_ang, cub);
-		(1) && (line_h = (US * H_SIZE) / r.distance);
-		rachid = line_h;
-		(!r.distance || line_h > H_SIZE) && (line_h = H_SIZE);
+		(1) && (cub->wall.wall_h = (US * H_SIZE) / r.distance);
+		cub->wall.o_wall_h = cub->wall.wall_h;
+		(!r.distance || cub->wall.wall_h > H_SIZE) && (cub->wall.wall_h = H_SIZE);
 		c.y = 0;
 		c.color = ft_create_color(cub->map.ceiling_rgb[0], cub->map.ceiling_rgb[1], cub->map.ceiling_rgb[2], 200);
-		put_line_v2(c, floor(H_SIZE / 2 - line_h / 2), M_PI / 2, cub );
-		c.y = floor(H_SIZE / 2 + line_h / 2);
+		put_line_v2(c, floor(H_SIZE / 2 - cub->wall.wall_h / 2), M_PI / 2, cub );
+		c.y = floor(H_SIZE / 2 + cub->wall.wall_h / 2);
 		c.color = ft_create_color(cub->map.floor_rgb[0], cub->map.floor_rgb[1], cub->map.floor_rgb[2], 160);
-		if (H_SIZE / 2 + line_h / 2  < H_SIZE)
-			put_line_v2(c,floor(H_SIZE / 2 + line_h / 2), M_PI / 2, cub);
-		draw_wall(cub, r, &c, line_h);
+		if (H_SIZE / 2 + cub->wall.wall_h / 2  < H_SIZE)
+			put_line_v2(c,floor(H_SIZE / 2 + cub->wall.wall_h / 2), M_PI / 2, cub);
+		draw_wall(cub, r, &c);
 		1 && (c.x++, str_ang += stp_ray);
 	}
 }

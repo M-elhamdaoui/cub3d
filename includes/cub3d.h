@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/28 18:16:30 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/29 11:14:35 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,17 @@ typedef struct s_ray
 	char	type;
 }	t_ray;
 
+typedef struct s_wall
+{
+	double			wall_h;
+	double			o_wall_h;
+	double			p_wall_h;
+	double			offset_x;
+	double			offset_y;
+	double			start;
+	double			end;
+	mlx_texture_t	*texture;
+}	t_wall;
 
 typedef struct s_cub3d
 {
@@ -97,12 +108,12 @@ typedef struct s_cub3d
 	t_block_memory		*collector;
 	mlx_t				*m;
 	t_player			p;
+	t_wall				wall;
 	mlx_image_t			*img;
 	mlx_texture_t		*wall_N;
 	mlx_texture_t		*wall_S;
 	mlx_texture_t		*wall_W;
 	mlx_texture_t		*wall_E;
-	mlx_texture_t		*texture;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR
@@ -155,7 +166,7 @@ void		put_line(t_corr a, t_corr b, t_cub3d *cub);
 void		key_fun(void *params);
 void		cam_move(t_cub3d *cub);
 void		put_line_v2(t_corr c, int d, double ang, t_cub3d *cub);
-void		draw_textures(t_cub3d *cub, double start, double end, double x, t_ray r, double line_h);
+void		draw_textures(t_cub3d *cub, double x, t_ray r);
 void		print_rays(t_cub3d *cub);
 void		move_f_b(t_cub3d *c);
 void		move_l_r(t_cub3d *c);
