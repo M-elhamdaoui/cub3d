@@ -38,36 +38,36 @@ SRCS = 	main.c \
 		tools/raycast_utils.c \
 		raycasting/cast_rays_v.c
 
-OBJS = \$(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
-BOBJS = \$(BSRCS:.c=.o)
+BOBJS = $(BSRCS:.c=.o)
 
 CC = cc #-Wall -Wextra -Werror  -g -fsanitize=address
 
 INCLUDES = -IMLX42/include/MLX42  -Iincludes 
 MLX_FLAGS = -LMLX42/build -lmlx42 -ldl -lglfw -pthread -lm
 
-all : mlx \$(NAME)
+all : mlx $(NAME)
 
-bonus : \$(BONUS)
+bonus : $(BONUS)
 
 mlx :
 	cd MLX42 && cmake -B build && cmake --build build -j4
 
-\$(NAME):  \$(OBJS)
-	\$(CC) \$(OBJS) \$(MLX_FLAGS) -o \$(NAME)
+$(NAME):  $(OBJS)
+	$(CC) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
-\$(BONUS): \$(BOBJS)
-	\$(CC) \$(BOBJS) \$(MLX_FLAGS) -o \$(BONUS)
+$(BONUS): $(BOBJS)
+	$(CC) $(BOBJS) $(MLX_FLAGS) -o $(BONUS)
 
 %.o: %.c includes/cub3d.h
-	\$(CC) \$(INCLUDES) -c \$< -o \$@
+	$(CC) $(INCLUDES) -c $< -o $@
 
 clean :
-	rm -f \$(OBJS) \$(BOBJS)
+	rm -f $(OBJS) $(BOBJS)
 
 fclean : clean
-	rm -f \$(NAME) \$(BONUS)
+	rm -f $(NAME) $(BONUS)
 	cd MLX42 && rm -rf build
 
 re : fclean all
