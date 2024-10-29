@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:25:51 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/07 18:28:40 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:33:35 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	get_angl_direction(int *is_r_down, int *is_r_left, double ang)
 		*is_r_left = 1;
 }
 
-void setup_steps_h(double step[2], int is_r_down, int is_r_left, double ang)
+void	setup_steps_h(double step[2], int is_r_down, int is_r_left, double ang)
 {
 	step[0] = US;
 	if (!is_r_down)
@@ -42,16 +42,16 @@ void setup_steps_h(double step[2], int is_r_down, int is_r_left, double ang)
 		step[1] *= -1;
 }
 
-double calc_distance(t_corr a, t_corr b)
+double	calc_distance(t_corr a, t_corr b)
 {
-	double distance;
+	double	distance;
 
 	distance = sqrt((a.x - b.x) * (a.x - b.x)
-		+ (a.y - b.y) * (a.y - b.y));
+			+ (a.y - b.y) * (a.y - b.y));
 	return (distance);
 }
 
-void setup_steps_v(double step[2], int is_r_down, int is_r_left, double ang)
+void	setup_steps_v(double step[2], int is_r_down, int is_r_left, double ang)
 {
 	step[0] = US;
 	if (is_r_left)

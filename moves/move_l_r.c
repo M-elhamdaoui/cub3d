@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_l_r.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:51:22 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/07 15:29:10 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:51:48 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	move_l_r(t_cub3d *c)
 		return ;
 	ang = c->p.rot_ang + (M_PI / 2) * c->p.wd_h;
 	tmp = c->p.c.x + c->p.ms * cos(ang);
-	tmp2 =c->p.c.y + c->p.ms * sin(ang);
+	tmp2 = c->p.c.y + c->p.ms * sin(ang);
 	if (c->map.map[(int)(c->p.c.y / US)][(int)((tmp + r) / US)] == '1'
 		|| c->map.map[(int)(c->p.c.y / US)][(int)((tmp - r) / US)] == '1')
 		tmp = c->p.c.x;

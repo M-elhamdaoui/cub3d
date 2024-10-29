@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/28 10:46:40 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/29 14:18:15 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	key_fun(void *params)
 		c->p.td += 1;
 	move(c);
 	print_rays(c);
-	// rneder_map_2d(c);
 }

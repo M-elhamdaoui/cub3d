@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_line_v2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:33:13 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/29 11:29:22 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/29 14:33:57 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	put_line_v2(t_corr c, int d, double ang, t_cub3d *cub)
 {
 	double	i;
-	t_corr p;
+	t_corr	p;
 
 	i = 0;
-	while(i <= d)
+	while (i <= d)
 	{
 		p.x = c.x + i * cos(ang);
 		p.y = c.y + i * sin(ang);
@@ -31,50 +31,50 @@ void	put_line_v2(t_corr c, int d, double ang, t_cub3d *cub)
 	}
 }
 
-uint32_t	get_texture_pixel(mlx_texture_t *texture, int x, int y, t_ray ray)
+t_ui	get_texture_pixel(t_cub3d *c)
 {
 	uint8_t	r;
 	uint8_t	g;
 	uint8_t	b;
 	uint8_t	a;
-	int		index;
-	double	intensity;
 
-	intensity = 0.5 - (ray.distance / 1000);
-	(intensity > 1) && (intensity = 1);
-	(intensity < 0.05) && (intensity = 0.05);
-	if (x >= 0 && (uint32_t)x < texture->width
-		&& y >= 0 && (uint32_t)y < texture->height)
+	c->wall.shade = 0.5 - (c->ray.distance / 1000);
+	(c->wall.shade > 1) && (c->wall.shade = 1);
+	(c->wall.shade < 0.2) && (c->wall.shade = 0.2);
+	if ((int)c->wall.x >= 0
+		&& (t_ui)c->wall.x < c->wall.png->width
+		&& (int)c->wall.y >= 0
+		&& (t_ui)c->wall.y < c->wall.png->height)
 	{
-		index = (y * texture->width + x) * texture->bytes_per_pixel;
-		r = texture->pixels[index] * intensity;
-		g = texture->pixels[index + 1] * intensity;
-		b = texture->pixels[index + 2] * intensity;
-		a = texture->pixels[index + 3];
+		c->wall.pixel_index = ((int)c->wall.y * c->wall.png->width
+				+ (int)c->wall.x) * c->wall.png->bytes_per_pixel;
+		r = c->wall.png->pixels[c->wall.pixel_index] * c->wall.shade;
+		g = c->wall.png->pixels[c->wall.pixel_index + 1] * c->wall.shade;
+		b = c->wall.png->pixels[c->wall.pixel_index + 2] * c->wall.shade;
+		a = c->wall.png->pixels[c->wall.pixel_index + 3];
 		return (r << 24 | g << 16 | b << 8 | a);
 	}
 	return (0x000000FF);
 }
 
-void	draw_textures(t_cub3d *cub, double x, t_ray r)
+void	draw_textures(t_cub3d *cub, double x)
 {
-	int			index;
-	uint32_t	color;
-	int			begin;
+	t_ui	color;
+	int		begin;
 
 	cub->wall.p_wall_h = 0;
 	begin = 0;
-	cub->wall.offset_x = (uint32_t)(r.hit_wall.x * cub->wall.texture->width / US) % cub->wall.texture->width;
-	if (r.type == 'v')
-		cub->wall.offset_x = (uint32_t)(r.hit_wall.y * cub->wall.texture->width / US) % cub->wall.texture->width;
-	while(cub->wall.start < cub->wall.end)
+	cub->wall.x = cub->ray.hit_wall.x * cub->wall.png->width / US;
+	if (cub->ray.type == 'v')
+		cub->wall.x = cub->ray.hit_wall.y * cub->wall.png->width / US;
+	cub->wall.x = (t_ui)cub->wall.x % cub->wall.png->width;
+	while (cub->wall.start < cub->wall.end)
 	{
 		if (cub->wall.o_wall_h >= H_SIZE)
 			cub->wall.p_wall_h = cub->wall.o_wall_h - H_SIZE;
-		cub->wall.offset_y = (begin + cub->wall.p_wall_h / 2) * cub->wall.texture->height / cub->wall.o_wall_h;
-		index = cub->wall.texture->width * cub->wall.offset_y + cub->wall.offset_x;
-		index *= cub->wall.texture->bytes_per_pixel;
-		color = get_texture_pixel(cub->wall.texture, cub->wall.offset_x, cub->wall.offset_y, r);
+		cub->wall.y = (begin + cub->wall.p_wall_h / 2);
+		cub->wall.y *= cub->wall.png->height / cub->wall.o_wall_h;
+		color = get_texture_pixel(cub);
 		mlx_put_pixel(cub->img, x, cub->wall.start, color);
 		cub->wall.start++;
 		begin++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/29 11:14:35 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/29 14:30:11 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@
 # define US 32
 # define W_SIZE 1200
 # define H_SIZE 900
-# define FOV (M_PI / 3)
+# define FOV 1.0471975511965976
+
+typedef uint32_t	t_ui;
 
 typedef enum e_bool
 {
@@ -48,13 +50,13 @@ typedef struct s_corr
 typedef struct s_player
 {
 	t_corr	c;
-	int		rad; // the size of player
-	int		td; // turn direction : 1 to right -1 to left 0 initial and nothing will happen
-	int		wd;	// walk direction : 1 to front -1 to back 0 initial and nothing will happen
-	int		wd_h;	// walk direction : 1 to right -1 to left 0 initial and nothing will happen
-	double	rot_ang; // the angle of rotation should be initialized depanding on N or S or E or W
-	double	ms; // move speed initalized by a macro of 3.0
-	double	rot_speed; // rotation speed initialized with a macro of 3 * (math.pi/180)	
+	int		rad;
+	int		td;
+	int		wd;
+	int		wd_h;
+	double	rot_ang;
+	double	ms;
+	double	rot_speed;
 }	t_player;
 
 typedef struct s_d
@@ -73,8 +75,8 @@ typedef struct s_map
 	char		*east;
 	char		*floor;
 	char		*ceiling;
-	int			floor_rgb[3];
-	int			ceiling_rgb[3];
+	int			f_rgb[3];
+	int			c_rgb[3];
 	int			height;
 	int			width;
 }	t_map;
@@ -93,11 +95,13 @@ typedef struct s_wall
 	double			wall_h;
 	double			o_wall_h;
 	double			p_wall_h;
-	double			offset_x;
-	double			offset_y;
+	double			x;
+	double			y;
 	double			start;
 	double			end;
-	mlx_texture_t	*texture;
+	int				pixel_index;
+	double			shade;
+	mlx_texture_t	*png;
 }	t_wall;
 
 typedef struct s_cub3d
@@ -109,11 +113,12 @@ typedef struct s_cub3d
 	mlx_t				*m;
 	t_player			p;
 	t_wall				wall;
+	t_ray				ray;
 	mlx_image_t			*img;
-	mlx_texture_t		*wall_N;
-	mlx_texture_t		*wall_S;
-	mlx_texture_t		*wall_W;
-	mlx_texture_t		*wall_E;
+	mlx_texture_t		*wall_n;
+	mlx_texture_t		*wall_s;
+	mlx_texture_t		*wall_w;
+	mlx_texture_t		*wall_e;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR
@@ -166,20 +171,19 @@ void		put_line(t_corr a, t_corr b, t_cub3d *cub);
 void		key_fun(void *params);
 void		cam_move(t_cub3d *cub);
 void		put_line_v2(t_corr c, int d, double ang, t_cub3d *cub);
-void		draw_textures(t_cub3d *cub, double x, t_ray r);
+void		draw_textures(t_cub3d *cub, double x);
 void		print_rays(t_cub3d *cub);
 void		move_f_b(t_cub3d *c);
 void		move_l_r(t_cub3d *c);
 void		move(t_cub3d *c);
-t_ray		cast_ray_h(t_cub3d *c, double ang,int is_r_down,int is_r_left);
+t_ray		cast_ray_h(t_cub3d *c, double ang, int is_r_down, int is_r_left);
 double		get_angle(double ang);
 void		get_angl_direction(int *is_r_down, int *is_r_left, double ang);
-void 		setup_steps_h(double step[2], int is_r_down, int is_r_left, double ang);
+void		setup_steps_h(double step[2], int down, int left, double ang);
 double		calc_distance(t_corr a, t_corr b);
-void		setup_steps_v(double step[2], int is_r_down, int is_r_left, double ang);
+void		setup_steps_v(double step[2], int down, int left, double ang);
 int			cast_condition(t_corr inter, t_cub3d *c);
 t_ray		cast_ray_v(double ang, int is_down, int is_left, t_cub3d *c);
 t_ray		which_ray(double ang, t_cub3d *c);
-// int			return_pixel(t_corr point, mlx_texture_t* t);
-// void		render_y_of_image(t_corr c, int d, double ang, t_cub3d *cub);
+
 #endif

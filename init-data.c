@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/10/28 17:35:56 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/29 14:22:16 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	get_colors(t_cub3d *cub)
 	char	**rgb;
 
 	rgb = ft_split(cub->map.floor, ',', cub);
-	cub->map.floor_rgb[0] = ft_atoi(rgb[0]);
-	cub->map.floor_rgb[1] = ft_atoi(rgb[1]);
-	cub->map.floor_rgb[2] = ft_atoi(rgb[2]);
+	cub->map.f_rgb[0] = ft_atoi(rgb[0]);
+	cub->map.f_rgb[1] = ft_atoi(rgb[1]);
+	cub->map.f_rgb[2] = ft_atoi(rgb[2]);
 	rgb = ft_split(cub->map.ceiling, ',', cub);
-	cub->map.ceiling_rgb[0] = ft_atoi(rgb[0]);
-	cub->map.ceiling_rgb[1] = ft_atoi(rgb[1]);
-	cub->map.ceiling_rgb[2] = ft_atoi(rgb[2]);
+	cub->map.c_rgb[0] = ft_atoi(rgb[0]);
+	cub->map.c_rgb[1] = ft_atoi(rgb[1]);
+	cub->map.c_rgb[2] = ft_atoi(rgb[2]);
 }
 
 void	check_files_access(t_cub3d *cub)
@@ -66,10 +66,10 @@ void	init_data(t_cub3d *cub, char **av)
 	init_map(cub, av);
 	get_colors(cub);
 	check_files_access(cub);
-	cub->wall_E = mlx_load_png(cub->map.east);
-	cub->wall_W = mlx_load_png(cub->map.west);
-	cub->wall_N = mlx_load_png(cub->map.north);
-	cub->wall_S = mlx_load_png(cub->map.south);
-	if (!cub->wall_E || !cub->wall_S || !cub->wall_N || !cub->wall_W)
+	cub->wall_e = mlx_load_png(cub->map.east);
+	cub->wall_w = mlx_load_png(cub->map.west);
+	cub->wall_n = mlx_load_png(cub->map.north);
+	cub->wall_s = mlx_load_png(cub->map.south);
+	if (!cub->wall_e || !cub->wall_s || !cub->wall_n || !cub->wall_w)
 		ft_exit("Failed to load images\n", 1, cub);
 }

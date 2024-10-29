@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_square.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:06:04 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/06 11:44:46 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:54:02 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,14 @@ int	put_square(t_corr *corr, t_d *d, t_cub3d *cub, int color)
 	{
 		j = 0;
 		while (j < d->h)
-		{	if (corr->x + i == corr->x || corr->x + i == corr->x + d->w - 1 )
-				mlx_put_pixel(cub->img, corr->x + i, corr->y + j, ft_create_color(0,0,0,255));
-			else if (corr->y + j == corr->y || corr->y + j == corr->y + d->h - 1 )
-				mlx_put_pixel(cub->img, corr->x + i, corr->y + j, ft_create_color(0,0,0,255));
+		{
+			if (corr->x + i == corr->x || corr->x + i == corr->x + d->w - 1)
+				mlx_put_pixel(cub->img, corr->x + i, corr->y + j,
+					ft_create_color(0, 0, 0, 255));
+			else if (corr->y + j == corr->y
+				|| corr->y + j == corr->y + d->h - 1)
+				mlx_put_pixel(cub->img, corr->x + i, corr->y + j,
+					ft_create_color(0, 0, 0, 255));
 			else
 				mlx_put_pixel(cub->img, corr->x + i, corr->y + j, color);
 			j++;

@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   cast_rays_h.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 12:53:05 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/09/07 19:23:17 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:51:02 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static inline t_bool	condition(t_cub3d *c, t_corr i, double tmp)
+{
+	return (floor(tmp / US) < c->map.height
+		&& (int)floor(i.x / US) < c->map.width
+		&& floor(tmp / US) >= 0 && (int)floor(i.x / US) >= 0
+		&& c->map.map[(int)floor(tmp / US)][(int)floor(i.x / US)] == '1');
+}
 
 int	cast_condition(t_corr inter, t_cub3d *c)
 {
@@ -22,7 +30,7 @@ int	cast_condition(t_corr inter, t_cub3d *c)
 	return (0);
 }
 
-t_ray	cast_ray_h(t_cub3d *c, double ang,int is_r_down,int is_r_left)
+t_ray	cast_ray_h(t_cub3d *c, double ang, int is_r_down, int is_r_left)
 {
 	double	step[2];
 	t_ray	ray;
@@ -40,7 +48,7 @@ t_ray	cast_ray_h(t_cub3d *c, double ang,int is_r_down,int is_r_left)
 			tmp = intercept.y + 1;
 		else
 			tmp = intercept.y - 1;
-		if (floor(tmp / US) < c->map.height && (int)floor(intercept.x / US) < c->map.width &&floor(tmp / US) >= 0 && (int)floor(intercept.x / US) >= 0 && c->map.map[(int)floor(tmp / US)][(int)floor(intercept.x / US)] == '1')
+		if (condition(c, intercept, tmp))
 		{
 			ray.distance = calc_distance(c->p.c, intercept);
 			return (ray.is_w_hited = 1, ray.hit_wall = intercept, ray);

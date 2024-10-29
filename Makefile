@@ -6,7 +6,7 @@
 #    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/10/28 14:51:30 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/10/29 14:34:42 by hmrabet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,20 +32,16 @@ SRCS = 	main.c \
 		moves/move.c \
 		raycasting/cast_rays_h.c\
 		tools/raycast_utils.c \
-		raycasting/cast_rays_v.c\
-		render_textures/render_textures.c
+		raycasting/cast_rays_v.c
 
 OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CC = cc -Wall -Wextra -Werror -g -fsanitize=address
+CC = cc -Wall -Wextra -Werror  #-g -fsanitize=address
 
-LIB = -L"/Users/${USER}/.brew/Cellar/glfw/3.4/lib/"
-
-HDR = MLX42/build/libmlx42.a
 INCLUDES = -IMLX42/include/MLX42  -Iincludes 
-MLX_FLAGS = -LMLX42 -framework Cocoa -framework OpenGL -framework IOKit -lglfw
+MLX_FLAGS = -LMLX42/build -lmlx42 -ldl -lglfw -pthread -lm
 
 all : mlx $(NAME)
 
@@ -55,7 +51,7 @@ mlx :
 	cd MLX42 && cmake -B build && cmake --build build -j4
 
 $(NAME):  $(OBJS)
-	$(CC) $(OBJS) $(MLX_FLAGS) $(HDR) ${LIB} -o $(NAME)
+	$(CC) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
 $(BONUS): $(BOBJS)
 	$(CC) $(BOBJS) $(MLX_FLAGS) -o $(BONUS)
