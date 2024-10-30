@@ -56,7 +56,10 @@ BSRCS = bonus/main_bonus.c \
 		bonus/moves/move_bonus.c \
 		bonus/raycasting/cast_rays_h_bonus.c\
 		bonus/tools/raycast_utils_bonus.c \
-		bonus/raycasting/cast_rays_v_bonus.c
+		bonus/raycasting/cast_rays_v_bonus.c \
+		bonus/tools/draw_bonus.c \
+		bonus/tools/omen_bonus.c \
+		bonus/tools/sounds_bonus.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -97,7 +100,7 @@ clean :
 
 fclean : clean
 	rm -f $(NAME) $(BONUS)
-	cd MLX42 && rm -rf build
+	rm -rf MLX42
 
 re : fclean all
 
