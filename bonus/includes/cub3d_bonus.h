@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 11:01:16 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 11:45:27 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ typedef struct s_cub3d
 	mlx_texture_t		*wall_s;
 	mlx_texture_t		*wall_w;
 	mlx_texture_t		*wall_e;
+	mlx_texture_t		*sky;
+	mlx_texture_t		*floor;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR
