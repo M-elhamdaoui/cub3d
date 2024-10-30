@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/29 18:31:14 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 11:01:16 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct s_cub3d
 	t_wall				wall;
 	t_ray				ray;
 	t_bool				mouse;
+	t_bool				freeze;
 	mlx_image_t			*img;
 	mlx_texture_t		*wall_n;
 	mlx_texture_t		*wall_s;

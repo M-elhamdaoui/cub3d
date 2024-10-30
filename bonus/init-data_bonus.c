@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init-data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/10/29 18:29:36 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 11:02:16 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	init_data(t_cub3d *cub, char **av)
 	cub->map.south = NULL;
 	cub->map.floor = NULL;
 	cub->map.ceiling = NULL;
+	cub->freeze = 0;
 	1 && (cub->p.rot_ang = 0, cub->mouse = 1);
 	1 && (cub->p.rad = 4, cub->p.td = 0);
 	cub->p.wd_h = 0;

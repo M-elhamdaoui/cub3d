@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/29 18:29:50 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 11:01:22 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,20 @@ void	key_press_fun(mlx_key_data_t keydata, void *params)
 	t_cub3d	*c;
 
 	c = (t_cub3d *)params;
+	if (keydata.key == MLX_KEY_V && keydata.action == MLX_PRESS)
+	{
+		c->freeze = 1;
+		c->p.rot_ang += M_PI;
+		if (c->p.rot_ang > (2 * M_PI))
+			c->p.rot_ang -= 2 * M_PI;
+	}
+	if (keydata.key == MLX_KEY_V && keydata.action == MLX_RELEASE)
+	{
+		c->freeze = 0;
+		c->p.rot_ang += M_PI;
+		if (c->p.rot_ang > (2 * M_PI))
+			c->p.rot_ang -= 2 * M_PI;
+	}
 	if (keydata.key == MLX_KEY_LEFT_CONTROL && keydata.action == MLX_RELEASE)
 	{
 		c->mouse = !c->mouse;
@@ -50,18 +64,21 @@ void	key_fun(void *params)
 	c = (t_cub3d *)params;
 	if (mlx_is_key_down(c->m, MLX_KEY_ESCAPE))
 		ft_exit(NULL, 0, c);
-	if (mlx_is_key_down(c->m, MLX_KEY_S))
-		c->p.wd += -1;
-	if (mlx_is_key_down(c->m, MLX_KEY_W))
-		c->p.wd += 1;
-	if (mlx_is_key_down(c->m, MLX_KEY_D))
-		c->p.wd_h += 1;
-	if (mlx_is_key_down(c->m, MLX_KEY_A))
-		c->p.wd_h += -1;
-	if (mlx_is_key_down(c->m, MLX_KEY_LEFT))
-		c->p.td += -1;
-	if (mlx_is_key_down(c->m, MLX_KEY_RIGHT))
-		c->p.td += 1;
-	move(c);
+	if (!c->freeze)
+	{
+		if (mlx_is_key_down(c->m, MLX_KEY_S))
+			c->p.wd += -1;
+		if (mlx_is_key_down(c->m, MLX_KEY_W))
+			c->p.wd += 1;
+		if (mlx_is_key_down(c->m, MLX_KEY_D))
+			c->p.wd_h += 1;
+		if (mlx_is_key_down(c->m, MLX_KEY_A))
+			c->p.wd_h += -1;
+		if (mlx_is_key_down(c->m, MLX_KEY_LEFT))
+			c->p.td += -1;
+		if (mlx_is_key_down(c->m, MLX_KEY_RIGHT))
+			c->p.td += 1;
+		move(c);
+	}
 	print_rays(c);
 }
