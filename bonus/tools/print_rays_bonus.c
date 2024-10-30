@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 12:04:21 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 12:17:04 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ void	draw_ceiling(t_cub3d *cub)
 // {
 //     int			x;
 // 	int			y;
-//     int			ceiling_index;
-//     uint32_t	ceiling_color;
+//     int			floor_index;
+//     uint32_t	floor_color;
 // 	int			offset_x;
 // 	int			offset_y;
 // 	uint8_t		r;
