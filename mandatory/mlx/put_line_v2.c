@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_line_v2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:33:13 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 11:02:38 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 13:40:44 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ t_ui	get_texture_pixel(t_cub3d *c)
 	uint8_t	b;
 	uint8_t	a;
 
-	c->wall.shade = 0.5 - (c->ray.distance / 1000);
-	(c->wall.shade > 1) && (c->wall.shade = 1);
-	(c->wall.shade < 0.2) && (c->wall.shade = 0.2);
 	if ((int)c->wall.x >= 0
 		&& (t_ui)c->wall.x < c->wall.png->width
 		&& (int)c->wall.y >= 0
@@ -48,9 +45,9 @@ t_ui	get_texture_pixel(t_cub3d *c)
 	{
 		c->wall.pixel_index = ((int)c->wall.y * c->wall.png->width
 				+ (int)c->wall.x) * c->wall.png->bytes_per_pixel;
-		r = c->wall.png->pixels[c->wall.pixel_index] * c->wall.shade;
-		g = c->wall.png->pixels[c->wall.pixel_index + 1] * c->wall.shade;
-		b = c->wall.png->pixels[c->wall.pixel_index + 2] * c->wall.shade;
+		r = c->wall.png->pixels[c->wall.pixel_index];
+		g = c->wall.png->pixels[c->wall.pixel_index + 1];
+		b = c->wall.png->pixels[c->wall.pixel_index + 2];
 		a = c->wall.png->pixels[c->wall.pixel_index + 3];
 		return (r << 24 | g << 16 | b << 8 | a);
 	}

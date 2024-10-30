@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 11:45:27 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 13:43:52 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ typedef struct s_cub3d
 	mlx_texture_t		*wall_w;
 	mlx_texture_t		*wall_e;
 	mlx_texture_t		*sky;
-	mlx_texture_t		*floor;
+	// mlx_texture_t		*floor;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_rays.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 11:03:16 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 13:41:22 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,12 @@ void	print_rays(t_cub3d *cub)
 		cub->wall.o_wall_h = cub->wall.wall_h;
 		(!cub->ray.distance || cub->wall.wall_h > H_SIZE)
 			&& (cub->wall.wall_h = H_SIZE);
-		1 && (c.y = 0, c.color = ft_create_color(cub->map.c_rgb[0] * 0.2,
-				cub->map.c_rgb[1] * 0.2, cub->map.c_rgb[2] * 0.2, 200));
+		1 && (c.y = 0, c.color = ft_create_color(cub->map.c_rgb[0],
+				cub->map.c_rgb[1], cub->map.c_rgb[2], 255));
 		put_line_v2(c, floor(H_SIZE / 2 - cub->wall.wall_h / 2), M_PI / 2, cub);
 		c.y = floor(H_SIZE / 2 + cub->wall.wall_h / 2);
-		c.color = ft_create_color(cub->map.f_rgb[0] * 0.2,
-				cub->map.f_rgb[1] * 0.2, cub->map.f_rgb[2] * 0.2, 160);
+		c.color = ft_create_color(cub->map.f_rgb[0],
+				cub->map.f_rgb[1], cub->map.f_rgb[2], 255);
 		if (H_SIZE / 2 + cub->wall.wall_h / 2 < H_SIZE)
 			put_line_v2(c, floor(H_SIZE / 2 + cub->wall.wall_h / 2),
 				M_PI / 2, cub);

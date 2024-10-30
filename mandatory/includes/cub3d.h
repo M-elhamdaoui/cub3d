@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 11:02:28 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 13:41:35 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ typedef struct s_wall
 	double			start;
 	double			end;
 	int				pixel_index;
-	double			shade;
 	mlx_texture_t	*png;
 }	t_wall;
 
