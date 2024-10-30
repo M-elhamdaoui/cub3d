@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:01:08 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 19:12:10 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 19:29:27 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static int	ft_texture_colors(unsigned int c)
 
 void	ft_draw_image(t_cub3d *data, mlx_texture_t *texture, int x, int y)
 {
-	int	i ;
-	int	j;
-	int	color;
-	t_ui *colors;
+	int		i;
+	int		j;
+	int		color;
+	t_ui	*colors;
 
 	i = 0;
 	j = 0;
@@ -50,9 +50,10 @@ void	ft_draw_image(t_cub3d *data, mlx_texture_t *texture, int x, int y)
 		while (j < (int)texture->width)
 		{
 			color = ft_texture_colors(colors[i * texture->width + j]);
-			if (color && (j + x >= 0 && j + x < W_SIZE && i + y >= 0 && i + y < H_SIZE))
-			    mlx_put_pixel(data->img, j + x, i + y, \
-			ft_texture_colors(colors[i * texture->width + j]));
+			if (color && (j + x >= 0 && j + x < W_SIZE
+					&& i + y >= 0 && i + y < H_SIZE))
+				mlx_put_pixel(data->img, j + x, i + y,
+					ft_texture_colors(colors[i * texture->width + j]));
 			j++;
 		}
 		i++;

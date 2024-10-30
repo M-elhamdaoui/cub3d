@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 19:13:17 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 19:29:58 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	key_press_fun(mlx_key_data_t keydata, void *params)
 	if (keydata.key == MLX_KEY_V && keydata.action == MLX_PRESS)
 	{
 		c->freeze = 1;
-		c->omenFrame = 0;
+		c->omen_frame = 0;
 		play_sound_effect("afplay bonus/textures/omen/omen.mp3");
 		c->p.rot_ang += M_PI;
 		(c->p.rot_ang > (2 * M_PI)) && (c->p.rot_ang -= 2 * M_PI);
@@ -47,7 +47,7 @@ void	key_press_fun(mlx_key_data_t keydata, void *params)
 	if (keydata.key == MLX_KEY_V && keydata.action == MLX_RELEASE)
 	{
 		c->freeze = 0;
-		c->omenFrame = 0;
+		c->omen_frame = 0;
 		kill_sound_effect();
 		c->p.rot_ang += M_PI;
 		if (c->p.rot_ang > (2 * M_PI))

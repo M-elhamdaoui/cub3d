@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:36:42 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 17:18:09 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 19:16:00 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	lunch_mlx(t_cub3d *cub)
 	cub->m = mlx_init(W_SIZE, H_SIZE, "CUB3D_Bonus", 0);
 	if (!cub->m)
 		return (0);
-	cub->mini = NULL;
 	cub->img = create_image(W_SIZE, H_SIZE, cub);
 	if (!cub->img)
 		ft_exit("Fail to create image\n", 1, cub);

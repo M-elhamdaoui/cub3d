@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 19:06:45 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 19:29:58 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,18 @@ typedef struct s_wall
 	mlx_texture_t	*png;
 }	t_wall;
 
+typedef struct s_sky
+{
+	double			x;
+	double			y;
+	int				index;
+	uint8_t			r;
+	uint8_t			g;
+	uint8_t			b;
+	uint8_t			a;
+	mlx_texture_t	*sky;
+}	t_sky;
+
 typedef struct s_cub3d
 {
 	char				*input;
@@ -115,19 +127,17 @@ typedef struct s_cub3d
 	mlx_t				*m;
 	t_player			p;
 	t_wall				wall;
+	t_sky				sky;
 	t_ray				ray;
 	t_bool				mouse;
 	t_bool				freeze;
 	mlx_image_t			*img;
-	mlx_image_t			*mini;
 	mlx_texture_t		*wall_n;
 	mlx_texture_t		*wall_s;
 	mlx_texture_t		*wall_w;
 	mlx_texture_t		*wall_e;
-	mlx_texture_t		*sky;
 	mlx_texture_t		*omen[30];
-	int					omenFrame;
-	// mlx_texture_t		*floor;
+	int					omen_frame;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR

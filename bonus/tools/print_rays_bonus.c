@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_rays_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 12:17:04 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 19:26:38 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,68 +80,28 @@ void	draw_wall(t_cub3d *cub, t_corr *c)
 
 void	draw_ceiling(t_cub3d *cub)
 {
-    int			x;
-	int			y;
-    int			ceiling_index;
-    uint32_t	ceiling_color;
-	int			offset_x;
-	int			offset_y;
-	uint8_t		r;
-	uint8_t		g;
-	uint8_t		b;
-	uint8_t		a;
-	
+	int	x;
+	int	y;
+
 	y = -1;
-    while (++y < H_SIZE / 2)
-    {
+	while (++y < H_SIZE / 2)
+	{
 		x = -1;
-        while (++x < W_SIZE)
-        {
-            offset_x = (x * cub->sky->width) / W_SIZE;
-            offset_y = (y * cub->sky->height) / (H_SIZE / 2);
-            ceiling_index = (offset_y * cub->sky->width + offset_x) * cub->sky->bytes_per_pixel;
-            r = cub->sky->pixels[ceiling_index];
-            g = cub->sky->pixels[ceiling_index + 1];
-            b = cub->sky->pixels[ceiling_index + 2];
-            a = cub->sky->pixels[ceiling_index + 3];
-            ceiling_color = (r << 24 | g << 16 | b << 8 | a);
-            mlx_put_pixel(cub->img, x, y, ceiling_color);
-        }
-    }
+		while (++x < W_SIZE)
+		{
+			cub->sky.x = (x * cub->sky.sky->width) / W_SIZE;
+			cub->sky.y = (y * cub->sky.sky->height) / (H_SIZE / 2);
+			cub->sky.index = (cub->sky.y * cub->sky.sky->width + cub->sky.x)
+				* cub->sky.sky->bytes_per_pixel;
+			cub->sky.r = cub->sky.sky->pixels[cub->sky.index];
+			cub->sky.g = cub->sky.sky->pixels[cub->sky.index + 1];
+			cub->sky.b = cub->sky.sky->pixels[cub->sky.index + 2];
+			cub->sky.a = cub->sky.sky->pixels[cub->sky.index + 3];
+			mlx_put_pixel(cub->img, x, y, (uint32_t)(cub->sky.r << 24
+					| cub->sky.g << 16 | cub->sky.b << 8 | cub->sky.a));
+		}
+	}
 }
-
-// void	draw_floor(t_cub3d *cub)
-// {
-//     int			x;
-// 	int			y;
-//     int			floor_index;
-//     uint32_t	floor_color;
-// 	int			offset_x;
-// 	int			offset_y;
-// 	uint8_t		r;
-// 	uint8_t		g;
-// 	uint8_t		b;
-// 	uint8_t		a;
-
-// 	y = (H_SIZE / 2) - 1;
-//     while (++y < H_SIZE)
-//     {
-// 		x = -1;
-//         while (++x < W_SIZE)
-//         {
-//             offset_x = (x * cub->floor->width) / W_SIZE;
-//             offset_y = ((y - H_SIZE / 2) * cub->floor->height) / (H_SIZE / 2);
-//             floor_index = (offset_y * cub->floor->width + offset_x) * cub->floor->bytes_per_pixel;
-//             r = cub->floor->pixels[floor_index];
-//             g = cub->floor->pixels[floor_index + 1];
-//             b = cub->floor->pixels[floor_index + 2];
-//             a = cub->floor->pixels[floor_index + 3];
-//             floor_color = (r << 24 | g << 16 | b << 8 | a);
-//             mlx_put_pixel(cub->img, x, y, floor_color);
-//         }
-//     }
-// }
-
 
 void	print_rays(t_cub3d *cub)
 {
@@ -152,7 +112,6 @@ void	print_rays(t_cub3d *cub)
 	1 && (stp_ray = FOV / W_SIZE, c.y = 0, c.x = 0);
 	str_ang = cub->p.rot_ang - (FOV / 2);
 	draw_ceiling(cub);
-	// draw_floor(cub);
 	while (c.x < W_SIZE)
 	{
 		cub->ray = which_ray(str_ang, cub);
@@ -160,9 +119,6 @@ void	print_rays(t_cub3d *cub)
 		cub->wall.o_wall_h = cub->wall.wall_h;
 		(!cub->ray.distance || cub->wall.wall_h > H_SIZE)
 			&& (cub->wall.wall_h = H_SIZE);
-		// 1 && (c.y = 0, c.color = ft_create_color(cub->map.c_rgb[0] * 0.2,
-		// 		cub->map.c_rgb[1] * 0.2, cub->map.c_rgb[2] * 0.2, 200));
-		// put_line_v2(c, floor(H_SIZE / 2 - cub->wall.wall_h / 2), M_PI / 2, cub);
 		c.y = floor(H_SIZE / 2 + cub->wall.wall_h / 2);
 		c.color = ft_create_color(cub->map.f_rgb[0] * 0.2,
 				cub->map.f_rgb[1] * 0.2, cub->map.f_rgb[2] * 0.2, 160);

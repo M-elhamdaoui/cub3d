@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:05:27 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 19:06:12 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 19:25:13 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	play_sound_effect(char *text)
 void	kill_sound_effect(void)
 {
 	int	i;
- 
+
 	i = fork();
 	if (!i)
 		execve("/usr/bin/killall", (char *[]){"killall", "afplay", NULL}, NULL);
