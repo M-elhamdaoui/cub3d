@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 18:13:49 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 19:06:45 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,5 +196,9 @@ void		setup_steps_v(double step[2], int down, int left, double ang);
 int			cast_condition(t_corr inter, t_cub3d *c);
 t_ray		cast_ray_v(double ang, int is_down, int is_left, t_cub3d *c);
 t_ray		which_ray(double ang, t_cub3d *c);
+void		ft_draw_image(t_cub3d *data, mlx_texture_t *texture, int x, int y);
+void		omen(t_cub3d *c);
+void		play_sound_effect(char *text);
+void		kill_sound_effect(void);
 
 #endif

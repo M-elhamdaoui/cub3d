@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+         #
+#    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/10/15 21:57:11 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/10/30 19:08:44 by hmrabet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,10 @@ BSRCS = bonus/main_bonus.c \
 		bonus/moves/move_bonus.c \
 		bonus/raycasting/cast_rays_h_bonus.c\
 		bonus/tools/raycast_utils_bonus.c \
-		bonus/raycasting/cast_rays_v_bonus.c
+		bonus/raycasting/cast_rays_v_bonus.c \
+		bonus/tools/draw_bonus.c \
+		bonus/tools/omen_bonus.c \
+		bonus/tools/sounds_bonus.c \
 
 OBJS = $(SRCS:.c=.o)
 
