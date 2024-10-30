@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 13:43:52 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 18:13:49 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <time.h>
+# include <pthread.h>
 # include <fcntl.h>
 # include "MLX42.h"
 # include <math.h>
@@ -118,11 +119,14 @@ typedef struct s_cub3d
 	t_bool				mouse;
 	t_bool				freeze;
 	mlx_image_t			*img;
+	mlx_image_t			*mini;
 	mlx_texture_t		*wall_n;
 	mlx_texture_t		*wall_s;
 	mlx_texture_t		*wall_w;
 	mlx_texture_t		*wall_e;
 	mlx_texture_t		*sky;
+	mlx_texture_t		*omen[30];
+	int					omenFrame;
 	// mlx_texture_t		*floor;
 }	t_cub3d;
 

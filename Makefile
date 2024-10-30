@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
+#    By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/10/29 18:36:29 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/10/15 21:57:11 by hmrabet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,9 +58,10 @@ OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CC = cc -Wall -Wextra -Werror  #-g -fsanitize=address
+CC = cc #-Wall -Wextra -Werror  -g -fsanitize=address
 
-INCLUDES = -IMLX42/include/MLX42  -Imandatory/includes -Ibonus/includes
+INCLUDES = -IMLX42/include/MLX42  -Imandatory/includes
+INCLUDES_B = -IMLX42/include/MLX42  -Ibonus/includes
 MLX_FLAGS = -LMLX42/build -lmlx42 -ldl -lglfw -pthread -lm
 
 all : mlx $(NAME)
@@ -81,15 +82,18 @@ $(NAME):  $(OBJS)
 $(BONUS): $(BOBJS)
 	$(CC) $(BOBJS) $(MLX_FLAGS) -o $(BONUS)
 
-%.o: %.c mandatory/includes/cub3d.h
+$(OBJS): %.o: %.c mandatory/includes/cub3d.h
 	$(CC) $(INCLUDES) -c $< -o $@
+
+$(BOBJS): %.o: %.c bonus/includes/cub3d_bonus.h
+	$(CC) $(INCLUDES_B) -c $< -o $@
 
 clean :
 	rm -f $(OBJS) $(BOBJS)
 
 fclean : clean
 	rm -f $(NAME) $(BONUS)
-	rm -rf MLX42
+	cd MLX42 && rm -rf build
 
 re : fclean all
 

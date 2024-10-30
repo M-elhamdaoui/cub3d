@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/10/30 13:43:40 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/30 18:06:14 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,25 @@ void	check_files_access(t_cub3d *cub)
 	close(fd4);
 }
 
+void	init_player(t_cub3d *cub)
+{
+	char	*fileName;
+	int		i;
+
+	i = 0;
+	cub->omenFrame = 0;
+	while (i < 30)
+	{
+		fileName = ft_strdup("bonus/textures/omen/", cub);
+		fileName = ft_strjoin(fileName, ft_itoa(cub, i + 1), cub);
+		fileName = ft_strjoin(fileName, ".png", cub);
+		cub->omen[i] = mlx_load_png(fileName);
+		if (!cub->omen[i])
+				ft_exit("Failed to load images\n", 1, cub);
+		i++;
+	}
+}
+
 void	init_data(t_cub3d *cub, char **av)
 {
 	1 && (cub->m = NULL, cub->img = NULL);
@@ -71,8 +90,8 @@ void	init_data(t_cub3d *cub, char **av)
 	cub->wall_w = mlx_load_png(cub->map.west);
 	cub->wall_n = mlx_load_png(cub->map.north);
 	cub->wall_s = mlx_load_png(cub->map.south);
-	cub->sky = mlx_load_png("bonus/textures/sky4.png");
-	// cub->floor = mlx_load_png("bonus/textures/floor.png");
+	cub->sky = mlx_load_png("bonus/textures/sky1.png");
+	init_player(cub);
 	if (!cub->wall_e || !cub->wall_s || !cub->wall_n || !cub->wall_w)
 		ft_exit("Failed to load images\n", 1, cub);
 }
