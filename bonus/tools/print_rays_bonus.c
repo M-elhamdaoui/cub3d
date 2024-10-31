@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/31 12:16:47 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/31 12:18:33 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,33 +104,6 @@ void	draw_wall(t_cub3d *cub, t_corr *c)
 // 	}
 // }
 
-// void	draw_ceiling(t_cub3d *cub)
-// {
-// 	int		x;
-// 	int		y;
-// 	double	texture_offset;
-// 	texture_offset = (cub->p.rot_ang / (FOV)) * cub->sky.sky->width;
-// 	y = -1;
-// 	while (++y < H_SIZE / 2)
-// 	{
-// 		x = -1;
-// 		while (++x < W_SIZE)
-// 		{
-// 			cub->sky.x = ((x * cub->sky.sky->width) / W_SIZE + (int)texture_offset) % cub->sky.sky->width;
-// 			cub->sky.y = (y * cub->sky.sky->height) / (H_SIZE / 2);
-
-// 			cub->sky.index = (cub->sky.y * cub->sky.sky->width + cub->sky.x) * cub->sky.sky->bytes_per_pixel;
-// 			cub->sky.r = cub->sky.sky->pixels[cub->sky.index];
-// 			cub->sky.g = cub->sky.sky->pixels[cub->sky.index + 1];
-// 			cub->sky.b = cub->sky.sky->pixels[cub->sky.index + 2];
-// 			cub->sky.a = cub->sky.sky->pixels[cub->sky.index + 3];
-			
-// 			mlx_put_pixel(cub->img, x, y, (uint32_t)(cub->sky.r << 24
-// 					| cub->sky.g << 16 | cub->sky.b << 8 | cub->sky.a));
-// 		}
-// 	}
-// }
-
 void	draw_ceiling(t_cub3d *cub)
 {
 	int		x;
@@ -139,9 +112,7 @@ void	draw_ceiling(t_cub3d *cub)
 	int		texture_start_x;
 
 	segment_width = cub->sky.sky->width / 6;
-	
 	texture_start_x = (int)((cub->p.rot_ang / (2 * M_PI)) * cub->sky.sky->width) % cub->sky.sky->width;
-
 	y = -1;
 	while (++y < H_SIZE / 2)
 	{
@@ -150,13 +121,11 @@ void	draw_ceiling(t_cub3d *cub)
 		{
 			cub->sky.x = (texture_start_x + (x * segment_width) / W_SIZE) % cub->sky.sky->width;
 			cub->sky.y = (y * (cub->sky.sky->height) / 2) / (H_SIZE / 2);
-
 			cub->sky.index = (cub->sky.y * cub->sky.sky->width + cub->sky.x) * cub->sky.sky->bytes_per_pixel;
 			cub->sky.r = cub->sky.sky->pixels[cub->sky.index];
 			cub->sky.g = cub->sky.sky->pixels[cub->sky.index + 1];
 			cub->sky.b = cub->sky.sky->pixels[cub->sky.index + 2];
 			cub->sky.a = cub->sky.sky->pixels[cub->sky.index + 3];
-			
 			mlx_put_pixel(cub->img, x, y, (uint32_t)(cub->sky.r << 24
 					| cub->sky.g << 16 | cub->sky.b << 8 | cub->sky.a));
 		}
