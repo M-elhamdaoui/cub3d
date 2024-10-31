@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:33:13 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 11:42:21 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/31 11:36:04 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_ui	get_texture_pixel(t_cub3d *c)
 	return (0x000000FF);
 }
 
-void	draw_textures(t_cub3d *cub, double x)
+void	draw_textures(t_cub3d *cub, double x, t_bool reverse)
 {
 	t_ui	color;
 	int		begin;
@@ -68,6 +68,7 @@ void	draw_textures(t_cub3d *cub, double x)
 	if (cub->ray.type == 'v')
 		cub->wall.x = cub->ray.hit_wall.y * cub->wall.png->width / US;
 	cub->wall.x = (t_ui)cub->wall.x % cub->wall.png->width;
+	(reverse) && (cub->wall.x = cub->wall.png->width - cub->wall.x);
 	while (cub->wall.start < cub->wall.end)
 	{
 		if (cub->wall.o_wall_h >= H_SIZE)

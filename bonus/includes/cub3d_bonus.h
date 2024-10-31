@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 19:29:58 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/31 11:36:16 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ void		key_press_fun(mlx_key_data_t keydata, void *params);
 void		key_fun(void *params);
 void		cam_move(t_cub3d *cub);
 void		put_line_v2(t_corr c, int d, double ang, t_cub3d *cub);
-void		draw_textures(t_cub3d *cub, double x);
+void		draw_textures(t_cub3d *cub, double x, t_bool reverse);
 void		print_rays(t_cub3d *cub);
 void		move_f_b(t_cub3d *c);
 void		move_l_r(t_cub3d *c);

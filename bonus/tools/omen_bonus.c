@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   omen_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:58:22 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 19:29:58 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/31 08:21:04 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	omen(t_cub3d *c)
 {
 	float	scale;
-	int		scale_x;
-	int		scale_y;
+	int		scaled_x;
+	int		scaled_y;
 
 	if (c->omen_frame == 30)
 		c->omen_frame = 0;
