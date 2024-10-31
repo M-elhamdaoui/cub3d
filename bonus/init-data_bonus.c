@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init-data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/10/30 19:31:17 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/10/31 11:52:49 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	init_data(t_cub3d *cub, char **av)
 	cub->wall_w = mlx_load_png(cub->map.west);
 	cub->wall_n = mlx_load_png(cub->map.north);
 	cub->wall_s = mlx_load_png(cub->map.south);
-	cub->sky.sky = mlx_load_png("bonus/textures/sky1.png");
+	cub->sky.sky = mlx_load_png("bonus/textures/sky0.png");
 	init_player(cub);
 	if (!cub->wall_e || !cub->wall_s || !cub->wall_n || !cub->wall_w)
 		ft_exit("Failed to load images\n", 1, cub);
