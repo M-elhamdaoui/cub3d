@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser-utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:46:36 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 18:46:34 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/01 08:06:28 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_map_row(t_cub3d *cub, char *row)
 	while (row[i])
 	{
 		if (row[i] != '0' && row[i] != '1' && row[i] != ' ' && row[i] != 'N'
-			&& row[i] != 'S' && row[i] != 'E' && row[i] != 'W' && row[i] != 'D')
+			&& row[i] != 'S' && row[i] != 'E' && row[i] != 'W')
 			ft_exit("Invalid map character!\n", 1, cub);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:44:58 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 11:01:46 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/01 08:23:17 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,25 @@ void	count_players(t_cub3d *cub)
 		ft_exit("The map must have one player!\n", 1, cub);
 }
 
+static void	parse_doors(t_cub3d *cub)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (cub->map.map[++i])
+	{
+		j = 0;
+		while (cub->map.map[i][j])
+		{
+			
+			if (cub->map.map[i][j] == 'D' && !((cub->map.map[i][j - 1] == '1' && cub->map.map[i][j + 1] == '1') || (cub->map.map[i - 1][j] == '1' && cub->map.map[i + 1][j] == '1')))
+				ft_exit("The Doors must be between two walls!\n", 1, cub);
+			j++;
+		}
+	}
+}
+
 void	parse_map(t_cub3d *cub)
 {
 	int	i;
@@ -78,17 +97,18 @@ void	parse_map(t_cub3d *cub)
 		while (cub->map.map[i][j])
 		{
 			if ((((i == 0 || i == (height - 1))
-						&& cub->map.map[i][j] == '0')
+						&& (cub->map.map[i][j] == '0' || cub->map.map[i][j] == 'D'))
 				|| ((j == 0 || j == (int)ft_strlen(cub->map.map[i]) - 1)
-					&& cub->map.map[i][j] == '0')) || (cub->map.map[i][j] == ' '
-				&& (cub->map.map[i][j + 1] == '0'
-					|| (j != 0 && cub->map.map[i][j - 1] == '0')
-					|| (i != 0 && cub->map.map[i - 1][j] == '0')
-					|| (i != (height - 1) && cub->map.map[i + 1][j] == '0'))))
+					&& (cub->map.map[i][j] == '0' || cub->map.map[i][j] == 'D'))) || (cub->map.map[i][j] == ' '
+				&& ((cub->map.map[i][j + 1] == '0' || cub->map.map[i][j + 1] == 'D')
+					|| (j != 0 && (cub->map.map[i][j - 1] == '0' || cub->map.map[i][j - 1] == 'D'))
+					|| (i != 0 && (cub->map.map[i - 1][j] == '0' || cub->map.map[i - 1][j] == 'D'))
+					|| (i != (height - 1) && (cub->map.map[i + 1][j] == '0' || cub->map.map[i + 1][j] == 'D')))))
 				ft_exit("The map must be surrounded by walls!\n", 1, cub);
 			j++;
 		}
 	}
+	parse_doors(cub);
 	count_players(cub);
 	empty_lines_map_check(cub);
 }
