@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init-data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/10/31 11:52:49 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/02 07:07:03 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,61 @@ void	init_player(t_cub3d *cub)
 
 	i = 0;
 	cub->omen_frame = 0;
-	while (i < 30)
+	while (i < 154)
 	{
-		file_name = ft_strdup("bonus/textures/omen/", cub);
+		file_name = ft_strdup("bonus/textures/player/", cub);
 		file_name = ft_strjoin(file_name, ft_itoa(cub, i + 1), cub);
 		file_name = ft_strjoin(file_name, ".png", cub);
 		cub->omen[i] = mlx_load_png(file_name);
 		if (!cub->omen[i])
+			ft_exit("Failed to load images\n", 1, cub);
+		i++;
+	}
+	i = 0;
+	cub->wraith_stand_frame = 0;
+	while (i < 16)
+	{
+		file_name = ft_strdup("bonus/textures/wraith/", cub);
+		file_name = ft_strjoin(file_name, ft_itoa(cub, i + 1), cub);
+		file_name = ft_strjoin(file_name, ".png", cub);
+		cub->wraith[i] = mlx_load_png(file_name);
+		if (!cub->wraith[i])
+			ft_exit("Failed to load images\n", 1, cub);
+		i++;
+	}
+	i = 0;
+	cub->pre_walk_frame = 0;
+	while (i < 9)
+	{
+		file_name = ft_strdup("bonus/textures/walking/pre/", cub);
+		file_name = ft_strjoin(file_name, ft_itoa(cub, i + 1), cub);
+		file_name = ft_strjoin(file_name, ".png", cub);
+		cub->pre_walk[i] = mlx_load_png(file_name);
+		if (!cub->pre_walk[i])
+			ft_exit("Failed to load images\n", 1, cub);
+		i++;
+	}
+	i = 10;
+	cub->walk_frame = 0;
+	while (i < 24)
+	{
+		file_name = ft_strdup("bonus/textures/walking/", cub);
+		file_name = ft_strjoin(file_name, ft_itoa(cub, i), cub);
+		file_name = ft_strjoin(file_name, ".png", cub);
+		cub->walk[i - 10] = mlx_load_png(file_name);
+		if (!cub->walk[i - 10])
+			ft_exit("Failed to load images\n", 1, cub);
+		i++;
+	}
+	i = 0;
+	cub->hit_frame = 0;
+	while (i < 9)
+	{
+		file_name = ft_strdup("bonus/textures/hit/", cub);
+		file_name = ft_strjoin(file_name, ft_itoa(cub, i + 1), cub);
+		file_name = ft_strjoin(file_name, ".png", cub);
+		cub->hit[i] = mlx_load_png(file_name);
+		if (!cub->hit[i])
 			ft_exit("Failed to load images\n", 1, cub);
 		i++;
 	}

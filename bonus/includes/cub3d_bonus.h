@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/31 12:15:17 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/02 06:53:50 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,8 +136,16 @@ typedef struct s_cub3d
 	mlx_texture_t		*wall_s;
 	mlx_texture_t		*wall_w;
 	mlx_texture_t		*wall_e;
-	mlx_texture_t		*omen[30];
+	mlx_texture_t		*omen[154];
+	mlx_texture_t		*pre_walk[9];
+	mlx_texture_t		*walk[14];
+	mlx_texture_t		*wraith[16];
+	mlx_texture_t		*hit[16];
 	int					omen_frame;
+	int					wraith_stand_frame;
+	int					pre_walk_frame;
+	int					walk_frame;
+	int					hit_frame;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR
@@ -208,6 +216,7 @@ t_ray		cast_ray_v(double ang, int is_down, int is_left, t_cub3d *c);
 t_ray		which_ray(double ang, t_cub3d *c);
 void		ft_draw_image(t_cub3d *data, mlx_texture_t *texture, int x, int y);
 void		omen(t_cub3d *c);
+void		wraith(t_cub3d *c);
 void		play_sound_effect(char *text);
 void		kill_sound_effect(void);
 

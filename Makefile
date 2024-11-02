@@ -6,7 +6,7 @@
 #    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/10/30 19:32:19 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/11/02 00:30:38 by hmrabet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ BSRCS = bonus/main_bonus.c \
 		bonus/raycasting/cast_rays_v_bonus.c \
 		bonus/tools/draw_bonus.c \
 		bonus/tools/omen_bonus.c \
+		bonus/tools/wraith_bonus.c \
 		bonus/tools/sounds_bonus.c \
 
 OBJS = $(SRCS:.c=.o)

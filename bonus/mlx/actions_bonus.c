@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 19:29:58 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/02 07:30:04 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@ void	ft_mouse_move(double xpos, double ypos, void *d)
 	if (cub->mouse)
 	{
 		mlx_get_mouse_pos(cub->m, &x, &y);
-		cub->p.td = MOUSE_SPEED * (double)(x - \
-												(W_SIZE / 2));
-		mlx_set_mouse_pos(cub->m, (W_SIZE / 2), \
-												(H_SIZE / 2));
+		cub->p.td = MOUSE_SPEED * (double)(x - (W_SIZE / 2));
+		mlx_set_mouse_pos(cub->m, (W_SIZE / 2), (H_SIZE / 2));
 	}
 }
 
@@ -58,6 +56,14 @@ void	key_press_fun(mlx_key_data_t keydata, void *params)
 		c->mouse = !c->mouse;
 		(!c->mouse) && (c->p.td = 0);
 	}
+	if (keydata.key == MLX_KEY_LEFT_SHIFT && keydata.action == MLX_PRESS)
+	{
+		c->p.ms = 5;
+	}
+	if (keydata.key == MLX_KEY_LEFT_SHIFT && keydata.action == MLX_RELEASE)
+	{
+		c->p.ms = 3;
+	}
 }
 
 void	key_fun(void *params)
@@ -78,12 +84,43 @@ void	key_fun(void *params)
 		if (mlx_is_key_down(c->m, MLX_KEY_A))
 			c->p.wd_h += -1;
 		if (mlx_is_key_down(c->m, MLX_KEY_LEFT))
-			c->p.td += -1;
+			c->p.td += -3;
 		if (mlx_is_key_down(c->m, MLX_KEY_RIGHT))
-			c->p.td += 1;
+			c->p.td += 3;
 		move(c);
 	}
 	print_rays(c);
 	if (c->freeze)
 		omen(c);
+	else
+	{
+		if (mlx_is_key_down(c->m, MLX_KEY_S) || mlx_is_key_down(c->m, MLX_KEY_W)
+			|| mlx_is_key_down(c->m, MLX_KEY_D) || mlx_is_key_down(c->m, MLX_KEY_A))
+		{
+			int scaled_x;
+			int scaled_y;
+			if (c->pre_walk_frame == 9)
+			{
+				if (c->walk_frame == 14)
+					c->walk_frame = 0;
+				scaled_x = (W_SIZE - (int)(c->walk[c->walk_frame]->width));
+				scaled_y = (H_SIZE - (int)(c->walk[c->walk_frame]->height ));
+				ft_draw_image(c, c->walk[c->walk_frame], scaled_x, scaled_y);
+				c->walk_frame++;
+			}
+			else
+			{
+				scaled_x = (W_SIZE - (int)(c->pre_walk[c->pre_walk_frame]->width));
+				scaled_y = (H_SIZE - (int)(c->pre_walk[c->pre_walk_frame]->height ));
+				ft_draw_image(c, c->pre_walk[c->pre_walk_frame], scaled_x, scaled_y);
+				c->pre_walk_frame++;
+			}
+		}
+		else
+		{
+			c->walk_frame = 0;
+			c->pre_walk_frame = 0;
+			wraith(c);
+		}
+	}
 }
