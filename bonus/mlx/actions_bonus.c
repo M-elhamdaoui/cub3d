@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/02 07:30:04 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/03 19:22:47 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ void	key_press_fun(mlx_key_data_t keydata, void *params)
 	if (keydata.key == MLX_KEY_V && keydata.action == MLX_PRESS)
 	{
 		c->freeze = 1;
-		c->omen_frame = 0;
-		play_sound_effect("afplay bonus/textures/omen/omen.mp3");
+		c->wraith.wraith_frame = 0;
+		play_sound_effect("afplay bonus/textures/wraith/omen.mp3");
 		c->p.rot_ang += M_PI;
 		(c->p.rot_ang > (2 * M_PI)) && (c->p.rot_ang -= 2 * M_PI);
 	}
 	if (keydata.key == MLX_KEY_V && keydata.action == MLX_RELEASE)
 	{
 		c->freeze = 0;
-		c->omen_frame = 0;
+		c->wraith.wraith_frame = 0;
 		kill_sound_effect();
 		c->p.rot_ang += M_PI;
 		if (c->p.rot_ang > (2 * M_PI))
@@ -68,6 +68,7 @@ void	key_press_fun(mlx_key_data_t keydata, void *params)
 
 void	key_fun(void *params)
 {
+	static unsigned int i;
 	t_cub3d	*c;
 
 	c = (t_cub3d *)params;
@@ -91,7 +92,7 @@ void	key_fun(void *params)
 	}
 	print_rays(c);
 	if (c->freeze)
-		omen(c);
+		wraith(c, i);
 	else
 	{
 		if (mlx_is_key_down(c->m, MLX_KEY_S) || mlx_is_key_down(c->m, MLX_KEY_W)
@@ -99,28 +100,29 @@ void	key_fun(void *params)
 		{
 			int scaled_x;
 			int scaled_y;
-			if (c->pre_walk_frame == 9)
+			if (c->wraith.pre_walk_frame == 9)
 			{
-				if (c->walk_frame == 14)
-					c->walk_frame = 0;
-				scaled_x = (W_SIZE - (int)(c->walk[c->walk_frame]->width));
-				scaled_y = (H_SIZE - (int)(c->walk[c->walk_frame]->height ));
-				ft_draw_image(c, c->walk[c->walk_frame], scaled_x, scaled_y);
-				c->walk_frame++;
+				if (c->wraith.walk_frame == 14)
+					c->wraith.walk_frame = 0;
+				scaled_x = (W_SIZE - (int)(c->wraith.walk[c->wraith.walk_frame]->width));
+				scaled_y = (H_SIZE - (int)(c->wraith.walk[c->wraith.walk_frame]->height ));
+				ft_draw_image(c, c->wraith.walk[c->wraith.walk_frame], scaled_x, scaled_y);
+				(!(i % 2)) && (c->wraith.walk_frame++);
 			}
 			else
 			{
-				scaled_x = (W_SIZE - (int)(c->pre_walk[c->pre_walk_frame]->width));
-				scaled_y = (H_SIZE - (int)(c->pre_walk[c->pre_walk_frame]->height ));
-				ft_draw_image(c, c->pre_walk[c->pre_walk_frame], scaled_x, scaled_y);
-				c->pre_walk_frame++;
+				scaled_x = (W_SIZE - (int)(c->wraith.pre_walk[c->wraith.pre_walk_frame]->width));
+				scaled_y = (H_SIZE - (int)(c->wraith.pre_walk[c->wraith.pre_walk_frame]->height ));
+				ft_draw_image(c, c->wraith.pre_walk[c->wraith.pre_walk_frame], scaled_x, scaled_y);
+				c->wraith.pre_walk_frame++;
 			}
 		}
 		else
 		{
-			c->walk_frame = 0;
-			c->pre_walk_frame = 0;
-			wraith(c);
+			c->wraith.walk_frame = 0;
+			c->wraith.pre_walk_frame = 0;
+			stand(c, i);
 		}
 	}
+	i++;
 }

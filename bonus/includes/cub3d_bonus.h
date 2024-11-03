@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/02 06:53:50 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/03 19:34:38 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,36 @@ typedef struct s_sky
 	mlx_texture_t	*sky;
 }	t_sky;
 
+typedef struct s_doors
+{
+	int		y;
+	int		x;
+	t_bool	is_closed;
+	t_bool	is_closing;
+	t_bool	is_opening;
+	int		progress;
+}	t_doors;
+
+typedef struct s_wraith
+{
+	mlx_texture_t	*knife[49];
+	mlx_texture_t	*flex[26];
+	mlx_texture_t	*hit[9];
+	mlx_texture_t	*kick[23];
+	mlx_texture_t	*stand[12];
+	mlx_texture_t	*pre_walk[9];
+	mlx_texture_t	*walk[14];
+	mlx_texture_t	*wraith[154];
+	int				knife_frame;
+	int				flex_frame;
+	int				hit_frame;
+	int				kick_frame;
+	int				stand_frame;
+	int				pre_walk_frame;
+	int				walk_frame;
+	int				wraith_frame;
+}	t_wraith;
+
 typedef struct s_cub3d
 {
 	char				*input;
@@ -136,16 +166,8 @@ typedef struct s_cub3d
 	mlx_texture_t		*wall_s;
 	mlx_texture_t		*wall_w;
 	mlx_texture_t		*wall_e;
-	mlx_texture_t		*omen[154];
-	mlx_texture_t		*pre_walk[9];
-	mlx_texture_t		*walk[14];
-	mlx_texture_t		*wraith[16];
-	mlx_texture_t		*hit[16];
-	int					omen_frame;
-	int					wraith_stand_frame;
-	int					pre_walk_frame;
-	int					walk_frame;
-	int					hit_frame;
+	t_wraith			wraith;
+	t_doors				*doors;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR
@@ -215,8 +237,8 @@ int			cast_condition(t_corr inter, t_cub3d *c);
 t_ray		cast_ray_v(double ang, int is_down, int is_left, t_cub3d *c);
 t_ray		which_ray(double ang, t_cub3d *c);
 void		ft_draw_image(t_cub3d *data, mlx_texture_t *texture, int x, int y);
-void		omen(t_cub3d *c);
-void		wraith(t_cub3d *c);
+void		wraith(t_cub3d *c, unsigned int i);
+void		stand(t_cub3d *c, unsigned int i);
 void		play_sound_effect(char *text);
 void		kill_sound_effect(void);
 
