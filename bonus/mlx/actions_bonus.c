@@ -6,11 +6,21 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/03 19:22:47 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/03 19:52:47 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+void	ft_mouse_clic(mouse_key_t button, action_t action, modifier_key_t mods, void *d)
+{
+	t_cub3d	*c;
+
+	c = d;
+	(void)mods;
+	(void)action;
+	if (!c->actions_lock)
+}
 
 void	ft_mouse_move(double xpos, double ypos, void *d)
 {

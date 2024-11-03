@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/03 19:34:38 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/03 19:54:34 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ typedef enum e_bool
 	FALSE,
 	TRUE,
 }	t_bool;
+
+typedef enum e_actions
+{
+	HIT,
+	KNIFE,
+	KICK,
+	FLEX,
+}	t_actions;
 
 typedef struct s_block_memory
 {
@@ -168,6 +176,8 @@ typedef struct s_cub3d
 	mlx_texture_t		*wall_e;
 	t_wraith			wraith;
 	t_doors				*doors;
+	t_actions			action;
+	t_bool				actions_lock;
 }	t_cub3d;
 
 // GARBAGE COLLECTOR
