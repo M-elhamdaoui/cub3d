@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:37:27 by houbet            #+#    #+#             */
-/*   Updated: 2024/11/04 15:50:27 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 16:44:34 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ static void	get_doors(t_cub3d *cub)
 				cub->doors[count].is_closing = FALSE;
 				cub->doors[count].is_opening = FALSE;
 				cub->doors[count].progress = 0;
-				cub->doors[count].x = i;
-				cub->doors[count].y = j;
+				cub->doors[count].x = j;
+				cub->doors[count].y = i;
 				count++;
 			}
 			j++;

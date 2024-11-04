@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 13:41:22 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 16:43:29 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	draw_wall(t_cub3d *cub, t_corr *c)
 {
 	int		r_down;
 	int		r_left;
+	t_bool	reverse;
 
 	cub->wall.start = (H_SIZE / 2 - cub->wall.o_wall_h / 2);
 	if (cub->wall.start < 0)
@@ -68,14 +69,14 @@ void	draw_wall(t_cub3d *cub, t_corr *c)
 		cub->wall.end = H_SIZE;
 	get_angl_direction(&r_down, &r_left, cub->ray.ang);
 	if (r_left && cub->ray.type == 'v')
-		cub->wall.png = cub->wall_e;
+		1 && (cub->wall.png = cub->wall_e, reverse = TRUE);
 	else if (!r_left && cub->ray.type == 'v')
-		cub->wall.png = cub->wall_w;
+		1 && (cub->wall.png = cub->wall_w, reverse = FALSE);
 	else if (r_down && cub->ray.type == 'h')
-		cub->wall.png = cub->wall_n;
+		1 && (cub->wall.png = cub->wall_n, reverse = TRUE);
 	else if (!r_down && cub->ray.type == 'h')
-		cub->wall.png = cub->wall_s;
-	draw_textures(cub, c->x);
+		1 && (cub->wall.png = cub->wall_s, reverse = FALSE);
+	draw_textures(cub, c->x, reverse);
 }
 
 void	print_rays(t_cub3d *cub)
