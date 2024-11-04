@@ -6,54 +6,11 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/04 17:44:16 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 19:20:11 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
-void	key_press_fun(mlx_key_data_t keydata, void *params)
-{
-	t_cub3d	*c;
-
-	c = (t_cub3d *)params;
-	if (keydata.key == MLX_KEY_V && keydata.action == MLX_PRESS)
-	{
-		1 && (c->freeze = 1, c->wraith.wraith_frame = 0, c->p.rot_ang += M_PI);
-		1 && (c->actions_lock = FALSE, c->action = NORMAL);
-		(c->p.rot_ang > (2 * M_PI)) && (c->p.rot_ang -= 2 * M_PI);
-	}
-	if (keydata.key == MLX_KEY_V && keydata.action == MLX_RELEASE)
-	{
-		1 && (c->freeze = 0, c->wraith.wraith_frame = 0, c->p.rot_ang += M_PI);
-		(c->p.rot_ang > (2 * M_PI)) && (c->p.rot_ang -= 2 * M_PI);
-	}
-	if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE
-		&& !c->actions_lock && !c->freeze)
-		1 && (c->actions_lock = TRUE, c->action = KICK);
-	if (keydata.key == MLX_KEY_LEFT_CONTROL && keydata.action == MLX_RELEASE)
-		1 && (c->mouse = !c->mouse, ((!c->mouse) && (c->p.td = 0)));
-	if (keydata.key == MLX_KEY_LEFT_SHIFT && keydata.action == MLX_PRESS)
-		c->p.ms = 5;
-	if (keydata.key == MLX_KEY_LEFT_SHIFT && keydata.action == MLX_RELEASE)
-		c->p.ms = 3;
-	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_RELEASE)
-		1 && (c->freeze = 1, c->open_menu = TRUE, c->actions_lock = FALSE, c->action = NORMAL, c->menu.is_resume = TRUE);
-	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
-		c->menu.is_resume = !c->menu.is_resume;
-	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
-		c->menu.is_resume = !c->menu.is_resume;
-	if (keydata.key == MLX_KEY_ENTER && keydata.action == MLX_RELEASE && c->open_menu)
-	{
-		if (c->menu.is_resume)
-		{
-			c->open_menu = FALSE;
-			c->freeze = 0;
-		}
-		else
-			ft_exit(NULL, 0, c);
-	}
-}
 
 static void	key_func(t_cub3d *c)
 {
@@ -120,41 +77,41 @@ static void	moves(t_cub3d *c, unsigned int i)
 
 void	menu(t_cub3d *c)
 {
-	mlx_texture_t *texture;
+	mlx_texture_t	*texture;
 
 	texture = c->menu.quit;
-	if (c->menu.is_resume)
-		texture = c->menu.resume;
-	ft_draw_image(c, texture, 0, 0);
+	if (c->open_menu)
+	{
+		if (c->menu.is_resume)
+			texture = c->menu.resume;
+		ft_draw_image(c, texture, 0, 0);
+	}
 }
 
-void	rendrer(void *params)
+void	rendrer(void *c)
 {
 	static unsigned int	i;
-	t_cub3d				*c;
 
-	c = (t_cub3d *)params;
-	key_func(c);
-	print_rays(c);
-	if (c->open_menu)
-		menu(c);
-	else
+	key_func((t_cub3d *)c);
+	print_rays((t_cub3d *)c);
+	menu((t_cub3d *)c);
+	if (!((t_cub3d *)c)->open_menu)
 	{
-		if (c->freeze)
-			wraith(c, i);
-		else if (c->actions_lock)
+		if (((t_cub3d *)c)->freeze)
+			wraith((t_cub3d *)c, i);
+		else if (((t_cub3d *)c)->actions_lock)
 		{
-			if (c->action == HIT)
-				hit(c, i);
-			else if (c->action == FLEX)
-				flex(c, i);
-			else if (c->action == KNIFE)
-				knife(c, i);
-			else if (c->action == KICK)
-				kick(c, i);
+			if (((t_cub3d *)c)->action == HIT)
+				hit((t_cub3d *)c, i);
+			else if (((t_cub3d *)c)->action == FLEX)
+				flex((t_cub3d *)c, i);
+			else if (((t_cub3d *)c)->action == KNIFE)
+				knife((t_cub3d *)c, i);
+			else if (((t_cub3d *)c)->action == KICK)
+				kick((t_cub3d *)c, i);
 		}
-		else if (!c->actions_lock)
-			moves(c, i);		
+		else if (!((t_cub3d *)c)->actions_lock)
+			moves((t_cub3d *)c, i);
 	}
 	i++;
 }

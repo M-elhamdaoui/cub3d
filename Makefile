@@ -6,7 +6,7 @@
 #    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/11/04 16:58:54 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/11/04 19:17:30 by hmrabet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ BSRCS = bonus/main_bonus.c \
 		bonus/tools/sounds_bonus.c \
 		bonus/parser/parser-conditions_bonus.c \
 		bonus/init-player_bonus.c \
-		bonus/mlx/mouse-features_bonus.c
+		bonus/mlx/mouse-features_bonus.c \
+		bonus/mlx/actions-1_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 
