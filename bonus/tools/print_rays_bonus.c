@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/04 15:45:07 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 16:59:52 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	draw_wall(t_cub3d *cub, t_corr *c)
 	int		r_left;
 	t_bool	reverse;
 
+	reverse = FALSE;
 	cub->wall.start = (H_SIZE / 2 - cub->wall.o_wall_h / 2);
 	if (cub->wall.start < 0)
 		cub->wall.start = 0;

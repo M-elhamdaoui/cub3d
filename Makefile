@@ -6,7 +6,7 @@
 #    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/11/04 16:38:38 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/11/04 16:58:54 by hmrabet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CC = cc #-Wall -Wextra -Werror  -g -fsanitize=address
+CC = cc -Wall -Wextra -Werror  #-g -fsanitize=address
 
 INCLUDES = -IMLX42/include/MLX42  -Imandatory/includes
 INCLUDES_B = -IMLX42/include/MLX42  -Ibonus/includes
