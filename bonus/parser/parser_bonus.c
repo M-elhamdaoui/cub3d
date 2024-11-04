@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:37:27 by houbet            #+#    #+#             */
-/*   Updated: 2024/11/03 19:41:25 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 15:50:27 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,34 +41,41 @@ static void	fill_map(t_cub3d *cub)
 	cub->map.width = ft_strlen(cub->map.map[0]);
 }
 
-static void	get_doors(t_cub3d *cub)
+static int	count_doors(t_cub3d *cub)
 {
 	int	i;
 	int	j;
 	int	counter;
-	int	count;
 
 	i = -1;
 	counter = 0;
-	count = 0;
 	while (cub->map.map[++i])
 	{
 		j = 0;
 		while (cub->map.map[i][j])
 		{
-			
 			if (cub->map.map[i][j] == 'D')
 				counter++;
 			j++;
 		}
 	}
-	cub->doors = ft_malloc(cub, &cub->collector, sizeof(t_doors) * (counter + 1));
+	return (counter);
+}
+
+static void	get_doors(t_cub3d *cub)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	1 && (i = -1, count = 0);
+	cub->doors = ft_malloc(cub, &cub->collector, sizeof(t_doors)
+			* (count_doors(cub) + 1));
 	while (cub->map.map[++i])
 	{
 		j = 0;
 		while (cub->map.map[i][j])
 		{
-			
 			if (cub->map.map[i][j] == 'D')
 			{
 				cub->doors[count].is_closed = TRUE;

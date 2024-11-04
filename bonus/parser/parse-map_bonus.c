@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse-map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:44:58 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/01 08:23:17 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 15:57:22 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ void	empty_lines_map_check(t_cub3d *cub)
 	}
 	if (!ft_strnstr(cub->input, map, ft_strlen(cub->input) + 100))
 		ft_exit("Map shouldn't have empty lines!\n", 1, cub);
-}
-
-static t_bool	is_player(char c)
-{
-	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
 void	count_players(t_cub3d *cub)
@@ -75,8 +70,11 @@ static void	parse_doors(t_cub3d *cub)
 		j = 0;
 		while (cub->map.map[i][j])
 		{
-			
-			if (cub->map.map[i][j] == 'D' && !((cub->map.map[i][j - 1] == '1' && cub->map.map[i][j + 1] == '1') || (cub->map.map[i - 1][j] == '1' && cub->map.map[i + 1][j] == '1')))
+			if (cub->map.map[i][j] == 'D'
+				&& !((cub->map.map[i][j - 1] == '1'
+				&& cub->map.map[i][j + 1] == '1')
+				|| (cub->map.map[i - 1][j] == '1'
+				&& cub->map.map[i + 1][j] == '1')))
 				ft_exit("The Doors must be between two walls!\n", 1, cub);
 			j++;
 		}
@@ -87,23 +85,14 @@ void	parse_map(t_cub3d *cub)
 {
 	int	i;
 	int	j;
-	int	height;
 
 	i = -1;
-	height = get_map_height(cub->map.map, 0);
 	while (cub->map.map[++i])
 	{
 		j = 0;
 		while (cub->map.map[i][j])
 		{
-			if ((((i == 0 || i == (height - 1))
-						&& (cub->map.map[i][j] == '0' || cub->map.map[i][j] == 'D'))
-				|| ((j == 0 || j == (int)ft_strlen(cub->map.map[i]) - 1)
-					&& (cub->map.map[i][j] == '0' || cub->map.map[i][j] == 'D'))) || (cub->map.map[i][j] == ' '
-				&& ((cub->map.map[i][j + 1] == '0' || cub->map.map[i][j + 1] == 'D')
-					|| (j != 0 && (cub->map.map[i][j - 1] == '0' || cub->map.map[i][j - 1] == 'D'))
-					|| (i != 0 && (cub->map.map[i - 1][j] == '0' || cub->map.map[i - 1][j] == 'D'))
-					|| (i != (height - 1) && (cub->map.map[i + 1][j] == '0' || cub->map.map[i + 1][j] == 'D')))))
+			if (not_walls_surround(cub, i, j))
 				ft_exit("The map must be surrounded by walls!\n", 1, cub);
 			j++;
 		}

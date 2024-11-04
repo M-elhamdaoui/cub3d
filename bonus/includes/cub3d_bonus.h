@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/04 15:09:20 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 16:28:05 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ void		render_circle(int x, int y, int color, t_cub3d *cub);
 void		put_line(t_corr a, t_corr b, t_cub3d *cub);
 void		ft_mouse_move(double xpos, double ypos, void *d);
 void		key_press_fun(mlx_key_data_t keydata, void *params);
-void		key_fun(void *params);
+void		rendrer(void *params);
 void		cam_move(t_cub3d *cub);
 void		put_line_v2(t_corr c, int d, double ang, t_cub3d *cub);
 void		draw_textures(t_cub3d *cub, double x, t_bool reverse);
@@ -250,13 +250,23 @@ t_ray		which_ray(double ang, t_cub3d *c);
 void		ft_draw_image(t_cub3d *data, mlx_texture_t *texture, int x, int y);
 void		wraith(t_cub3d *c, unsigned int i);
 void		stand(t_cub3d *c, unsigned int i);
-void	hit(t_cub3d *c, unsigned int i);
-void	flex(t_cub3d *c, unsigned int i);
-void	knife(t_cub3d *c, unsigned int i);
-void	kick(t_cub3d *c, unsigned int i);
+void		hit(t_cub3d *c, unsigned int i);
+void		flex(t_cub3d *c, unsigned int i);
+void		knife(t_cub3d *c, unsigned int i);
+void		kick(t_cub3d *c, unsigned int i);
+
+t_bool		is_player(char c);
+t_bool		not_walls_surround(t_cub3d *cub, int i, int j);
 
 void		play_sound_effect(char *text);
 void		kill_sound_effect(void);
-void		mouse_click_handler(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
+void		mouse_click_handler(mouse_key_t button, action_t action,
+				modifier_key_t mods, void *param);
+
+void		init_wraith(t_cub3d *cub);
+void		init_stand(t_cub3d *cub);
+void		init_walk(t_cub3d *cub);
+void		init_flex_hit(t_cub3d *cub);
+void		init_knife_kick(t_cub3d *cub);
 
 #endif
