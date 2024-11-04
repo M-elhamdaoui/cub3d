@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:55:49 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 19:09:39 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 18:58:01 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_exit(char *msg, int status, t_cub3d *cub)
 	if (cub->m)
 		mlx_terminate(cub->m);
 	ft_free(&cub->collector);
-	kill_sound_effect();
 	exit(status);
 }
 

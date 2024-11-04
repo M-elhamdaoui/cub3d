@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/04 16:28:05 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 17:26:03 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,20 @@ typedef struct s_sky
 	mlx_texture_t	*sky;
 }	t_sky;
 
+typedef struct s_menu
+{
+	double			x;
+	double			y;
+	int				index;
+	t_bool			is_resume;
+	uint8_t			r;
+	uint8_t			g;
+	uint8_t			b;
+	uint8_t			a;
+	mlx_texture_t	*resume;
+	mlx_texture_t	*quit;
+}	t_menu;
+
 typedef struct s_doors
 {
 	int		y;
@@ -167,6 +181,8 @@ typedef struct s_cub3d
 	t_player			p;
 	t_wall				wall;
 	t_sky				sky;
+	t_menu				menu;
+	t_bool				open_menu;
 	t_ray				ray;
 	t_bool				mouse;
 	t_bool				freeze;

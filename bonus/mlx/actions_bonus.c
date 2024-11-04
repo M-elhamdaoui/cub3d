@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/04 16:40:52 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 17:44:16 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,22 @@ void	key_press_fun(mlx_key_data_t keydata, void *params)
 		c->p.ms = 5;
 	if (keydata.key == MLX_KEY_LEFT_SHIFT && keydata.action == MLX_RELEASE)
 		c->p.ms = 3;
+	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_RELEASE)
+		1 && (c->freeze = 1, c->open_menu = TRUE, c->actions_lock = FALSE, c->action = NORMAL, c->menu.is_resume = TRUE);
+	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
+		c->menu.is_resume = !c->menu.is_resume;
+	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
+		c->menu.is_resume = !c->menu.is_resume;
+	if (keydata.key == MLX_KEY_ENTER && keydata.action == MLX_RELEASE && c->open_menu)
+	{
+		if (c->menu.is_resume)
+		{
+			c->open_menu = FALSE;
+			c->freeze = 0;
+		}
+		else
+			ft_exit(NULL, 0, c);
+	}
 }
 
 static void	key_func(t_cub3d *c)
@@ -57,6 +73,10 @@ static void	key_func(t_cub3d *c)
 			c->p.td += -3;
 		if (mlx_is_key_down(c->m, MLX_KEY_RIGHT))
 			c->p.td += 3;
+		if (mlx_is_key_down(c->m, MLX_KEY_UP) && c->open_menu)
+			c->menu.is_resume = !c->menu.is_resume;
+		if (mlx_is_key_down(c->m, MLX_KEY_DOWN) && c->open_menu)
+			c->menu.is_resume = !c->menu.is_resume;
 		move(c);
 	}
 }
@@ -98,6 +118,16 @@ static void	moves(t_cub3d *c, unsigned int i)
 		stand(c, i);
 }
 
+void	menu(t_cub3d *c)
+{
+	mlx_texture_t *texture;
+
+	texture = c->menu.quit;
+	if (c->menu.is_resume)
+		texture = c->menu.resume;
+	ft_draw_image(c, texture, 0, 0);
+}
+
 void	rendrer(void *params)
 {
 	static unsigned int	i;
@@ -106,20 +136,25 @@ void	rendrer(void *params)
 	c = (t_cub3d *)params;
 	key_func(c);
 	print_rays(c);
-	if (c->freeze)
-		wraith(c, i);
-	else if (c->actions_lock)
+	if (c->open_menu)
+		menu(c);
+	else
 	{
-		if (c->action == HIT)
-			hit(c, i);
-		else if (c->action == FLEX)
-			flex(c, i);
-		else if (c->action == KNIFE)
-			knife(c, i);
-		else if (c->action == KICK)
-			kick(c, i);
+		if (c->freeze)
+			wraith(c, i);
+		else if (c->actions_lock)
+		{
+			if (c->action == HIT)
+				hit(c, i);
+			else if (c->action == FLEX)
+				flex(c, i);
+			else if (c->action == KNIFE)
+				knife(c, i);
+			else if (c->action == KICK)
+				kick(c, i);
+		}
+		else if (!c->actions_lock)
+			moves(c, i);		
 	}
-	else if (!c->actions_lock)
-		moves(c, i);
 	i++;
 }
