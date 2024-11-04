@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:28:27 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/04 16:30:25 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 20:19:04 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	hit(t_cub3d *c, unsigned int i)
 	scaled_y = (H_SIZE
 			- (int)(c->wraith.hit[c->wraith.hit_frame]->height * scale));
 	ft_draw_image(c, c->wraith.hit[c->wraith.hit_frame], scaled_x, scaled_y);
-	(!(i % 2)) && (c->wraith.hit_frame++);
+	(!(i % 3)) && (c->wraith.hit_frame++);
 	if (c->wraith.hit_frame == 8)
 		1 && (c->wraith.hit_frame = 0,
 			c->actions_lock = FALSE, c->action = NORMAL);
