@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:36:42 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/03 19:47:59 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 13:31:42 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	lunch_mlx(t_cub3d *cub)
 	mlx_close_hook(cub->m, close_window, cub);
 	mlx_loop_hook(cub->m, &key_fun, cub);
 	mlx_key_hook(cub->m, &key_press_fun, cub);
-	mlx_mouse_hook(cub->m, &ft_mouse_events, cub);
+	mlx_mouse_hook(cub->m, &mouse_click_handler, cub);
 	mlx_set_cursor_mode(cub->m, MLX_MOUSE_HIDDEN);
 	mlx_cursor_hook(cub->m, &ft_mouse_move, cub);
 	mlx_loop(cub->m);

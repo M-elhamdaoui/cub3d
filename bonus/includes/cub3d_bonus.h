@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/03 19:54:34 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 15:09:20 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef enum e_actions
 	KNIFE,
 	KICK,
 	FLEX,
+	NORMAL,
 }	t_actions;
 
 typedef struct s_block_memory
@@ -249,7 +250,13 @@ t_ray		which_ray(double ang, t_cub3d *c);
 void		ft_draw_image(t_cub3d *data, mlx_texture_t *texture, int x, int y);
 void		wraith(t_cub3d *c, unsigned int i);
 void		stand(t_cub3d *c, unsigned int i);
+void	hit(t_cub3d *c, unsigned int i);
+void	flex(t_cub3d *c, unsigned int i);
+void	knife(t_cub3d *c, unsigned int i);
+void	kick(t_cub3d *c, unsigned int i);
+
 void		play_sound_effect(char *text);
 void		kill_sound_effect(void);
+void		mouse_click_handler(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
 
 #endif

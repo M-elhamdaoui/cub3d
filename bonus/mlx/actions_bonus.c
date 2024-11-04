@@ -6,20 +6,24 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/03 19:52:47 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/04 15:09:03 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	ft_mouse_clic(mouse_key_t button, action_t action, modifier_key_t mods, void *d)
+void	mouse_click_handler(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
 {
-	t_cub3d	*c;
+	t_cub3d	*cub;
 
-	c = d;
 	(void)mods;
-	(void)action;
-	if (!c->actions_lock)
+	cub = param;
+	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_RELEASE && !cub->actions_lock && !cub->freeze)
+		1 && (cub->actions_lock = TRUE, cub->action = HIT);
+	if (button == MLX_MOUSE_BUTTON_RIGHT && action == MLX_RELEASE && !cub->actions_lock && !cub->freeze)
+		1 && (cub->actions_lock = TRUE, cub->action = FLEX);
+	if (button == MLX_MOUSE_BUTTON_MIDDLE && action == MLX_RELEASE && !cub->actions_lock && !cub->freeze)
+		1 && (cub->actions_lock = TRUE, cub->action = KNIFE);
 }
 
 void	ft_mouse_move(double xpos, double ypos, void *d)
@@ -61,6 +65,8 @@ void	key_press_fun(mlx_key_data_t keydata, void *params)
 		if (c->p.rot_ang > (2 * M_PI))
 			c->p.rot_ang -= 2 * M_PI;
 	}
+	if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE && !c->actions_lock && !c->freeze)
+		1 && (c->actions_lock = TRUE, c->action = KICK);
 	if (keydata.key == MLX_KEY_LEFT_CONTROL && keydata.action == MLX_RELEASE)
 	{
 		c->mouse = !c->mouse;
@@ -86,13 +92,13 @@ void	key_fun(void *params)
 		ft_exit(NULL, 0, c);
 	if (!c->freeze)
 	{
-		if (mlx_is_key_down(c->m, MLX_KEY_S))
+		if (mlx_is_key_down(c->m, MLX_KEY_S) && (c->action != KICK))
 			c->p.wd += -1;
-		if (mlx_is_key_down(c->m, MLX_KEY_W))
+		if (mlx_is_key_down(c->m, MLX_KEY_W) && (c->action != KICK))
 			c->p.wd += 1;
-		if (mlx_is_key_down(c->m, MLX_KEY_D))
+		if (mlx_is_key_down(c->m, MLX_KEY_D) && (c->action != KICK))
 			c->p.wd_h += 1;
-		if (mlx_is_key_down(c->m, MLX_KEY_A))
+		if (mlx_is_key_down(c->m, MLX_KEY_A) && (c->action != KICK))
 			c->p.wd_h += -1;
 		if (mlx_is_key_down(c->m, MLX_KEY_LEFT))
 			c->p.td += -3;
@@ -103,7 +109,18 @@ void	key_fun(void *params)
 	print_rays(c);
 	if (c->freeze)
 		wraith(c, i);
-	else
+	else if (c->actions_lock)
+	{
+		if (c->action == HIT)
+			hit(c, i);
+		else if (c->action == FLEX)
+			flex(c, i);
+		else if (c->action == KNIFE)
+			knife(c, i);
+		else if (c->action == KICK)
+			kick(c, i);
+	}
+	else if (!c->actions_lock)
 	{
 		if (mlx_is_key_down(c->m, MLX_KEY_S) || mlx_is_key_down(c->m, MLX_KEY_W)
 			|| mlx_is_key_down(c->m, MLX_KEY_D) || mlx_is_key_down(c->m, MLX_KEY_A))
