@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse-identifiers_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 18:02:10 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 11:01:44 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/06 11:18:35 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void	parse_identifiers(t_cub3d *cub)
 	int		i;
 
 	1 && (i = 0, splitted = ft_split(cub->input, '\n', cub));
+	if (splitted[i] && !ft_strncmp(ft_strtrim(cub, splitted[i], " "), "sky enabled", 11))
+		1 && (i++, cub->sky.enabled = TRUE);
 	while (splitted[i] && (!cub->map.ceiling || !cub->map.floor
 			|| !cub->map.east || !cub->map.north
 			|| !cub->map.west || !cub->map.south))

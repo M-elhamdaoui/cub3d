@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/11/04 19:23:37 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/06 11:12:28 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	init_data(t_cub3d *cub, char **av)
 	1 && (cub->p.rad = 4, cub->p.td = 0);
 	1 && (cub->p.wd_h = 0, cub->p.wd = 0, cub->p.ms = 3);
 	cub->p.rot_speed = 3 * (M_PI / 180);
-	cub->open_menu = FALSE;
+	1 && (cub->open_menu = FALSE, cub->sky.enabled = FALSE);
 	init_map(cub, av);
 	get_colors(cub);
 	check_files_access(cub);

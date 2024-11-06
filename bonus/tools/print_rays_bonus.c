@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/04 16:59:52 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/06 11:11:55 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,6 @@ t_ray	which_ray(double ang, t_cub3d *c)
 	if (r1.is_w_hited)
 		return (r1);
 	return (r2);
-}
-
-int	ft_texture_color(unsigned int c)
-{
-	int	r;
-	int	g;
-	int	b;
-	int	a;
-
-	a = c % 256;
-	c /= 256;
-	b = c % 256;
-	c /= 256;
-	g = c % 256;
-	c /= 256;
-	r = c;
-	return (ft_create_color(a, b, g, r));
 }
 
 void	draw_wall(t_cub3d *cub, t_corr *c)
@@ -109,6 +92,14 @@ void	draw_ceiling(t_cub3d *cub)
 	}
 }
 
+static int	paint_ceiling(t_cub3d *cub, t_corr c)
+{
+	1 && (c.y = 0, c.color = ft_create_color(cub->map.c_rgb[0],
+			cub->map.c_rgb[1], cub->map.c_rgb[2], 255));
+	put_line_v2(c, floor(H_SIZE / 2 - cub->wall.wall_h / 2), M_PI / 2, cub);
+	return (1);
+}
+
 void	print_rays(t_cub3d *cub)
 {
 	double	stp_ray;
@@ -117,7 +108,8 @@ void	print_rays(t_cub3d *cub)
 
 	1 && (stp_ray = FOV / W_SIZE, c.y = 0, c.x = 0);
 	str_ang = cub->p.rot_ang - (FOV / 2);
-	draw_ceiling(cub);
+	if (cub->sky.enabled)
+		draw_ceiling(cub);
 	while (c.x < W_SIZE)
 	{
 		cub->ray = which_ray(str_ang, cub);
@@ -125,6 +117,7 @@ void	print_rays(t_cub3d *cub)
 		cub->wall.o_wall_h = cub->wall.wall_h;
 		(!cub->ray.distance || cub->wall.wall_h > H_SIZE)
 			&& (cub->wall.wall_h = H_SIZE);
+		(!cub->sky.enabled) && (paint_ceiling(cub, c));
 		c.y = floor(H_SIZE / 2 + cub->wall.wall_h / 2);
 		c.color = ft_create_color(cub->map.f_rgb[0] * 0.2,
 				cub->map.f_rgb[1] * 0.2, cub->map.f_rgb[2] * 0.2, 160);

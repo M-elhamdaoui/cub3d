@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/04 17:26:03 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/06 11:03:27 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_sky
 	double			x;
 	double			y;
 	int				index;
+	t_bool			enabled;
 	uint8_t			r;
 	uint8_t			g;
 	uint8_t			b;

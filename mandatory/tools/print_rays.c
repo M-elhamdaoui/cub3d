@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:44:11 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/04 17:00:17 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/06 11:08:10 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,6 @@ t_ray	which_ray(double ang, t_cub3d *c)
 	if (r1.is_w_hited)
 		return (r1);
 	return (r2);
-}
-
-int	ft_texture_color(unsigned int c)
-{
-	int	r;
-	int	g;
-	int	b;
-	int	a;
-
-	a = c % 256;
-	c /= 256;
-	b = c % 256;
-	c /= 256;
-	g = c % 256;
-	c /= 256;
-	r = c;
-	return (ft_create_color(a, b, g, r));
 }
 
 void	draw_wall(t_cub3d *cub, t_corr *c)
