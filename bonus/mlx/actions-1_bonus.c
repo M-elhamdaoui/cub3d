@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 19:17:03 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/04 19:27:49 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/06 14:01:51 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 static void	handle_menu(t_cub3d *c)
 {
-	if (c->menu.is_resume)
+	if (c->menu.option == RESUME_D || c->menu.option == RESUME_E)
 	{
 		c->open_menu = FALSE;
 		c->freeze = 0;
+	}
+	else if (c->menu.option == E)
+	{
+		c->menu.option = D;
+		c->sky.enabled = FALSE;
+	}
+	else if (c->menu.option == D)
+	{
+		c->menu.option = E;
+		c->sky.enabled = TRUE;
 	}
 	else
 		ft_exit(NULL, 0, c);
@@ -30,13 +40,19 @@ static void	key_press_fun2(mlx_key_data_t keydata, t_cub3d *c)
 		if (c->open_menu)
 			handle_menu(c);
 		else
+		{
 			1 && (c->freeze = 1, c->open_menu = TRUE, c->actions_lock = FALSE,
-				c->action = NORMAL, c->menu.is_resume = TRUE);
+				c->action = NORMAL);
+			if (c->sky.enabled)
+				c->menu.option = RESUME_E;
+			else
+				c->menu.option = RESUME_D;
+		}
 	}
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
-		c->menu.is_resume = !c->menu.is_resume;
+		c->menu.option = (c->menu.option - 2 + 6) % 6;
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
-		c->menu.is_resume = !c->menu.is_resume;
+		c->menu.option = (c->menu.option + 2) % 6;
 	if (keydata.key == MLX_KEY_ENTER && keydata.action == MLX_RELEASE
 		&& c->open_menu)
 		handle_menu(c);

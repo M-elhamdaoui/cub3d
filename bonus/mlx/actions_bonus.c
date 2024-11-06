@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/04 19:20:11 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/06 13:57:59 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ static void	key_func(t_cub3d *c)
 			c->p.td += -3;
 		if (mlx_is_key_down(c->m, MLX_KEY_RIGHT))
 			c->p.td += 3;
-		if (mlx_is_key_down(c->m, MLX_KEY_UP) && c->open_menu)
-			c->menu.is_resume = !c->menu.is_resume;
-		if (mlx_is_key_down(c->m, MLX_KEY_DOWN) && c->open_menu)
-			c->menu.is_resume = !c->menu.is_resume;
 		move(c);
 	}
 }
@@ -79,11 +75,21 @@ void	menu(t_cub3d *c)
 {
 	mlx_texture_t	*texture;
 
-	texture = c->menu.quit;
+	texture = c->menu.resume_d;
 	if (c->open_menu)
 	{
-		if (c->menu.is_resume)
-			texture = c->menu.resume;
+		if (c->menu.option == RESUME_E)
+			texture = c->menu.resume_e;
+		else if (c->menu.option == D)
+			texture = c->menu.d;
+		else if (c->menu.option == QUIT_E)
+			texture = c->menu.quit_e;
+		else if (c->menu.option == QUIT_D)
+			texture = c->menu.quit_d;
+		else if (c->menu.option == E)
+			texture = c->menu.e;
+		else
+			texture = c->menu.resume_d;
 		ft_draw_image(c, texture, 0, 0);
 	}
 }

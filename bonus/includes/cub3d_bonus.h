@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/06 11:03:27 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/06 12:45:41 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ typedef enum e_actions
 	FLEX,
 	NORMAL,
 }	t_actions;
+
+typedef enum e_options
+{
+	RESUME_E,
+	RESUME_D,
+	E,
+	D,
+	QUIT_E,
+	QUIT_D,
+}	t_options;
 
 typedef struct s_block_memory
 {
@@ -133,13 +143,17 @@ typedef struct s_menu
 	double			x;
 	double			y;
 	int				index;
-	t_bool			is_resume;
+	t_options		option;
 	uint8_t			r;
 	uint8_t			g;
 	uint8_t			b;
 	uint8_t			a;
-	mlx_texture_t	*resume;
-	mlx_texture_t	*quit;
+	mlx_texture_t	*resume_e;
+	mlx_texture_t	*resume_d;
+	mlx_texture_t	*quit_e;
+	mlx_texture_t	*quit_d;
+	mlx_texture_t	*e;
+	mlx_texture_t	*d;
 }	t_menu;
 
 typedef struct s_doors
