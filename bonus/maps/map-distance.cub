@@ -1,7 +1,7 @@
-NO mandatory/textures/w.png
-SO mandatory/textures/s.png
-WE mandatory/textures/s.png
-EA mandatory/textures/w.png
+NO bonus/textures/w.png
+SO bonus/textures/s.png
+WE bonus/textures/s.png
+EA bonus/textures/w.png
 
 F 60,60,60
 C 3,138,255

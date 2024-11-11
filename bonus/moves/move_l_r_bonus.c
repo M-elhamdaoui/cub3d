@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_l_r_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:51:22 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 11:01:42 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/11 14:58:21 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	move_l_r(t_cub3d *c)
 		|| c->map.map[(int)((tmp2 - r) / US)][(int)((c->p.c.x) / US)] == '1')
 		tmp2 = c->p.c.y;
 	if (c->map.map[(int)(tmp2 / US)][(int)(tmp / US)] == '1')
+		return ;
+	if (check_is_door(c, tmp, tmp2) == 0)
 		return ;
 	c->p.c.y = tmp2;
 	c->p.c.x = tmp;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/06 12:45:41 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/11 14:15:41 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct s_ray
 	t_bool	is_w_hited;
 	double	distance;
 	char	type;
+	t_bool	is_door;
 }	t_ray;
 
 typedef struct s_wall
@@ -188,6 +189,7 @@ typedef struct s_wraith
 
 typedef struct s_cub3d
 {
+	unsigned int		i;
 	char				*input;
 	unsigned int		max_fd;
 	t_map				map;
@@ -206,8 +208,9 @@ typedef struct s_cub3d
 	mlx_texture_t		*wall_s;
 	mlx_texture_t		*wall_w;
 	mlx_texture_t		*wall_e;
+	mlx_texture_t		*door;
 	t_wraith			wraith;
-	t_doors				*doors;
+	t_doors				**doors;
 	t_actions			action;
 	t_bool				actions_lock;
 }	t_cub3d;
@@ -299,5 +302,9 @@ void		init_stand(t_cub3d *cub);
 void		init_walk(t_cub3d *cub);
 void		init_flex_hit(t_cub3d *cub);
 void		init_knife_kick(t_cub3d *cub);
+
+t_doors		*ft_get_door(t_cub3d *c, int x, int y);
+int			close_to_door(t_cub3d *c, int j);
+int			check_is_door(t_cub3d *c,double x, double y);
 
 #endif

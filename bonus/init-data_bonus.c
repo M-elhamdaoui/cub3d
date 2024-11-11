@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/11/06 13:57:44 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/09 16:52:43 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,26 @@ static void	init_player(t_cub3d *cub)
 	init_knife_kick(cub);
 }
 
-static void	init_menu(t_cub3d *cub)
+static void	init_textures(t_cub3d *cub)
 {
+	cub->wall_e = mlx_load_png(cub->map.east);
+	cub->wall_w = mlx_load_png(cub->map.west);
+	cub->wall_n = mlx_load_png(cub->map.north);
+	cub->wall_s = mlx_load_png(cub->map.south);
+	cub->wall_s = mlx_load_png(cub->map.south);
 	cub->menu.resume_e = mlx_load_png("bonus/textures/menu/resume_e.png");
 	cub->menu.resume_d = mlx_load_png("bonus/textures/menu/resume_d.png");
 	cub->menu.quit_e = mlx_load_png("bonus/textures/menu/quit_e.png");
 	cub->menu.quit_d = mlx_load_png("bonus/textures/menu/quit_d.png");
 	cub->menu.e = mlx_load_png("bonus/textures/menu/e.png");
 	cub->menu.d = mlx_load_png("bonus/textures/menu/d.png");
+	cub->door = mlx_load_png("bonus/textures/door.png");
+	cub->sky.sky = mlx_load_png("bonus/textures/sky.png");
+	if (!cub->wall_e || !cub->wall_s || !cub->wall_n || !cub->wall_w
+		|| !cub->menu.resume_e || !cub->menu.resume_d || !cub->menu.quit_e
+		|| !cub->menu.quit_d || !cub->menu.e || !cub->menu.d || !cub->door
+		|| !cub->sky.sky)
+		ft_exit("Failed to load images\n", 1, cub);
 }
 
 void	init_data(t_cub3d *cub, char **av)
@@ -78,17 +90,10 @@ void	init_data(t_cub3d *cub, char **av)
 	1 && (cub->p.wd_h = 0, cub->p.wd = 0, cub->p.ms = 3);
 	cub->p.rot_speed = 3 * (M_PI / 180);
 	1 && (cub->open_menu = FALSE, cub->menu.option = RESUME_D);
-	cub->sky.enabled = FALSE;
+	1 && (cub->sky.enabled = FALSE, cub->i = 0);
 	init_map(cub, av);
 	get_colors(cub);
 	check_files_access(cub);
-	cub->wall_e = mlx_load_png(cub->map.east);
-	cub->wall_w = mlx_load_png(cub->map.west);
-	cub->wall_n = mlx_load_png(cub->map.north);
-	cub->wall_s = mlx_load_png(cub->map.south);
-	cub->sky.sky = mlx_load_png("bonus/textures/sky.png");
-	init_menu(cub);
+	init_textures(cub);
 	init_player(cub);
-	if (!cub->wall_e || !cub->wall_s || !cub->wall_n || !cub->wall_w)
-		ft_exit("Failed to load images\n", 1, cub);
 }

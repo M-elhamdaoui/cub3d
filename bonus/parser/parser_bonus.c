@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:37:27 by houbet            #+#    #+#             */
-/*   Updated: 2024/11/04 16:44:34 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/09 16:57:54 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,26 @@ static void	get_doors(t_cub3d *cub)
 	int	count;
 
 	1 && (i = -1, count = 0);
-	cub->doors = ft_malloc(cub, &cub->collector, sizeof(t_doors)
+	cub->doors = ft_malloc(cub, &cub->collector, sizeof(t_doors *)
 			* (count_doors(cub) + 1));
 	while (cub->map.map[++i])
 	{
-		j = 0;
-		while (cub->map.map[i][j])
+		j = -1;
+		while (cub->map.map[i][++j])
 		{
 			if (cub->map.map[i][j] == 'D')
 			{
-				cub->doors[count].is_closed = TRUE;
-				cub->doors[count].is_closing = FALSE;
-				cub->doors[count].is_opening = FALSE;
-				cub->doors[count].progress = 0;
-				cub->doors[count].x = j;
-				cub->doors[count].y = i;
-				count++;
+				cub->doors[count] = ft_malloc(cub, &cub->collector,
+						sizeof(t_doors));
+				cub->doors[count]->is_closed = TRUE;
+				cub->doors[count]->is_closing = FALSE;
+				cub->doors[count]->is_opening = FALSE;
+				1 && (cub->doors[count]->x = j, cub->doors[count]->y = i);
+				1 && (cub->doors[count]->progress = 0, count++);
 			}
-			j++;
 		}
 	}
+	cub->doors[count] = NULL;
 }
 
 void	init_map(t_cub3d *cub, char **av)

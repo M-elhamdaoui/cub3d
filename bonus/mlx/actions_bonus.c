@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/06 13:57:59 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/09 15:19:36 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,30 +94,65 @@ void	menu(t_cub3d *c)
 	}
 }
 
+int close_to_door(t_cub3d *c, int j){
+	int	i;
+
+	i = 0;
+	if (j % 3 == 0)
+		return (0);
+	while (c->doors[i])
+	{
+		if ((floor(c->p.c.x / US) + 1 == c->doors[i]->x || floor(c->p.c.x / US) - 1 == c->doors[i]->x || floor(c->p.c.x / US) == c->doors[i]->x ) && 
+			(floor(c->p.c.y / US) + 1 == c->doors[i]->y  || floor(c->p.c.y / US) - 1 == c->doors[i]->y || floor(c->p.c.y / US) == c->doors[i]->y ))
+		{
+			if (c->doors[i]->progress < US)
+			{
+				c->doors[i]->progress++;
+				c->doors[i]->is_opening = 1;
+				c->doors[i]->is_closing = 0;
+			}
+			else
+				c->doors[i]->is_closed = 0;
+			i++;
+			continue;
+		}
+		if (c->doors[i]->progress > 0)
+		{
+			c->doors[i]->progress--;
+			c->doors[i]->is_opening = 0;
+			c->doors[i]->is_closing = 1;
+		}
+		else
+			c->doors[i]->is_closed = 1;
+		i++;
+	}
+	return (0);
+}
+
+
 void	rendrer(void *c)
 {
-	static unsigned int	i;
-
 	key_func((t_cub3d *)c);
 	print_rays((t_cub3d *)c);
 	menu((t_cub3d *)c);
 	if (!((t_cub3d *)c)->open_menu)
 	{
 		if (((t_cub3d *)c)->freeze)
-			wraith((t_cub3d *)c, i);
+			wraith((t_cub3d *)c, ((t_cub3d *)c)->i);
 		else if (((t_cub3d *)c)->actions_lock)
 		{
 			if (((t_cub3d *)c)->action == HIT)
-				hit((t_cub3d *)c, i);
+				hit((t_cub3d *)c, ((t_cub3d *)c)->i);
 			else if (((t_cub3d *)c)->action == FLEX)
-				flex((t_cub3d *)c, i);
+				flex((t_cub3d *)c, ((t_cub3d *)c)->i);
 			else if (((t_cub3d *)c)->action == KNIFE)
-				knife((t_cub3d *)c, i);
+				knife((t_cub3d *)c, ((t_cub3d *)c)->i);
 			else if (((t_cub3d *)c)->action == KICK)
-				kick((t_cub3d *)c, i);
+				kick((t_cub3d *)c, ((t_cub3d *)c)->i);
 		}
 		else if (!((t_cub3d *)c)->actions_lock)
-			moves((t_cub3d *)c, i);
+			moves((t_cub3d *)c, ((t_cub3d *)c)->i);
 	}
-	i++;
+	close_to_door(c, ((t_cub3d *)c)->i);
+	((t_cub3d *)c)->i++;
 }

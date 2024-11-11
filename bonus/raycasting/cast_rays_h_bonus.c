@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_rays_h_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 12:53:05 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 11:01:56 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/11 13:53:33 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static inline t_bool	condition(t_cub3d *c, t_corr i, double tmp)
 	return (floor(tmp / US) < c->map.height
 		&& (int)floor(i.x / US) < c->map.width
 		&& floor(tmp / US) >= 0 && (int)floor(i.x / US) >= 0
-		&& c->map.map[(int)floor(tmp / US)][(int)floor(i.x / US)] == '1');
+		&& ((c->map.map[(int)floor(tmp / US)][(int)floor(i.x / US)] == '1')
+		|| ((c->map.map[(int)floor(tmp / US)][(int)floor(i.x / US)] == 'D'
+			&& (int)floor(fmod(i.x , US)) >= ft_get_door(c, (int)floor(i.x / US ), (int)floor(tmp / US))->progress))));
 }
 
 int	cast_condition(t_corr inter, t_cub3d *c)
@@ -51,6 +53,7 @@ t_ray	cast_ray_h(t_cub3d *c, double ang, int is_r_down, int is_r_left)
 		if (condition(c, intercept, tmp))
 		{
 			ray.distance = calc_distance(c->p.c, intercept);
+			ray.is_door = c->map.map[(int)floor(tmp / US)][(int)floor(intercept.x / US)] == 'D';
 			return (ray.is_w_hited = 1, ray.hit_wall = intercept, ray);
 		}
 		intercept.y += step[0];
