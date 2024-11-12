@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/11/09 16:52:43 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/12 18:14:05 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,30 @@ void	get_colors(t_cub3d *cub)
 
 void	check_files_access(t_cub3d *cub)
 {
-	int	fd1;
-	int	fd2;
-	int	fd3;
-	int	fd4;
+	int	fd[12];
+	int	i;
 
-	fd1 = open(cub->map.east, O_RDONLY);
-	fd2 = open(cub->map.north, O_RDONLY);
-	fd3 = open(cub->map.south, O_RDONLY);
-	fd4 = open(cub->map.west, O_RDONLY);
-	if (fd1 == -1 || fd2 == -1 || fd3 == -1 || fd4 == -1)
-		ft_exit("Invalid textures!\n", 1, cub);
-	close(fd1);
-	close(fd2);
-	close(fd3);
-	close(fd4);
+	i = -1;
+	fd[0] = open(cub->map.east, O_RDONLY);
+	fd[1] = open(cub->map.north, O_RDONLY);
+	fd[2] = open(cub->map.south, O_RDONLY);
+	fd[3] = open(cub->map.west, O_RDONLY);
+	fd[4] = open("bonus/textures/menu/resume_e.png", O_RDONLY);
+	fd[5] = open("bonus/textures/menu/resume_d.png", O_RDONLY);
+	fd[6] = open("bonus/textures/menu/quit_e.png", O_RDONLY);
+	fd[7] = open("bonus/textures/menu/quit_d.png", O_RDONLY);
+	fd[8] = open("bonus/textures/menu/e.png", O_RDONLY);
+	fd[9] = open("bonus/textures/menu/d.png", O_RDONLY);
+	fd[10] = open("bonus/textures/door.png", O_RDONLY);
+	fd[11] = open("bonus/textures/sky.png", O_RDONLY);
+	while (++i < 12)
+	{
+		if (fd[i] == -1)
+			ft_exit("Invalid textures!\n", 1, cub);
+	}
+	i = -1;
+	while (++i < 12)
+		close(fd[i]);
 }
 
 static void	init_player(t_cub3d *cub)
@@ -59,7 +68,6 @@ static void	init_textures(t_cub3d *cub)
 	cub->wall_e = mlx_load_png(cub->map.east);
 	cub->wall_w = mlx_load_png(cub->map.west);
 	cub->wall_n = mlx_load_png(cub->map.north);
-	cub->wall_s = mlx_load_png(cub->map.south);
 	cub->wall_s = mlx_load_png(cub->map.south);
 	cub->menu.resume_e = mlx_load_png("bonus/textures/menu/resume_e.png");
 	cub->menu.resume_d = mlx_load_png("bonus/textures/menu/resume_d.png");

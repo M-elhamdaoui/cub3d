@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_line_v2_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:33:13 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/31 11:36:04 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/12 17:44:28 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,19 @@ void	draw_textures(t_cub3d *cub, double x, t_bool reverse)
 {
 	t_ui	color;
 	int		begin;
+	int		progress;
 
-	cub->wall.p_wall_h = 0;
-	begin = 0;
-	cub->wall.x = cub->ray.hit_wall.x * cub->wall.png->width / US;
+	1 && (cub->wall.p_wall_h = 0, begin = 0, progress = 0);
+	if (cub->ray.is_door && ft_get_door(cub, (int)floor(cub->ray.hit_wall.x
+				/ US), (int)floor(cub->ray.hit_wall.y / US)))
+		progress = ft_get_door(cub, cub->ray.hit_wall.x / US,
+				cub->ray.hit_wall.y / US)->progress;
+	cub->wall.x = ((cub->ray.hit_wall.x - progress)
+			* (cub->wall.png->width)) / US;
 	if (cub->ray.type == 'v')
-		cub->wall.x = cub->ray.hit_wall.y * cub->wall.png->width / US;
-	cub->wall.x = (t_ui)cub->wall.x % cub->wall.png->width;
+		cub->wall.x = (cub->ray.hit_wall.y - progress)
+			* (cub->wall.png->width) / US;
+	cub->wall.x = (t_ui)cub->wall.x % (cub->wall.png->width);
 	(reverse) && (cub->wall.x = cub->wall.png->width - cub->wall.x);
 	while (cub->wall.start < cub->wall.end)
 	{
@@ -75,9 +81,7 @@ void	draw_textures(t_cub3d *cub, double x, t_bool reverse)
 			cub->wall.p_wall_h = cub->wall.o_wall_h - H_SIZE;
 		cub->wall.y = (begin + cub->wall.p_wall_h / 2);
 		cub->wall.y *= cub->wall.png->height / cub->wall.o_wall_h;
-		color = get_texture_pixel(cub);
-		mlx_put_pixel(cub->img, x, cub->wall.start, color);
-		cub->wall.start++;
-		begin++;
+		1 && (color = get_texture_pixel(cub), begin++);
+		mlx_put_pixel(cub->img, x, cub->wall.start++, color);
 	}
 }

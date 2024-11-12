@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_f_b_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:41:12 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/11 17:21:05 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:46:54 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_is_door(t_cub3d *c, double x, double y)
 {
-	t_doors *door;
+	t_doors	*door;
 
 	door = ft_get_door(c, floor(x / US), floor(y / US));
 	if (!door)
@@ -23,14 +23,12 @@ int	check_is_door(t_cub3d *c, double x, double y)
 		return (0);
 	if (door->is_opening)
 	{
-		
-	
-		if ((int)floor(fmod(y , US)) >= door->progress
-			&& c->map.map[(int)floor(y / US) + 1][(int)floor(x /  US)] == '1' 
+		if ((int)floor(fmod(y, US)) >= door->progress
+			&& c->map.map[(int)floor(y / US) + 1][(int)floor(x / US)] == '1'
 			&& c->map.map[(int)floor(y / US) - 1][(int)floor(x / US)] == '1')
 			return (0);
-		if ((int)floor(fmod(x , US)) >= door->progress 
-			&& c->map.map[(int)floor(y / US)][(int)floor(x /  US) + 1] == '1' 
+		if ((int)floor(fmod(x, US)) >= door->progress
+			&& c->map.map[(int)floor(y / US)][(int)floor(x / US) + 1] == '1'
 			&& c->map.map[(int)floor(y / US)][(int)floor(x / US) - 1] == '1')
 			return (0);
 		return (1);

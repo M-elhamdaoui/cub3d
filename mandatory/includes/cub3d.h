@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/04 16:42:44 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/12 18:28:09 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void		parse_identifiers(t_cub3d *cub);
 void		init_map(t_cub3d *cub, char **av);
 
 // run mlx
-int			lunch_mlx(t_cub3d *cub);
+void		lunch_mlx(t_cub3d *cub);
 int			put_square(t_corr *corr, t_d *d, t_cub3d *cub, int color);
 int			ft_create_color(int r, int g, int b, int a);
 void		rneder_map_2d(t_cub3d *cub);

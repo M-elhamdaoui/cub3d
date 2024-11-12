@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/11 14:15:41 by mel-hamd         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:21:38 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,7 +255,7 @@ void		parse_identifiers(t_cub3d *cub);
 void		init_map(t_cub3d *cub, char **av);
 
 // run mlx
-int			lunch_mlx(t_cub3d *cub);
+void		lunch_mlx(t_cub3d *cub);
 int			put_square(t_corr *corr, t_d *d, t_cub3d *cub, int color);
 int			ft_create_color(int r, int g, int b, int a);
 void		rneder_map_2d(t_cub3d *cub);
@@ -292,8 +292,6 @@ void		kick(t_cub3d *c, unsigned int i);
 t_bool		is_player(char c);
 t_bool		not_walls_surround(t_cub3d *cub, int i, int j);
 
-void		play_sound_effect(char *text);
-void		kill_sound_effect(void);
 void		mouse_click_handler(mouse_key_t button, action_t action,
 				modifier_key_t mods, void *param);
 
@@ -304,7 +302,7 @@ void		init_flex_hit(t_cub3d *cub);
 void		init_knife_kick(t_cub3d *cub);
 
 t_doors		*ft_get_door(t_cub3d *c, int x, int y);
-int			close_to_door(t_cub3d *c, int j);
-int			check_is_door(t_cub3d *c,double x, double y);
+int			close_to_door(t_cub3d *c);
+int			check_is_door(t_cub3d *c, double x, double y);
 
 #endif

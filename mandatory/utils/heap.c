@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:55:49 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/06 14:22:40 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/12 18:26:08 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	*ft_malloc(t_cub3d *cub, t_block_memory **memory, size_t size)
 	tmp = *memory;
 	res = malloc(size);
 	if (!res)
-		ft_exit("Allocation error!", 1, cub);
+		ft_exit("Allocation error!\n", 1, cub);
 	new = (t_block_memory *)malloc(sizeof(t_block_memory));
 	if (!new)
 	{
 		free(res);
-		ft_exit("Allocation error!", 1, cub);
+		ft_exit("Allocation error!\n", 1, cub);
 	}
 	new->leak = res;
 	new->next = NULL;
