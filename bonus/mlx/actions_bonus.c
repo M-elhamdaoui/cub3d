@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 22:00:46 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/11/12 17:49:05 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/13 23:54:33 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ void	rendrer(void *c)
 {
 	key_func((t_cub3d *)c);
 	print_rays((t_cub3d *)c);
-	menu((t_cub3d *)c);
 	if (!((t_cub3d *)c)->open_menu)
 	{
 		if (((t_cub3d *)c)->freeze)
@@ -118,5 +117,7 @@ void	rendrer(void *c)
 			moves((t_cub3d *)c, ((t_cub3d *)c)->i);
 	}
 	close_to_door(c);
+	draw_minimap(c);
+	menu((t_cub3d *)c);
 	((t_cub3d *)c)->i++;
 }

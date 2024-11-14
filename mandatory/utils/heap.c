@@ -6,21 +6,22 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:55:49 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/12 18:26:08 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/14 17:10:07 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <limits.h>
 
 void	close_fds(t_cub3d *cub)
 {
 	int	fd;
 
-	fd = cub->max_fd;
-	while (fd >= 3)
+	fd = 3;
+	while (fd <= OPEN_MAX)
 	{
 		close(fd);
-		fd--;
+		fd++;
 	}
 }
 

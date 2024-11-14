@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 13:33:25 by houbet            #+#    #+#             */
-/*   Updated: 2024/11/12 18:14:05 by hmrabet          ###   ########.fr       */
+/*   Created: 2024/08/26 13:33:25 by hmrabet           #+#    #+#             */
+/*   Updated: 2024/11/14 17:09:12 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,22 @@
 void	get_colors(t_cub3d *cub)
 {
 	char	**rgb;
+	int		it[3];
 
+	1 && (it[2] = -1, it[0] = 0, it[1] = 0);
+	while (cub->map.floor[++it[2]])
+	{
+		if (cub->map.floor[i] == ',')
+			it[0]++;
+	}
+	it[2] = -1;
+	while (cub->map.ceiling[++it[2]])
+	{
+		if (cub->map.ceiling[i] == ',')
+			it[1]++;
+	}
+	if (it[0] != 2 || it[1] != 2)
+		ft_exit("Invalid RGB value\n", 1, cub);
 	rgb = ft_split(cub->map.floor, ',', cub);
 	cub->map.f_rgb[0] = ft_atoi(rgb[0]);
 	cub->map.f_rgb[1] = ft_atoi(rgb[1]);
@@ -87,7 +102,7 @@ static void	init_textures(t_cub3d *cub)
 void	init_data(t_cub3d *cub, char **av)
 {
 	1 && (cub->m = NULL, cub->img = NULL);
-	1 && (cub->max_fd = 2, cub->collector = NULL);
+	cub->collector = NULL;
 	cub->input = ft_strdup("", cub);
 	1 && (cub->map.map = NULL, cub->map.north = NULL);
 	1 && (cub->map.east = NULL, cub->map.west = NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_circle_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:28:04 by mel-hamd          #+#    #+#             */
-/*   Updated: 2024/10/30 11:01:27 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/13 23:14:27 by mel-hamd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	render_circle(int x, int y, int color, t_cub3d *cub)
 	int	j;
 	int	r;
 
-	r = cub->p.rad;
+	r = 6;
 	i = r * (-1);
 	while (i < r)
 	{

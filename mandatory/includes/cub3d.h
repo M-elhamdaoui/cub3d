@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/12 18:28:09 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/14 17:09:38 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ typedef struct s_wall
 typedef struct s_cub3d
 {
 	char				*input;
-	unsigned int		max_fd;
 	t_map				map;
 	t_block_memory		*collector;
 	mlx_t				*m;

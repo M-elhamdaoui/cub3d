@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 13:37:27 by houbet            #+#    #+#             */
-/*   Updated: 2024/11/09 16:57:54 by hmrabet          ###   ########.fr       */
+/*   Created: 2024/08/26 13:37:27 by hmrabet           #+#    #+#             */
+/*   Updated: 2024/11/14 17:07:49 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void	init_map(t_cub3d *cub, char **av)
 
 	len = 1;
 	fd = open(ft_strtrim(cub, av[1], " "), O_RDONLY, 0777);
-	cub->max_fd = fd;
 	buffer = ft_malloc(cub, &cub->collector, 42);
 	while (len > 0)
 	{
@@ -107,6 +106,7 @@ void	init_map(t_cub3d *cub, char **av)
 		buffer[len] = '\0';
 		cub->input = ft_strjoin(cub->input, buffer, cub);
 	}
+	close(fd);
 	if (!ft_strtrim(cub, cub->input, " ")
 		|| !ft_strtrim(cub, cub->input, " ")[0])
 		ft_exit("empty map!\n", 1, cub);

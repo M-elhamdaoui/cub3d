@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+         #
+#    By: mel-hamd <mel-hamd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/23 20:10:55 by hmrabet           #+#    #+#              #
-#    Updated: 2024/11/12 17:59:02 by hmrabet          ###   ########.fr        #
+#    Updated: 2024/11/13 23:46:57 by mel-hamd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,13 +61,14 @@ BSRCS = bonus/main_bonus.c \
 		bonus/mlx/mouse-features_bonus.c \
 		bonus/mlx/actions-1_bonus.c \
 		bonus/tools/ft_get_door.c \
-		bonus/mlx/close_to_door_bonus.c
+		bonus/mlx/close_to_door_bonus.c \
+		bonus/mlx/draw_minimap_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CC = cc -Wall -Wextra -Werror  #-g -fsanitize=address
+CC = cc -Wall -Wextra -Werror # -g -fsanitize=address
 
 INCLUDES = -IMLX42/include/MLX42  -Imandatory/includes
 INCLUDES_B = -IMLX42/include/MLX42  -Ibonus/includes

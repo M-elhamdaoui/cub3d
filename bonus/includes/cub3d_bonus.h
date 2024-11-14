@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/12 18:21:38 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/14 17:09:29 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define H_SIZE 900
 # define FOV 1.0471975511965976
 # define MOUSE_SPEED 0.1
+# define RNG 8
+# define MINI_WITH 256
 
 typedef uint32_t	t_ui;
 
@@ -191,7 +193,6 @@ typedef struct s_cub3d
 {
 	unsigned int		i;
 	char				*input;
-	unsigned int		max_fd;
 	t_map				map;
 	t_block_memory		*collector;
 	mlx_t				*m;
@@ -258,7 +259,7 @@ void		init_map(t_cub3d *cub, char **av);
 void		lunch_mlx(t_cub3d *cub);
 int			put_square(t_corr *corr, t_d *d, t_cub3d *cub, int color);
 int			ft_create_color(int r, int g, int b, int a);
-void		rneder_map_2d(t_cub3d *cub);
+void		draw_minimap(t_cub3d *cub);
 mlx_image_t	*create_image(int w, int h, t_cub3d *cub);
 void		render_circle(int x, int y, int color, t_cub3d *cub);
 void		put_line(t_corr a, t_corr b, t_cub3d *cub);
