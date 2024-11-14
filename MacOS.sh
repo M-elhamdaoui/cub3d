@@ -36,7 +36,7 @@ SRCS = 	mandatory/main.c \
 		mandatory/moves/move.c \
 		mandatory/raycasting/cast_rays_h.c\
 		mandatory/tools/raycast_utils.c \
-		mandatory/raycasting/cast_rays_v.c
+		mandatory/raycasting/cast_rays_v.c \
 
 BSRCS = bonus/main_bonus.c \
  		bonus/init-data_bonus.c \
@@ -58,8 +58,15 @@ BSRCS = bonus/main_bonus.c \
 		bonus/tools/raycast_utils_bonus.c \
 		bonus/raycasting/cast_rays_v_bonus.c \
 		bonus/tools/draw_bonus.c \
-		bonus/tools/omen_bonus.c \
-		bonus/tools/sounds_bonus.c \
+		bonus/tools/wraith_2_bonus.c \
+		bonus/tools/wraith_bonus.c \
+		bonus/parser/parser-conditions_bonus.c \
+		bonus/init-player_bonus.c \
+		bonus/mlx/mouse-features_bonus.c \
+		bonus/mlx/actions-1_bonus.c \
+		bonus/tools/ft_get_door.c \
+		bonus/mlx/close_to_door_bonus.c \
+		bonus/mlx/draw_minimap_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 
