@@ -6,13 +6,13 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:55:49 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/14 17:10:17 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/14 17:16:55 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	close_fds(t_cub3d *cub)
+void	close_fds(void)
 {
 	int	fd;
 
@@ -31,7 +31,7 @@ void	ft_exit(char *msg, int status, t_cub3d *cub)
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd(msg, 2);
 	}
-	close_fds(cub);
+	close_fds();
 	if (cub->m && cub->img)
 		mlx_delete_image(cub->m, cub->img);
 	if (cub->m)

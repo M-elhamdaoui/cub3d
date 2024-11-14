@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:33:25 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/14 17:09:12 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/14 17:14:08 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	get_colors(t_cub3d *cub)
 	1 && (it[2] = -1, it[0] = 0, it[1] = 0);
 	while (cub->map.floor[++it[2]])
 	{
-		if (cub->map.floor[i] == ',')
+		if (cub->map.floor[it[2]] == ',')
 			it[0]++;
 	}
 	it[2] = -1;
 	while (cub->map.ceiling[++it[2]])
 	{
-		if (cub->map.ceiling[i] == ',')
+		if (cub->map.ceiling[it[2]] == ',')
 			it[1]++;
 	}
 	if (it[0] != 2 || it[1] != 2)

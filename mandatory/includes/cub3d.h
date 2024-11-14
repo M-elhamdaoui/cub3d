@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 08:57:39 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/14 17:09:38 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/14 17:16:37 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include "MLX42.h"
 # include <math.h>
+# include <limits.h>
 
 # define US 32
 # define W_SIZE 1200
@@ -123,7 +124,7 @@ typedef struct s_cub3d
 void		*ft_malloc(t_cub3d *cub, t_block_memory **g, size_t s);
 void		ft_free(t_block_memory **memory);
 void		ft_exit(char *msg, int status, t_cub3d *cub);
-void		close_fds(t_cub3d *cub);
+void		close_fds(void);
 
 // UTILS
 size_t		ft_strlen(const char *s);
