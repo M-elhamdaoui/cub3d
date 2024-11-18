@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse-map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmrabet <hmrabet@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:44:58 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/10/30 11:02:55 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/18 19:28:39 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,24 @@ void	count_players(t_cub3d *cub)
 		ft_exit("The map must have one player!\n", 1, cub);
 }
 
+static t_bool	check_surrounding_walls(t_cub3d *cub, int i, int j, int height)
+{
+	return ((((i == 0 || i == (height - 1))
+				&& (cub->map.map[i][j] == '0' || is_player(cub->map.map[i][j])))
+				|| ((j == 0 || j == (int)ft_strlen(cub->map.map[i]) - 1)
+					&& (cub->map.map[i][j] == '0'
+					|| is_player(cub->map.map[i][j]))))
+				|| (cub->map.map[i][j] == ' '
+				&& ((cub->map.map[i][j + 1] == '0'
+					|| is_player(cub->map.map[i][j + 1]))
+					|| (j != 0 && (cub->map.map[i][j - 1] == '0'
+						|| is_player(cub->map.map[i][j - 1])))
+					|| (i != 0 && (cub->map.map[i - 1][j] == '0'
+						|| is_player(cub->map.map[i - 1][j])))
+					|| (i != (height - 1) && (cub->map.map[i + 1][j] == '0'
+						|| is_player(cub->map.map[i + 1][j]))))));
+}
+
 void	parse_map(t_cub3d *cub)
 {
 	int	i;
@@ -77,14 +95,7 @@ void	parse_map(t_cub3d *cub)
 		j = 0;
 		while (cub->map.map[i][j])
 		{
-			if ((((i == 0 || i == (height - 1))
-						&& cub->map.map[i][j] == '0')
-				|| ((j == 0 || j == (int)ft_strlen(cub->map.map[i]) - 1)
-					&& cub->map.map[i][j] == '0')) || (cub->map.map[i][j] == ' '
-				&& (cub->map.map[i][j + 1] == '0'
-					|| (j != 0 && cub->map.map[i][j - 1] == '0')
-					|| (i != 0 && cub->map.map[i - 1][j] == '0')
-					|| (i != (height - 1) && cub->map.map[i + 1][j] == '0'))))
+			if (check_surrounding_walls(cub, i, j, height))
 				ft_exit("The map must be surrounded by walls!\n", 1, cub);
 			j++;
 		}
