@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 18:02:10 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/06 12:30:38 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/20 19:43:32 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static int	fill_identifiers2(t_cub3d *cub, char **splitted, int i)
 		return (cub->map.ceiling = get_identifier(cub,
 				ft_strtrim(cub, splitted[i], " "), 1), 1);
 	}
+	else if (!ft_strtrim(cub, splitted[i], " ")[0])
+		ft_exit("Invalid map!\n", 1, cub);
 	return (0);
 }
 
@@ -87,7 +89,7 @@ static void	parse_identifiers2(t_cub3d *cub, char **splitted, int i)
 	j = 0;
 	while (splitted[i])
 	{
-		if (!ft_strtrim(cub, splitted[i], " ")[0])
+		if (!ft_strtrim(cub, splitted[i], " ")[0] && !ft_strlen(splitted[i]))
 			ft_exit("Map shouldn't have empty lines!\n", 1, cub);
 		check_map_row(cub, splitted[i]);
 		cub->map.pre_map[j++] = ft_strdup(splitted[i], cub);

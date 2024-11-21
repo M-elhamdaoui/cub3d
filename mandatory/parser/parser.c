@@ -6,7 +6,7 @@
 /*   By: hmrabet <hmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:37:27 by hmrabet           #+#    #+#             */
-/*   Updated: 2024/11/14 17:08:14 by hmrabet          ###   ########.fr       */
+/*   Updated: 2024/11/20 19:21:55 by hmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	init_map(t_cub3d *cub, char **av)
 
 	len = 1;
 	fd = open(ft_strtrim(cub, av[1], " "), O_RDONLY, 0777);
+	if (fd == -1)
+		ft_exit("failed to open the map file!\n", 1, cub);
 	buffer = ft_malloc(cub, &cub->collector, 42);
 	while (len > 0)
 	{
