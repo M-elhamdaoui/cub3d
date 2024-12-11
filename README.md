@@ -1,3 +1,3 @@
 # Cub3d
 
-Make 
+Make the project and Have fun !
